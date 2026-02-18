@@ -1,992 +1,918 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html data-wf-page="6922d75ee39b1fb737dc0655" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dodgeball School | Dodgeball & Trefbal voor Scholen, Naschoolse Activiteiten & Kinderfeestjes in heel Nederland</title>
-  <meta name="description" content="Dodgeball School is dé specialist in dodgeball en trefbal voor basisscholen, voortgezet onderwijs, BSO en kinderfeestjes. Sportdagen, clinics, naschoolse activiteiten en evenementen door heel Nederland. Vraag vrijblijvend een offerte aan.">
-  <meta name="keywords" content="dodgeball school, trefbal school, dodgeball basisschool, trefbal gymles, sportdag school, dodgeball kinderfeestje, trefbal kinderfeestje, naschoolse activiteiten sport, dodgeball clinic, trefbal clinic, sportdag basisschool, sportdag voortgezet onderwijs, BSO sport activiteiten, dodgeball Nederland">
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="Dodgeball School">
-  <link rel="canonical" href="https://dodgeballschool.nl/">
-  <link rel="icon" type="image/svg+xml" href="dodgeballschool.svg">
+  <meta charset="utf-8"/>
+  <title>Canvasly - Creative Agency</title>
+  <meta content="Canvasly is a modern agency designed for brand strategy, development, web design, and digital growth." name="description"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Dodgeball School | Dodgeball & Trefbal voor Scholen & Kinderfeestjes">
-  <meta property="og:description" content="Dé specialist in dodgeball voor scholen, naschoolse activiteiten en kinderfeestjes. Ervaren begeleiders, door heel Nederland. Vraag een offerte aan!">
-  <meta property="og:url" content="https://dodgeballschool.nl/">
-  <meta property="og:site_name" content="Dodgeball School">
-  <meta property="og:locale" content="nl_NL">
+  <!-- Canvasly's own Webflow CSS — gives us the exact layout -->
+  <link href="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/css/canvasly-creative.shared.439cf7736.min.css" rel="stylesheet" type="text/css"/>
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dodgeball School | Dodgeball & Trefbal voor Scholen & Kinderfeestjes">
-  <meta name="twitter:description" content="Dé specialist in dodgeball voor scholen, naschoolse activiteiten en kinderfeestjes door heel Nederland.">
+  <!-- Lenis CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/lenis@latest/dist/lenis.css"/>
 
-  <!-- Structured Data: LocalBusiness + SportsActivityLocation -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": ["SportsActivityLocation", "LocalBusiness"],
-    "name": "Dodgeball School",
-    "description": "Dodgeball School is dé specialist in dodgeball en trefbal voor basisscholen, voortgezet onderwijs, BSO, kinderfeestjes en evenementen door heel Nederland.",
-    "url": "https://dodgeballschool.nl",
-    "logo": "https://dodgeballschool.nl/dodgeballschool.svg",
-    "email": "info@dodgeballschool.nl",
-    "telephone": "+31612345678",
-    "areaServed": {
-      "@type": "Country",
-      "name": "Netherlands"
-    },
-    "serviceArea": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": 52.1326,
-        "longitude": 5.2913
-      },
-      "geoRadius": "200000"
-    },
-    "priceRange": "$$",
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Dodgeball Activiteiten",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Dodgeball Sportdag Basisschool",
-            "description": "Complete dodgeball sportdag voor basisscholen met ervaren begeleiders, materialen en aangepaste spelvormen."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Dodgeball Sportdag Voortgezet Onderwijs",
-            "description": "Energieke dodgeball sportdag voor middelbare scholen met toernooi-opzet en teambuilding."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Dodgeball Naschoolse Activiteiten",
-            "description": "Structureel dodgeball programma als naschoolse activiteit voor BSO en scholen."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Dodgeball Kinderfeestje",
-            "description": "Onvergetelijk dodgeball kinderfeestje met begeleiding, materialen en spelvarianten."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Dodgeball Clinic & Workshop",
-            "description": "Dodgeball clinic of workshop voor scholen, sportverenigingen en evenementen."
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Dodgeball Evenementen & Teambuilding",
-            "description": "Dodgeball toernooien en teambuilding evenementen voor scholen, bedrijven en organisaties."
-          }
-        }
-      ]
-    },
-    "sameAs": []
-  }
-  </script>
+  <!-- Fonts (same as Canvasly) -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+  <script>WebFont.load({ google: { families: ["Geist:300,400,500,600,700","Inter Tight:300,400,500,600,700","Manrope:300,400,500,600,700","Outfit:300,400,500,600,700","Poppins:300,400,500,600,700"] }});</script>
 
-  <!-- Structured Data: FAQPage -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Wat is dodgeball precies?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Dodgeball (ook wel trefbal genoemd) is een teamsport waarbij twee teams proberen de tegenstanders 'af' te gooien met zachte ballen. Het is een snelle, dynamische sport die geschikt is voor alle leeftijden en niveaus. Bij Dodgeball School gebruiken we veilige, zachte schuimballen die speciaal zijn ontworpen voor kinderen."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Voor welke leeftijden is Dodgeball School geschikt?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Dodgeball School biedt programma's voor kinderen en jongeren van 4 tot 18 jaar. We passen onze activiteiten aan op de leeftijd en het niveau van de deelnemers, van basisschool (groep 1 t/m 8) tot voortgezet onderwijs."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Komen jullie naar onze school of locatie toe?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja! Wij komen met al het materiaal naar jouw school, sporthal of evenementlocatie toe. We zijn actief door heel Nederland. Het enige wat je nodig hebt is een gymzaal of sportveld."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Hoeveel kinderen kunnen er meedoen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Onze programma's zijn geschikt voor groepen van 10 tot meer dan 200 kinderen. Bij grotere groepen werken we met meerdere velden en begeleiders zodat iedereen actief meedoet."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wat kost een dodgeball activiteit?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "De kosten zijn afhankelijk van het type activiteit, het aantal deelnemers en de locatie. Neem contact op voor een vrijblijvende offerte op maat. We denken graag mee over een programma dat past bij jullie budget."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is dodgeball veilig voor kinderen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absoluut. We gebruiken zachte schuimballen die speciaal zijn ontwikkeld voor kinderen. Onze ervaren begeleiders zorgen voor duidelijke spelregels en een veilige speelomgeving. De sport is laagdrempelig en de kans op blessures is minimaal."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Kunnen jullie dodgeball ook als naschoolse activiteit verzorgen?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Zeker! We bieden structurele naschoolse dodgeball programma's aan voor BSO's en scholen. Dit kan wekelijks of als blokprogramma van meerdere weken. Een ideale manier om kinderen na schooltijd te laten bewegen."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Hoe lang duurt een dodgeball activiteit?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Een standaard sessie duurt 1 tot 1,5 uur. Voor sportdagen en evenementen kunnen we programma's van een halve dag of hele dag samenstellen. Bij kinderfeestjes is de standaard duur 1,5 tot 2 uur."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wat is het verschil tussen dodgeball en trefbal?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Dodgeball is de internationale naam voor de sport, trefbal is de Nederlandse variant. De basisregels zijn hetzelfde: raak je tegenstander met de bal en je scoort. Bij dodgeball worden vaak meerdere ballen tegelijk gebruikt en zijn er meer tactische elementen, wat het extra spannend en uitdagend maakt."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Hoe boek ik een activiteit?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Neem contact op via ons contactformulier, e-mail (info@dodgeballschool.nl) of telefoon. Vertel ons de gewenste datum, het aantal deelnemers en het type activiteit. Wij sturen je binnen 24 uur een vrijblijvende offerte."
-        }
-      }
-    ]
-  }
-  </script>
+  <!-- Webflow mod-js class (needed for CSS selectors) -->
+  <script>!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
 
-  <!-- Structured Data: BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://dodgeballschool.nl/"
-      }
-    ]
-  }
-  </script>
+  <!-- Favicon -->
+  <link href="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697f4f1ab8af4935542103f5_Favicon.png" rel="shortcut icon" type="image/x-icon"/>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              red: '#E63221',
-              orange: '#F97316',
-              dark: '#1E293B',
-              light: '#F8FAFC',
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    html { scroll-behavior: smooth; }
-    .fade-in { animation: fadeIn 0.6s ease-out; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  </style>
+  <!-- Our minimal overrides -->
+  <link rel="stylesheet" href="/src/css/style.css"/>
 </head>
-<body class="font-sans text-brand-dark bg-white">
+<body>
+<div class="page-wrapper">
 
-  <!-- Navigatie -->
-  <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between items-center h-16">
-        <a href="#" class="flex items-center gap-3">
-          <img src="dodgeballschool.svg" alt="Dodgeball School logo" class="h-10" width="180" height="40">
+<!-- ================================================================
+     HEADER — Logo, Sidebar Nav, Menu Button, CTA Badge
+     ================================================================ -->
+<header class="header">
+  <div class="header-content">
+    <div class="header-content-left">
+      <div class="nav-brand-box">
+        <a href="/" class="nav-brand w-inline-block">
+          <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697ba563050d0ce6bd2bca61_Background.svg" loading="lazy" alt="Company Logo" class="nav-brand-logo"/>
         </a>
-        <div class="hidden lg:flex items-center gap-6">
-          <a href="#aanbod" class="text-sm font-medium text-gray-600 hover:text-brand-red transition-colors">Aanbod</a>
-          <a href="#over" class="text-sm font-medium text-gray-600 hover:text-brand-red transition-colors">Over ons</a>
-          <a href="#waarom" class="text-sm font-medium text-gray-600 hover:text-brand-red transition-colors">Waarom dodgeball</a>
-          <a href="#locaties" class="text-sm font-medium text-gray-600 hover:text-brand-red transition-colors">Locaties</a>
-          <a href="#faq" class="text-sm font-medium text-gray-600 hover:text-brand-red transition-colors">FAQ</a>
-          <a href="#contact" class="bg-brand-red text-white px-5 py-2.5 rounded-lg text-sm font-bold hover:bg-red-700 transition-colors shadow-sm">Offerte aanvragen</a>
-        </div>
-        <button id="menu-btn" class="lg:hidden p-2" aria-label="Menu openen">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
+      </div>
+      <div class="nav-content-wrapper">
+        <nav class="nav-menu">
+          <a href="/" class="header-nav-link w-inline-block w--current">
+            <div class="header-nav-icon-box">
+              <div class="header-nav-link-icon w-embed">
+                <svg viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M32.4377 11.4041L22.3666 1.92902C21.053 0.690211 19.3144 0 17.5075 0C15.7004 0 13.9618 0.690211 12.6482 1.92902L2.57731 11.4041C1.76486 12.1686 1.11721 13.0905 0.674061 14.1137C0.230908 15.1367 0.00150732 16.2393 0 17.3539V28.9758C0.00129199 30.5723 0.636737 32.1031 1.76687 33.2323C2.89701 34.3618 4.42967 34.9974 6.02865 35H28.9863C30.583 34.9948 32.1125 34.3577 33.2398 33.2287C34.367 32.0994 34.9999 30.57 34.9999 28.9758V17.3539C34.9976 16.2408 34.7695 15.1396 34.3292 14.117C33.8887 13.0943 33.2453 12.1714 32.4377 11.4041ZM26.0762 20.7205C26.0769 21.1503 25.9926 21.5763 25.8281 21.9736C25.6636 22.371 25.4221 22.7318 25.1178 23.036C24.8133 23.34 24.4517 23.5809 24.0537 23.7451C23.6558 23.9094 23.2293 23.9936 22.7986 23.9929H20.1269C19.6964 23.9936 19.27 23.9094 18.872 23.7451C18.4741 23.5809 18.1125 23.34 17.808 23.036C17.5035 22.7319 17.2622 22.371 17.0977 21.9736C16.9331 21.5763 16.8488 21.1503 16.8495 20.7205V18.053C16.8507 17.1855 17.1966 16.354 17.8108 15.7406C18.4252 15.1271 19.258 14.782 20.1269 14.7807H22.7986C23.6674 14.782 24.5003 15.1271 25.1147 15.7406C25.7291 16.354 26.0747 17.1856 26.0761 18.053V20.7205H26.0762Z" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+            <div class="header-nav-text-box"><div>Home</div></div>
+          </a>
+          <a href="/about" class="header-nav-link w-inline-block">
+            <div class="header-nav-icon-box">
+              <div class="header-nav-link-icon w-embed">
+                <svg viewBox="0 0 35 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M35 23.4375C35 23.8519 34.8324 24.2493 34.534 24.5424C34.2357 24.8354 33.831 25 33.4091 25H14.3182C13.8962 25 13.4916 24.8354 13.1932 24.5424C12.8949 24.2493 12.7273 23.8519 12.7273 23.4375C12.7273 20.9511 13.733 18.5665 15.5231 16.8084C17.3132 15.0502 19.7411 14.0625 22.2727 14.0625H25.4545C27.9862 14.0625 30.4141 15.0502 32.2042 16.8084C33.9943 18.5665 35 20.9511 35 23.4375ZM23.8636 0C22.605 0 21.3747 0.366556 20.3282 1.05331C19.2817 1.74007 18.4661 2.71619 17.9844 3.85823C17.5028 5.00027 17.3767 6.25693 17.6223 7.46931C17.8678 8.6817 18.4739 9.79534 19.3639 10.6694C20.2538 11.5435 21.3877 12.1388 22.6222 12.3799C23.8566 12.6211 25.1361 12.4973 26.2989 12.0242C27.4617 11.5512 28.4556 10.7501 29.1548 9.72231C29.8541 8.69451 30.2273 7.48613 30.2273 6.25C30.2273 4.5924 29.5568 3.00268 28.3634 1.83058C27.17 0.65848 25.5514 0 23.8636 0ZM9.54545 0C8.28685 0 7.0565 0.366556 6.01001 1.05331C4.96351 1.74007 4.14787 2.71619 3.66622 3.85823C3.18457 5.00027 3.05855 6.25693 3.30409 7.46931C3.54964 8.6817 4.15571 9.79534 5.04568 10.6694C5.93565 11.5435 7.06955 12.1388 8.30397 12.3799C9.5384 12.6211 10.8179 12.4973 11.9807 12.0242C13.1435 11.5512 14.1374 10.7501 14.8366 9.72231C15.5359 8.69451 15.9091 7.48613 15.9091 6.25C15.9091 4.5924 15.2386 3.00268 14.0452 1.83058C12.8518 0.65848 11.2332 0 9.54545 0ZM9.54545 23.4375C9.54309 21.7963 9.87232 20.1709 10.5141 18.6555C11.1558 17.1401 12.0973 15.7649 13.2841 14.6094C12.3129 14.2492 11.2836 14.064 10.2455 14.0625H8.84545C6.50079 14.0666 4.25335 14.9832 2.59542 16.6116C0.937485 18.2399 0.00420569 20.4472 0 22.75V23.4375C0 23.8519 0.167613 24.2493 0.465966 24.5424C0.76432 24.8354 1.16897 25 1.59091 25H9.83182C9.6466 24.4989 9.54976 23.9705 9.54545 23.4375Z" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+            <div class="header-nav-text-box"><div>About</div></div>
+          </a>
+          <a href="/works" class="header-nav-link w-inline-block">
+            <div class="header-nav-icon-box">
+              <div class="header-nav-link-icon w-embed">
+                <svg viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0.0132919 31.4511C-0.05153 32.0746 0.121665 32.699 0.512617 33.2513C0.903568 33.8037 1.49611 34.2611 2.22093 34.57C2.94574 34.879 3.77286 35.0268 4.60552 34.996C5.43818 34.9653 6.24195 34.7573 6.92281 34.3964L17.5 25.4032L28.0647 34.3964C28.7465 34.7571 29.5509 34.9649 30.3842 34.9957C31.2174 35.0264 32.0452 34.8788 32.7708 34.5701C33.4965 34.2613 34.0902 33.8042 34.4827 33.2519C34.8752 32.6997 35.0503 32.0751 34.9875 31.4511V4.3755C34.988 3.80081 34.8374 3.23169 34.5444 2.70068C34.2514 2.16967 33.8218 1.68719 33.2801 1.28082C32.7384 0.874454 32.0952 0.552169 31.3873 0.332396C30.6794 0.112623 29.9207 -0.000327961 29.1546 7.1525e-07H5.84289C5.07705 6.2135e-07 4.31872 0.113194 3.61123 0.333114C2.90373 0.553034 2.26093 0.875371 1.71956 1.28171C1.17819 1.68804 0.748855 2.17041 0.456086 2.70126C0.163318 3.2321 0.012854 3.80102 0.0132919 4.3755V31.4511Z" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+            <div class="header-nav-text-box"><div>Works</div></div>
+          </a>
+          <a href="/contact" class="header-nav-link w-inline-block">
+            <div class="header-nav-icon-box">
+              <div class="header-nav-link-icon w-embed">
+                <svg viewBox="0 0 35 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5.79346 0C2.60572 0 0 2.55949 0 5.69051V21.3095C0 24.4406 2.60572 27 5.79346 27H29.2089C32.3967 27 35 24.4406 35 21.3095V5.69058C35 2.55949 32.3967 6.71078e-05 29.2089 6.71078e-05L5.79346 0ZM7.17958 6.5223L15.5623 15.257C16.5759 16.2064 18.2016 16.236 19.1594 15.281L27.8497 6.50793C28.3309 6.02207 29.1218 6.01133 29.6165 6.48396C30.1111 6.95659 30.1221 7.73352 29.6409 8.21938C26.7401 11.1468 23.839 14.0751 20.9385 17.002C18.9919 18.9428 15.8029 18.8746 13.837 17.0332C11.0134 14.0969 8.18528 11.1472 5.36149 8.20494C4.88981 7.71156 4.91381 6.93618 5.41516 6.47187C5.96777 5.96399 6.7874 6.12943 7.17958 6.5223Z" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+            <div class="header-nav-text-box"><div>Contact</div></div>
+          </a>
+        </nav>
+      </div>
+      <a href="/" class="nav-company-box w-inline-block">
+        <div class="nav-company-name">Canvasly</div>
+        <div class="nav-company-country">creative</div>
+      </a>
+    </div>
+    <div class="header-content-right">
+      <div class="menu-cta-button-box">
+        <button id="menuButton" class="menu-button">
+          <div class="button-text open">Menu</div>
+          <div class="button-text close">Close</div>
         </button>
       </div>
-      <div id="mobile-menu" class="hidden lg:hidden pb-4 border-t border-gray-100 mt-2 pt-2">
-        <a href="#aanbod" class="block py-2.5 text-sm font-medium text-gray-600 hover:text-brand-red">Aanbod</a>
-        <a href="#over" class="block py-2.5 text-sm font-medium text-gray-600 hover:text-brand-red">Over ons</a>
-        <a href="#waarom" class="block py-2.5 text-sm font-medium text-gray-600 hover:text-brand-red">Waarom dodgeball</a>
-        <a href="#locaties" class="block py-2.5 text-sm font-medium text-gray-600 hover:text-brand-red">Locaties</a>
-        <a href="#faq" class="block py-2.5 text-sm font-medium text-gray-600 hover:text-brand-red">FAQ</a>
-        <a href="#contact" class="block py-2.5 text-sm font-bold text-brand-red">Offerte aanvragen</a>
-      </div>
+      <a href="/contact" class="header-cta-circle w-inline-block">
+        <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/693762854882533db079b5e6__%20Contact%20Us%20_%20Contact%20Us%20Us%20(1).svg" loading="lazy" alt="cta circular text" class="header-cta-circle-image"/>
+        <div class="header-cta-circle-arrow-box first">
+          <div class="header-cta-circle-arrow-wrapper">
+            <div class="header-cta-circle-arrow first w-embed">
+              <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg>
+            </div>
+          </div>
+        </div>
+        <div class="header-cta-circle-arrow-box second">
+          <div class="header-cta-circle-arrow-box-bg"></div>
+          <div class="header-cta-circle-arrow-wrapper">
+            <div class="header-cta-circle-arrow second w-embed">
+              <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg>
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
-  </nav>
 
-  <!-- Hero -->
-  <section class="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-red-50 to-orange-50">
-    <div class="max-w-5xl mx-auto text-center">
-      <img src="dodgeballschool.svg" alt="Dodgeball School - Dodgeball en trefbal voor scholen in Nederland" class="h-20 sm:h-28 lg:h-32 mx-auto mb-8" width="500" height="140">
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-brand-dark leading-tight mb-6">
-        Dodgeball &amp; trefbal voor <span class="text-brand-red">scholen</span> en <span class="text-brand-red">evenementen</span>
-      </h1>
-      <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-4">
-        Dodgeball School is dé specialist in dodgeball activiteiten voor basisscholen, voortgezet onderwijs, BSO en kinderfeestjes. Wij komen met alles naar jullie toe — door heel Nederland.
-      </p>
-      <p class="text-base text-gray-500 max-w-2xl mx-auto mb-10">
-        Sportdagen, clinics, naschoolse activiteiten, toernooien en feestjes voor kinderen en jongeren van 4 tot 18 jaar.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-        <a href="#contact" class="bg-brand-red text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-700 transition-all shadow-lg shadow-red-200 hover:shadow-xl hover:shadow-red-300 hover:-translate-y-0.5">
-          Vrijblijvend offerte aanvragen
+    <!-- MENU OVERLAY -->
+    <div class="menu" id="menuOverlay">
+      <div class="menu-content">
+        <a href="/" class="menu-link w-inline-block">
+          <div class="menu-link-num-box"><div class="menu-link-num">01</div></div>
+          <div class="menu-link-text-box"><div class="menu-link-text">Home</div></div>
         </a>
-        <a href="#aanbod" class="bg-white text-brand-dark px-8 py-4 rounded-xl text-lg font-bold border-2 border-gray-200 hover:border-brand-red hover:text-brand-red transition-colors">
-          Bekijk ons aanbod
+        <a href="/about" class="menu-link w-inline-block">
+          <div class="menu-link-num-box"><div class="menu-link-num">02</div></div>
+          <div class="menu-link-text-box"><div class="menu-link-text">About</div></div>
         </a>
-      </div>
-      <!-- Trust bar -->
-      <div class="flex flex-wrap justify-center gap-6 sm:gap-10 text-sm text-gray-500">
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          <span>Ervaren begeleiders</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          <span>Heel Nederland</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          <span>Alle materialen inbegrepen</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-          <span>4 – 18 jaar</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Aanbod -->
-  <section id="aanbod" class="py-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">Ons aanbod</h2>
-        <div class="w-16 h-1 bg-brand-red mx-auto mb-6 rounded-full"></div>
-        <p class="text-gray-600 max-w-2xl mx-auto text-lg">Van een enkele gymles tot een complete sportdag — wij hebben voor elke situatie het perfecte dodgeball programma.</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <!-- Sportdag Basisschool -->
-        <article class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-gray-100 hover:border-brand-red/20 group">
-          <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
-            <svg class="w-7 h-7 text-brand-red group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Sportdag basisschool</h3>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            Een complete dodgeball sportdag voor groep 1 t/m 8. Met aangepaste spelvormen per leeftijd, toernooien en enthousiaste begeleiders. Ideaal voor koningsspelen, eindejaarsactiviteiten of een sportieve schooldag.
-          </p>
-          <ul class="text-sm text-gray-500 space-y-1">
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Geschikt voor 20 – 200+ leerlingen</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Halve dag of hele dag</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Inclusief alle materialen</li>
-          </ul>
-        </article>
-
-        <!-- Sportdag Voortgezet Onderwijs -->
-        <article class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-gray-100 hover:border-brand-red/20 group">
-          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-orange group-hover:text-white transition-colors">
-            <svg class="w-7 h-7 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Sportdag voortgezet onderwijs</h3>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            Dodgeball toernooien voor middelbare scholieren. Competitief, tactisch en enorm populair bij tieners. Perfect als introductieactiviteit, sportdag of teambuilding voor klassen.
-          </p>
-          <ul class="text-sm text-gray-500 space-y-1">
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Toernooi-opzet met ranglijst</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>12 – 18 jaar</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Scheidsrechters inbegrepen</li>
-          </ul>
-        </article>
-
-        <!-- Naschoolse Activiteiten -->
-        <article class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-gray-100 hover:border-brand-red/20 group">
-          <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
-            <svg class="w-7 h-7 text-brand-red group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Naschoolse activiteiten</h3>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            Structureel dodgeball als naschoolse activiteit voor BSO en scholen. Wekelijks of als blokprogramma. Kinderen leren de sport stap voor stap en blijven na schooltijd in beweging.
-          </p>
-          <ul class="text-sm text-gray-500 space-y-1">
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Wekelijks of blokprogramma</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>BSO & school samenwerking</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Opbouwend lesprogramma</li>
-          </ul>
-        </article>
-
-        <!-- Clinics & Workshops -->
-        <article class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-gray-100 hover:border-brand-red/20 group">
-          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-orange group-hover:text-white transition-colors">
-            <svg class="w-7 h-7 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Clinics &amp; workshops</h3>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            Een losse dodgeball clinic of workshop van 1 tot 2 uur. Ideaal als gymles-invulling, als onderdeel van een sportdag of als kennismaking met de sport. Wij nemen alles mee.
-          </p>
-          <ul class="text-sm text-gray-500 space-y-1">
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>1 – 2 uur per sessie</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Perfecte gymles-invulling</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Speluitleg + wedstrijden</li>
-          </ul>
-        </article>
-
-        <!-- Kinderfeestjes -->
-        <article class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-gray-100 hover:border-brand-red/20 group relative overflow-hidden">
-          <div class="absolute top-4 right-4 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-full">Populair</div>
-          <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-red group-hover:text-white transition-colors">
-            <svg class="w-7 h-7 text-brand-red group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Kinderfeestjes</h3>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            Een onvergetelijk dodgeball kinderfeestje! Wij zorgen voor de begeleiding, het materiaal en een programma vol actie. De jarige en alle vriendjes worden helemaal gek van dodgeball.
-          </p>
-          <ul class="text-sm text-gray-500 space-y-1">
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>1,5 – 2 uur feest</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>6 – 16 jaar</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Diverse spelvarianten</li>
-          </ul>
-        </article>
-
-        <!-- Evenementen & Teambuilding -->
-        <article class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all border border-gray-100 hover:border-brand-red/20 group">
-          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-orange group-hover:text-white transition-colors">
-            <svg class="w-7 h-7 text-brand-orange group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold mb-3">Evenementen &amp; teambuilding</h3>
-          <p class="text-gray-600 leading-relaxed mb-4">
-            Dodgeball als onderdeel van een groter evenement, buurtfeest, schoolfeest of teambuilding. Wij passen het programma aan op het thema en de doelgroep.
-          </p>
-          <ul class="text-sm text-gray-500 space-y-1">
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Maatwerk programma</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Buurtfeesten & festivals</li>
-            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-orange flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Koningsspelen & sportfeesten</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="text-center mt-12">
-        <a href="#contact" class="inline-flex items-center gap-2 bg-brand-red text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-700 transition-all shadow-lg shadow-red-200">
-          Vraag een vrijblijvende offerte aan
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        <a href="/works" class="menu-link w-inline-block">
+          <div class="menu-link-num-box"><div class="menu-link-num">03</div></div>
+          <div class="menu-link-text-box"><div class="menu-link-text">works</div></div>
+        </a>
+        <a href="/contact" class="menu-link w-inline-block">
+          <div class="menu-link-num-box"><div class="menu-link-num">04</div></div>
+          <div class="menu-link-text-box"><div class="menu-link-text">contact</div></div>
+        </a>
+        <a href="/services" class="menu-link w-inline-block">
+          <div class="menu-link-num-box"><div class="menu-link-num">05</div></div>
+          <div class="menu-link-text-box"><div class="menu-link-text">services</div></div>
+        </a>
+        <a href="/pricing" class="menu-link w-inline-block">
+          <div class="menu-link-num-box"><div class="menu-link-num">06</div></div>
+          <div class="menu-link-text-box"><div class="menu-link-text">pricing</div></div>
+        </a>
+        <a href="/blog" class="menu-link w-inline-block">
+          <div class="menu-link-num-box"><div class="menu-link-num">07</div></div>
+          <div class="menu-link-text-box"><div class="menu-link-text">blog</div></div>
         </a>
       </div>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- Hoe werkt het -->
-  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-brand-light">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">Hoe werkt het?</h2>
-        <div class="w-16 h-1 bg-brand-red mx-auto mb-6 rounded-full"></div>
-        <p class="text-gray-600 max-w-2xl mx-auto text-lg">In drie simpele stappen naar een onvergetelijke dodgeball ervaring.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-16 h-16 bg-brand-red text-white rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl font-black">1</div>
-          <h3 class="font-bold text-lg mb-2">Neem contact op</h3>
-          <p class="text-gray-600">Vertel ons over je school, evenement of feestje. Wij sturen je binnen 24 uur een vrijblijvende offerte op maat.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-16 h-16 bg-brand-red text-white rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl font-black">2</div>
-          <h3 class="font-bold text-lg mb-2">Wij regelen alles</h3>
-          <p class="text-gray-600">Wij komen met alle materialen, begeleiders en een op maat gemaakt programma naar jullie locatie. Jullie hoeven niets te regelen.</p>
-        </div>
-        <div class="text-center">
-          <div class="w-16 h-16 bg-brand-red text-white rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl font-black">3</div>
-          <h3 class="font-bold text-lg mb-2">Genieten maar!</h3>
-          <p class="text-gray-600">De kinderen hebben de tijd van hun leven met dodgeball. Actief, sociaal en onvergetelijk. Gegarandeerd lachende gezichten.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ================================================================
+     MAIN CONTENT
+     ================================================================ -->
+<div id="main" class="main-wrapper">
 
-  <!-- Over Ons -->
-  <section id="over" class="py-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">Over Dodgeball School</h2>
-        <div class="w-16 h-1 bg-brand-red mx-auto mb-6 rounded-full"></div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <p class="text-gray-600 text-lg leading-relaxed mb-4">
-            <strong>Dodgeball School</strong> is opgericht vanuit een passie voor sport en werken met kinderen. Wij geloven dat dodgeball dé perfecte sport is om kinderen in beweging te krijgen: het is laagdrempelig, sociaal en ontzettend leuk.
-          </p>
-          <p class="text-gray-600 text-lg leading-relaxed mb-4">
-            Onze ervaren en enthousiaste begeleiders komen naar jouw school, sporthal of evenementlocatie en verzorgen een professioneel en veilig programma. We werken met zachte schuimballen die speciaal zijn ontwikkeld voor kinderen.
-          </p>
-          <p class="text-gray-600 text-lg leading-relaxed">
-            Of het nu gaat om een sportdag voor 200 leerlingen, een wekelijks naschools programma of een kinderfeestje — wij zorgen ervoor dat elke deelnemer een onvergetelijke ervaring heeft.
-          </p>
-        </div>
-        <div class="grid grid-cols-2 gap-6">
-          <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 text-center">
-            <div class="text-4xl font-black text-brand-red mb-1">100%</div>
-            <div class="text-gray-600 text-sm font-medium">Plezier gegarandeerd</div>
-          </div>
-          <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 text-center">
-            <div class="text-4xl font-black text-brand-orange mb-1">4–18</div>
-            <div class="text-gray-600 text-sm font-medium">Jaar</div>
-          </div>
-          <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 text-center">
-            <div class="text-4xl font-black text-brand-red mb-1">NL</div>
-            <div class="text-gray-600 text-sm font-medium">Heel Nederland</div>
-          </div>
-          <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 text-center">
-            <div class="text-4xl font-black text-brand-orange mb-1">24u</div>
-            <div class="text-gray-600 text-sm font-medium">Offerte reactietijd</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Waarom Dodgeball -->
-  <section id="waarom" class="py-20 px-4 sm:px-6 lg:px-8 bg-brand-light">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">Waarom dodgeball op school?</h2>
-        <div class="w-16 h-1 bg-brand-red mx-auto mb-6 rounded-full"></div>
-        <p class="text-gray-600 max-w-2xl mx-auto text-lg">Dodgeball is meer dan een spelletje trefbal — het is een complete sport die bijdraagt aan de ontwikkeling van kinderen.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white rounded-2xl p-6 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            </div>
-            <h3 class="font-bold">Actief &amp; energiek</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Kinderen zijn continu in beweging. Rennen, gooien, ontwijken — dodgeball is een van de meest intensieve sporten die er is.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
-            </div>
-            <h3 class="font-bold">Teamwork &amp; samenwerken</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Samenwerken is essentieel. Kinderen leren communiceren, strategie bepalen en op elkaar vertrouwen.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-            </div>
-            <h3 class="font-bold">Inclusief voor iedereen</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Iedereen kan meedoen, ongeacht sportniveau. De regels zijn simpel en er is geen speciale techniek nodig om mee te doen.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-            </div>
-            <h3 class="font-bold">Cognitieve ontwikkeling</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Snel beslissingen nemen, ruimtelijk inzicht en anticiperen op tegenstanders — dodgeball traint het brein net zo goed als het lichaam.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="flex-shrink-0 w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-            </div>
-            <h3 class="font-bold">Veilig &amp; verantwoord</h3>
-          </div>
-          <p class="text-gray-600 text-sm">Met zachte schuimballen en duidelijke spelregels is dodgeball een veilige sport. De kans op blessures is minimaal.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 shadow-sm">
-          <div class="flex items-center gap-3 mb-3">
-            <div class="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-              <svg class="w-5 h-5 text-brand-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <h3 class="font-bold">Onvergetelijk plezier</h3>
-          </div>
-          <p class="text-gray-600 text-sm">De lachende gezichten spreken voor zich. Dodgeball is een sport die kinderen niet snel vergeten en waar ze steeds weer om vragen.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Voor wie -->
-  <section class="py-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">Voor wie is Dodgeball School?</h2>
-        <div class="w-16 h-1 bg-brand-red mx-auto mb-6 rounded-full"></div>
-      </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-8">
-          <h3 class="text-xl font-bold mb-4">Scholen &amp; onderwijsinstellingen</h3>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-brand-red mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Basisscholen (groep 1 t/m 8)</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-brand-red mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Voortgezet onderwijs (vmbo, havo, vwo)</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-brand-red mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Speciaal onderwijs</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-brand-red mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Gymles-invulling &amp; sportdagen</li>
-          </ul>
-        </div>
-        <div class="bg-gradient-to-br from-orange-50 to-red-50 rounded-2xl p-8">
-          <h3 class="text-xl font-bold mb-4">Organisaties &amp; ouders</h3>
-          <ul class="space-y-3 text-gray-600">
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-brand-orange mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>BSO &amp; naschoolse opvang</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-brand-orange mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Gemeenten &amp; buurthuizen</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-brand-orange mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Sportverenigingen &amp; scouting</li>
-            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-brand-orange mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ouders die een kinderfeestje zoeken</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Locaties / Geo targeting -->
-  <section id="locaties" class="py-20 px-4 sm:px-6 lg:px-8 bg-brand-dark text-white">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">Actief door heel Nederland</h2>
-        <div class="w-16 h-1 bg-brand-red mx-auto mb-6 rounded-full"></div>
-        <p class="text-gray-300 max-w-2xl mx-auto text-lg">Wij komen naar jouw locatie toe — waar je ook bent in Nederland. Dodgeball School is actief in alle provincies.</p>
-      </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Amsterdam</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Rotterdam</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Den Haag</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Utrecht</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Eindhoven</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Groningen</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Tilburg</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Almere</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Breda</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Nijmegen</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Arnhem</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Haarlem</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Enschede</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Apeldoorn</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Zwolle</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Leiden</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Maastricht</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Dordrecht</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">'s-Hertogenbosch</span>
-        </div>
-        <div class="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 text-center hover:bg-white/20 transition-colors">
-          <span class="font-semibold">Leeuwarden</span>
-        </div>
-      </div>
-      <p class="text-center text-gray-400 mb-8">Staat jouw stad er niet bij? Geen probleem — wij komen overal in Nederland.</p>
-      <div class="text-center">
-        <a href="#contact" class="inline-flex items-center gap-2 bg-brand-red text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-700 transition-colors">
-          Vraag beschikbaarheid aan in jouw regio
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-3xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">Veelgestelde vragen</h2>
-        <div class="w-16 h-1 bg-brand-red mx-auto mb-6 rounded-full"></div>
-      </div>
-      <div class="space-y-4" id="faq-list">
-        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <summary class="flex justify-between items-center cursor-pointer p-6 font-semibold text-brand-dark hover:text-brand-red transition-colors">
-            <span>Wat is dodgeball precies?</span>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-6 text-gray-600">
-            Dodgeball (ook wel trefbal genoemd) is een teamsport waarbij twee teams proberen de tegenstanders 'af' te gooien met zachte ballen. Het is een snelle, dynamische sport die geschikt is voor alle leeftijden en niveaus. Bij Dodgeball School gebruiken we veilige, zachte schuimballen die speciaal zijn ontworpen voor kinderen.
-          </div>
-        </details>
-        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <summary class="flex justify-between items-center cursor-pointer p-6 font-semibold text-brand-dark hover:text-brand-red transition-colors">
-            <span>Voor welke leeftijden is Dodgeball School geschikt?</span>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-6 text-gray-600">
-            Dodgeball School biedt programma's voor kinderen en jongeren van 4 tot 18 jaar. We passen onze activiteiten aan op de leeftijd en het niveau van de deelnemers, van basisschool (groep 1 t/m 8) tot voortgezet onderwijs.
-          </div>
-        </details>
-        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <summary class="flex justify-between items-center cursor-pointer p-6 font-semibold text-brand-dark hover:text-brand-red transition-colors">
-            <span>Komen jullie naar onze school of locatie toe?</span>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-6 text-gray-600">
-            Ja! Wij komen met al het materiaal naar jouw school, sporthal of evenementlocatie toe. We zijn actief door heel Nederland. Het enige wat je nodig hebt is een gymzaal of sportveld.
-          </div>
-        </details>
-        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <summary class="flex justify-between items-center cursor-pointer p-6 font-semibold text-brand-dark hover:text-brand-red transition-colors">
-            <span>Hoeveel kinderen kunnen er meedoen?</span>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-6 text-gray-600">
-            Onze programma's zijn geschikt voor groepen van 10 tot meer dan 200 kinderen. Bij grotere groepen werken we met meerdere velden en begeleiders zodat iedereen actief meedoet.
-          </div>
-        </details>
-        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <summary class="flex justify-between items-center cursor-pointer p-6 font-semibold text-brand-dark hover:text-brand-red transition-colors">
-            <span>Wat kost een dodgeball activiteit?</span>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-6 text-gray-600">
-            De kosten zijn afhankelijk van het type activiteit, het aantal deelnemers en de locatie. Neem contact op voor een vrijblijvende offerte op maat. We denken graag mee over een programma dat past bij jullie budget.
-          </div>
-        </details>
-        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <summary class="flex justify-between items-center cursor-pointer p-6 font-semibold text-brand-dark hover:text-brand-red transition-colors">
-            <span>Is dodgeball veilig voor kinderen?</span>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-6 text-gray-600">
-            Absoluut. We gebruiken zachte schuimballen die speciaal zijn ontwikkeld voor kinderen. Onze ervaren begeleiders zorgen voor duidelijke spelregels en een veilige speelomgeving. De sport is laagdrempelig en de kans op blessures is minimaal.
-          </div>
-        </details>
-        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <summary class="flex justify-between items-center cursor-pointer p-6 font-semibold text-brand-dark hover:text-brand-red transition-colors">
-            <span>Kunnen jullie dodgeball ook als naschoolse activiteit verzorgen?</span>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-6 text-gray-600">
-            Zeker! We bieden structurele naschoolse dodgeball programma's aan voor BSO's en scholen. Dit kan wekelijks of als blokprogramma van meerdere weken. Een ideale manier om kinderen na schooltijd te laten bewegen.
-          </div>
-        </details>
-        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <summary class="flex justify-between items-center cursor-pointer p-6 font-semibold text-brand-dark hover:text-brand-red transition-colors">
-            <span>Hoe lang duurt een dodgeball activiteit?</span>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-6 text-gray-600">
-            Een standaard sessie duurt 1 tot 1,5 uur. Voor sportdagen en evenementen kunnen we programma's van een halve dag of hele dag samenstellen. Bij kinderfeestjes is de standaard duur 1,5 tot 2 uur.
-          </div>
-        </details>
-        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <summary class="flex justify-between items-center cursor-pointer p-6 font-semibold text-brand-dark hover:text-brand-red transition-colors">
-            <span>Wat is het verschil tussen dodgeball en trefbal?</span>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-6 text-gray-600">
-            Dodgeball is de internationale naam voor de sport, trefbal is de Nederlandse variant. De basisregels zijn hetzelfde: raak je tegenstander met de bal en je scoort. Bij dodgeball worden vaak meerdere ballen tegelijk gebruikt en zijn er meer tactische elementen, wat het extra spannend en uitdagend maakt.
-          </div>
-        </details>
-        <details class="group bg-white border border-gray-200 rounded-xl overflow-hidden">
-          <summary class="flex justify-between items-center cursor-pointer p-6 font-semibold text-brand-dark hover:text-brand-red transition-colors">
-            <span>Hoe boek ik een activiteit?</span>
-            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-6 pb-6 text-gray-600">
-            Neem contact op via ons contactformulier, e-mail (<a href="mailto:info@dodgeballschool.nl" class="text-brand-red hover:underline">info@dodgeballschool.nl</a>) of telefoon. Vertel ons de gewenste datum, het aantal deelnemers en het type activiteit. Wij sturen je binnen 24 uur een vrijblijvende offerte.
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact / Offerte -->
-  <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-brand-dark text-white">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-3xl sm:text-4xl font-black mb-4">Vrijblijvend offerte aanvragen</h2>
-        <div class="w-16 h-1 bg-brand-red mx-auto mb-6 rounded-full"></div>
-        <p class="text-gray-300 max-w-2xl mx-auto text-lg">
-          Benieuwd wat wij voor jouw school, BSO of evenement kunnen betekenen? Vul het formulier in en ontvang binnen 24 uur een offerte op maat.
-        </p>
-      </div>
-      <div class="grid lg:grid-cols-5 gap-12">
-        <form action="https://formspree.io/f/placeholder" method="POST" class="lg:col-span-3 space-y-5">
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Naam *</label>
-              <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent" placeholder="Je naam">
-            </div>
-            <div>
-              <label for="organization" class="block text-sm font-medium text-gray-300 mb-1">Organisatie / school</label>
-              <input type="text" id="organization" name="organization" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent" placeholder="Naam school of organisatie">
+  <!-- HERO SECTION -->
+  <section class="section">
+    <div class="padding-global-inner">
+      <div class="container-default">
+        <div class="section-main-box home-hero-main">
+          <div class="section-header">
+            <div class="section-header-text-box for-hero">
+              <div class="max-width-xsmall">
+                <div class="section-header-heading-box">
+                  <h1 class="heading-style-h1 hero">We design clarity we build <span class="heading-accent">growth.</span></h1>
+                </div>
+              </div>
+              <div class="max-width-xxsmall">
+                <div class="section-header-desc-box">
+                  <p class="text-size-large">Canvasly is a creative agency focused on strategy, design, and digital experiences that help brands grow with intention.</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-300 mb-1">E-mail *</label>
-              <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent" placeholder="je@email.nl">
+          <div class="home-hero-card-row">
+            <div class="home-hero-card-item item-01">
+              <div class="home-hero-card-inner item-01">
+                <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7509ba377fa8b1e2ef79_f.mp4.webp" loading="lazy" alt="Three women in a meeting room" class="home-hero-card-media"/>
+              </div>
             </div>
-            <div>
-              <label for="phone" class="block text-sm font-medium text-gray-300 mb-1">Telefoon</label>
-              <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent" placeholder="06 - 1234 5678">
+            <div class="home-hero-card-item item-02">
+              <div class="home-hero-card-inner item-02">
+                <div data-wf--home-hero-card---text--variant="blue" class="home-hero-card-content w-variant-36ca9931-605e-c11e-053a-bd9ea282d69c">
+                  <div class="home-hero-card-heading">+5 Years</div>
+                  <div class="home-hero-card-footer">
+                    <div class="home-hero-card-desc">Brand experience</div>
+                    <div class="home-hero-card-sp-line"></div>
+                    <div class="home-hero-card-desc second">Experiences that stick</div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            <label for="activity" class="block text-sm font-medium text-gray-300 mb-1">Type activiteit</label>
-            <select id="activity" name="activity" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent">
-              <option value="" class="text-brand-dark">Selecteer een activiteit...</option>
-              <option value="sportdag-basisschool" class="text-brand-dark">Sportdag basisschool</option>
-              <option value="sportdag-voortgezet" class="text-brand-dark">Sportdag voortgezet onderwijs</option>
-              <option value="naschools" class="text-brand-dark">Naschoolse activiteiten / BSO</option>
-              <option value="clinic" class="text-brand-dark">Clinic of workshop</option>
-              <option value="kinderfeestje" class="text-brand-dark">Kinderfeestje</option>
-              <option value="evenement" class="text-brand-dark">Evenement of teambuilding</option>
-              <option value="anders" class="text-brand-dark">Anders</option>
-            </select>
-          </div>
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div>
-              <label for="participants" class="block text-sm font-medium text-gray-300 mb-1">Aantal deelnemers (schatting)</label>
-              <input type="text" id="participants" name="participants" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent" placeholder="Bijv. 60 leerlingen">
+            <div class="home-hero-card-item item-03">
+              <div class="home-hero-card-inner item-03">
+                <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a750965ca90e0ff43be2d_h.mp4.webp" loading="lazy" alt="Young woman with curly hair holding a coffee cup" class="home-hero-card-media"/>
+              </div>
             </div>
-            <div>
-              <label for="date" class="block text-sm font-medium text-gray-300 mb-1">Gewenste datum</label>
-              <input type="text" id="date" name="date" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent" placeholder="Bijv. maart 2026 of flexibel">
+            <div class="home-hero-card-item item-04">
+              <div class="home-hero-card-inner item-04">
+                <div data-wf--home-hero-card---text--variant="green" class="home-hero-card-content w-variant-ed649bc5-03ad-8523-2c40-16382d938f90">
+                  <div class="home-hero-card-heading">+30 brands</div>
+                  <div class="home-hero-card-footer">
+                    <div class="home-hero-card-desc">Built to scale</div>
+                    <div class="home-hero-card-sp-line"></div>
+                    <div class="home-hero-card-desc second">Grow without limits</div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Bericht</label>
-            <textarea id="message" name="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-red focus:border-transparent resize-none" placeholder="Vertel ons meer over jullie wensen, locatie en eventuele speciale verzoeken..."></textarea>
-          </div>
-          <button type="submit" class="w-full bg-brand-red text-white px-6 py-4 rounded-xl font-bold text-lg hover:bg-red-700 transition-all shadow-lg shadow-red-900/30 hover:shadow-xl">
-            Verstuur aanvraag
-          </button>
-          <p class="text-sm text-gray-400 text-center">Wij reageren binnen 24 uur. Geen verplichtingen.</p>
-        </form>
-        <div class="lg:col-span-2 flex flex-col justify-center space-y-8">
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
+            <div class="home-hero-card-item item-05">
+              <div class="home-hero-card-inner item-05">
+                <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a75093d77bb3fbf23a558_a.webp" loading="lazy" alt="Smiling woman with glasses typing on a laptop" class="home-hero-card-media"/>
+              </div>
             </div>
-            <div>
-              <div class="text-sm text-gray-400">E-mail</div>
-              <a href="mailto:info@dodgeballschool.nl" class="text-white font-medium hover:text-brand-red transition-colors">info@dodgeballschool.nl</a>
-            </div>
-          </div>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-              </svg>
-            </div>
-            <div>
-              <div class="text-sm text-gray-400">Telefoon</div>
-              <a href="tel:+31612345678" class="text-white font-medium hover:text-brand-red transition-colors">06 - 1234 5678</a>
-            </div>
-          </div>
-          <div class="flex items-center gap-4">
-            <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-brand-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-              </svg>
-            </div>
-            <div>
-              <div class="text-sm text-gray-400">Regio</div>
-              <div class="text-white font-medium">Heel Nederland</div>
-            </div>
-          </div>
-          <div class="bg-white/5 rounded-xl p-6 border border-white/10">
-            <h3 class="font-bold mb-3">Waarom Dodgeball School?</h3>
-            <ul class="space-y-2 text-sm text-gray-300">
-              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ervaren en enthousiaste begeleiders</li>
-              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Alle materialen inbegrepen</li>
-              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Programma op maat</li>
-              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Offerte binnen 24 uur</li>
-              <li class="flex items-center gap-2"><svg class="w-4 h-4 text-brand-red flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Door heel Nederland</li>
-            </ul>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-brand-dark border-t border-white/10 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-        <div>
-          <img src="dodgeballschool.svg" alt="Dodgeball School" class="h-10 invert mb-4" width="180" height="40">
-          <p class="text-gray-400 text-sm">Dé specialist in dodgeball en trefbal voor scholen, naschoolse activiteiten en kinderfeestjes in heel Nederland.</p>
-        </div>
-        <div>
-          <h4 class="text-white font-bold mb-4">Aanbod</h4>
-          <ul class="space-y-2 text-sm text-gray-400">
-            <li><a href="#aanbod" class="hover:text-white transition-colors">Sportdag basisschool</a></li>
-            <li><a href="#aanbod" class="hover:text-white transition-colors">Sportdag voortgezet onderwijs</a></li>
-            <li><a href="#aanbod" class="hover:text-white transition-colors">Naschoolse activiteiten</a></li>
-            <li><a href="#aanbod" class="hover:text-white transition-colors">Clinics &amp; workshops</a></li>
-            <li><a href="#aanbod" class="hover:text-white transition-colors">Kinderfeestjes</a></li>
-            <li><a href="#aanbod" class="hover:text-white transition-colors">Evenementen &amp; teambuilding</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-white font-bold mb-4">Informatie</h4>
-          <ul class="space-y-2 text-sm text-gray-400">
-            <li><a href="#over" class="hover:text-white transition-colors">Over ons</a></li>
-            <li><a href="#waarom" class="hover:text-white transition-colors">Waarom dodgeball</a></li>
-            <li><a href="#locaties" class="hover:text-white transition-colors">Locaties</a></li>
-            <li><a href="#faq" class="hover:text-white transition-colors">Veelgestelde vragen</a></li>
-            <li><a href="#contact" class="hover:text-white transition-colors">Contact &amp; offerte</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="text-white font-bold mb-4">Contact</h4>
-          <ul class="space-y-2 text-sm text-gray-400">
-            <li><a href="mailto:info@dodgeballschool.nl" class="hover:text-white transition-colors">info@dodgeballschool.nl</a></li>
-            <li><a href="tel:+31612345678" class="hover:text-white transition-colors">06 - 1234 5678</a></li>
-            <li>Heel Nederland</li>
-          </ul>
-          <div class="flex gap-3 mt-4">
-            <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-brand-red transition-colors" aria-label="Instagram">
-              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-            <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-brand-red transition-colors" aria-label="Facebook">
-              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-brand-red transition-colors" aria-label="TikTok">
-              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-            </a>
-            <a href="#" class="w-9 h-9 bg-white/10 rounded-lg flex items-center justify-center hover:bg-brand-red transition-colors" aria-label="LinkedIn">
-              <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
+  <!-- ABOUT BIG TEXT — with inline avatars -->
+  <div class="padding-global-inner padding-section-large">
+    <div class="container-default">
+      <div class="section-main-box about-big-text">
+        <div gsap="fading-chars" class="section-header about">
+          <div class="text-fill-animation-block">
+            <div class="text-fill-animation-item">
+              <div class="text-fill-animation-text">We</div>
+              <div class="text-image-row">
+                <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a6bcffa37944564ceeee6_Ellipse%2025.webp" alt="Team member" class="text-image-item item-01"/>
+                <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a6bcfb28756f2b8dd8776_Ellipse%2026.webp" alt="Team member" class="text-image-item item-02"/>
+                <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a6bcf3d612205008cbd3e_Ellipse%2024.webp" alt="Team member" class="text-image-item item-03"/>
+                <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a6bcf674716fcb456b541_Ellipse%2027.webp" alt="Team member" class="text-image-item item-04"/>
+              </div>
+              <div class="text-fill-animation-text">combine</div>
+            </div>
+            <div class="text-fill-animation-text">premium quality with strategic <span class="heading-accent for-about">scalability</span> to elevate your brand.</div>
           </div>
         </div>
       </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p class="text-gray-500 text-sm">&copy; 2025 Dodgeball School. Alle rechten voorbehouden.</p>
-        <p class="text-gray-500 text-xs">Dodgeball &amp; trefbal voor scholen, naschoolse activiteiten en kinderfeestjes in heel Nederland</p>
+    </div>
+  </div>
+
+  <!-- ABOUT — Images + Philosophy text -->
+  <section class="section">
+    <div class="padding-global-inner padding-section-large">
+      <div class="container-default">
+        <div class="section-main-box">
+          <div class="about-main-box">
+            <div class="about-image-box">
+              <div class="about-image-frame">
+                <div class="about-image-item-box item-01">
+                  <div class="about-image-inner-box">
+                    <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a775f1cc7b8f2b5d270ac_faflk.webp" loading="lazy" alt="Four diverse hands joining together in a group high-five" class="cover-image"/>
+                  </div>
+                </div>
+                <div class="about-image-item-box item-02">
+                  <div class="about-image-inner-box">
+                    <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/69593f0796547747738911ed_noise%20bg_11zon.webp" loading="lazy" alt="Woman laughing and holding a yellow tulip" class="cover-image"/>
+                  </div>
+                </div>
+                <div class="about-image-item-box item-03">
+                  <div class="about-image-inner-box">
+                    <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a775f1ad491f52400e81d_noise%20bg.webp" loading="lazy" alt="Smiling woman at a desk with notebook" class="cover-image"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="about-text-box">
+              <div class="max-width-xxsmall">
+                <div class="section-header-heading-box for-about">
+                  <h2 class="heading-style-h1">Design is not decoration. It is <span class="heading-accent">direction</span></h2>
+                </div>
+              </div>
+              <div class="max-width-xxxsmall">
+                <div class="section-header-desc-box for-about">
+                  <p class="text-size-semi-large for-about">At Canvasly, design is more than visual appeal. It's a strategic tool that brings clarity, purpose, and direction to brands.</p>
+                </div>
+              </div>
+              <div class="section-header-button-box">
+                <a href="/about" class="p-button w-inline-block">
+                  <div class="p-button-arrow-box is-left">
+                    <div class="p-button-arrow-box-bg is-left"></div>
+                    <div class="p-button-arrow-wrapper">
+                      <div class="p-button-arrow is-left w-embed">
+                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-button-center-box"><div>Our Approach</div></div>
+                  <div class="p-button-arrow-box is-right">
+                    <div class="p-button-arrow-box-bg is-right"></div>
+                    <div class="p-button-arrow-wrapper">
+                      <div class="p-button-arrow is-right w-embed">
+                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <!-- Floating WhatsApp button -->
-  <a href="https://wa.me/31612345678?text=Hoi!%20Ik%20ben%20ge%C3%AFnteresseerd%20in%20dodgeball%20voor%20onze%20school%2Fevenement." target="_blank" rel="noopener" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all z-40 hover:scale-110" aria-label="Chat via WhatsApp">
-    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  </a>
+  <!-- FEATURED WORK -->
+  <section class="section">
+    <div class="padding-global-inner padding-section-large">
+      <div class="container-default">
+        <div class="section-main-box">
+          <div class="section-header">
+            <div class="section-header-text-box">
+              <div class="max-width-tiny">
+                <div class="section-header-heading-box">
+                  <h2>Featured work</h2>
+                </div>
+              </div>
+              <div class="section-header-button-box">
+                <div class="max-width-xxsmall">
+                  <div class="section-header-desc-box with-arrow">
+                    <div class="sp-row">
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a6e3466a0aa62c4a65ede_Company%20Logo.svg" alt="Company Logo" class="sp-icon"/>
+                    </div>
+                    <p class="text-size-large for-hero">We create innovative and purposeful designs that not only capture attention but also drive meaningful results.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="work-list-wrapper w-dyn-list">
+            <div role="list" class="work-list-list w-dyn-items">
+              <div role="listitem" class="work-list-item w-dyn-item item-02">
+                <a href="/work/box-craft" class="work-card w-inline-block">
+                  <div class="work-card-image-box">
+                    <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc068a/6922d75ee39b1fb737dc0b4a_imgi_4_Box-Packaging-PSD-Mockup-Free-1000x750.jpg.webp" loading="lazy" alt="Box Craft branding" class="cover-image"/>
+                    <div class="image-layer"></div>
+                  </div>
+                  <div class="work-card-text-box">
+                    <div class="work-card-text-frame">
+                      <div class="work-card-heading-box"><h3 class="heading-style-h5">Box Craft</h3></div>
+                      <div class="work-card-date">2025</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div role="listitem" class="work-list-item w-dyn-item item-07">
+                <a href="/work/sipcup" class="work-card w-inline-block">
+                  <div class="work-card-image-box">
+                    <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc068a/6922d75ee39b1fb737dc0b35_imgi_53_Free-Paper-Coffee-Cup-Mockup-04.jpg.webp" loading="lazy" alt="SipCup eco packaging" class="cover-image"/>
+                    <div class="image-layer"></div>
+                  </div>
+                  <div class="work-card-text-box">
+                    <div class="work-card-text-frame">
+                      <div class="work-card-heading-box"><h3 class="heading-style-h5">SipCup</h3></div>
+                      <div class="work-card-date">2024</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div role="listitem" class="work-list-item w-dyn-item item-05">
+                <a href="/work/flowapp-ui" class="work-card w-inline-block">
+                  <div class="work-card-image-box">
+                    <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc068a/6922d75ee39b1fb737dc0b4c_imgi_33_iPhone-Mockup-PSD-Scene-01-1600x1043.jpg.webp" loading="lazy" alt="FlowApp UI" class="cover-image"/>
+                    <div class="image-layer"></div>
+                  </div>
+                  <div class="work-card-text-box">
+                    <div class="work-card-text-frame">
+                      <div class="work-card-heading-box"><h3 class="heading-style-h5">FlowApp UI</h3></div>
+                      <div class="work-card-date">2024</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div role="listitem" class="work-list-item w-dyn-item item-01">
+                <a href="/work/resilient-identity" class="work-card w-inline-block">
+                  <div class="work-card-image-box">
+                    <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc068a/6922d75ee39b1fb737dc0b4b_imgi_37_Product-Boxes-Branding-Free-Mockups-01.jpg.webp" loading="lazy" alt="Resilient Identity" class="cover-image"/>
+                    <div class="image-layer"></div>
+                  </div>
+                  <div class="work-card-text-box">
+                    <div class="work-card-text-frame">
+                      <div class="work-card-heading-box"><h3 class="heading-style-h5">Resilient Identity</h3></div>
+                      <div class="work-card-date">2025</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Mobile menu toggle -->
-  <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-  </script>
+  <!-- WORK CTA — Circular image carousel -->
+  <section class="section">
+    <div class="padding-global padding-section-large">
+      <div class="container-default work-cta">
+        <div class="work-cta-main-box">
+          <div class="circle-card-wrapper">
+            <div class="circle-wrapper">
+              <div class="circle-item item-01">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/695943b1da175ef8062cf258_Rectangle%20395_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-02">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/695943b1a3f2e13994e133d9_Rectangle%20393_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-03">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/695941187088be19ac0164a9_Rectangle%20394-1_19_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-04">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/69594118162e9c0104ea7ec0_Rectangle%20392_17_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-05">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/695941181da0c75329ed95c6_Rectangle%20393_18_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-06">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/69594118744862f8f74d8673_Rectangle%20395_21_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-07">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/69594118d83ec3f327abf1ec_Rectangle%20394_20_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-08">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/695941185a7a7fdc829e47e9_Rectangle%20391_16_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-09">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/69594118d0cbf4f8413925df_Rectangle%20397_22_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-10">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/695943b1cb01797349c62f38_Rectangle%20396-1_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-11">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/695943b1fc711ff077d7d908_Rectangle%20392_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+              <div class="circle-item item-12">
+                <div class="circle-image-wrapper">
+                  <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/695943b111d0790da878406b_Rectangle%20396_11zon.webp" loading="lazy" alt="" class="work-circle-image-item"/>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a href="/works" class="work-cta-heading-box w-inline-block">
+            <div class="work-cta-hover-box">
+              <div class="work-cta-heading-loader">
+                <h2 class="heading-style-h1 hero">Explore our thinking</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section for-service">
+    <div class="padding-global-inner padding-section-large">
+      <div class="container-default">
+        <div class="section-main-box is-service-main">
+          <div class="section-header">
+            <div class="section-header-text-box">
+              <div class="max-width-small">
+                <div class="section-header-heading-box">
+                  <h2>What we bring to the Table</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="service-main">
+            <div class="section-main-box is-service">
+              <div class="service-list">
+                <!-- Service 1: Development (green) -->
+                <div class="service-list-item item-01">
+                  <div class="service-coll w-dyn-list">
+                    <div role="list" class="service-coll-list w-dyn-items">
+                      <div role="listitem" class="service-coll-item w-dyn-item">
+                        <div data-wf--service-card--variant="green" class="service-card-content">
+                          <div class="service-card-header">
+                            <h3 class="heading-style-h3 for-service">Development</h3>
+                            <div class="service-card-num-box"><div class="service-card-num">01</div></div>
+                          </div>
+                          <div class="service-card-body">
+                            <div class="service-card-text-box">
+                              <div class="service-card-text-box-footer">
+                                <div class="service-card-text-box-footer-top">
+                                  <p class="text-size-xlarge for-service">Technical Excellence &amp; Scalable Engineering</p>
+                                  <p class="service-card-desc">We build fast, scalable digital systems—so your product performs reliably and grows without limits.</p>
+                                  <div class="service-card-rich w-richtext">
+                                    <ul role="list">
+                                      <li>Front-End &amp; Back-End Development</li>
+                                      <li>Webflow / CMS Development</li>
+                                      <li>Performance &amp; Speed Optimization</li>
+                                      <li>Scalable Architecture</li>
+                                      <li>Security &amp; Maintenance</li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="service-card-text-box-body">
+                                <a href="/service/development" class="p-button w-inline-block">
+                                  <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+                                  <div class="p-button-center-box"><div>View Details</div></div>
+                                  <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="service-card-image-box">
+                              <div class="service-card-image-box-frame">
+                                <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc068a/6994c98024388aea10856148_2150979716%201.webp" loading="lazy" alt="" class="cover-image for-service"/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Service 2: Brand Strategy (pink) -->
+                <div class="service-list-item item-02">
+                  <div class="service-coll w-dyn-list">
+                    <div role="list" class="service-coll-list w-dyn-items">
+                      <div role="listitem" class="service-coll-item w-dyn-item">
+                        <div data-wf--service-card--variant="pink" class="service-card-content w-variant-0f6971fb-2239-8192-e1d1-c1900b0ab414">
+                          <div class="service-card-header">
+                            <h3 class="heading-style-h3 for-service">Brand Strategy</h3>
+                            <div class="service-card-num-box"><div class="service-card-num">02</div></div>
+                          </div>
+                          <div class="service-card-body">
+                            <div class="service-card-text-box">
+                              <div class="service-card-text-box-footer">
+                                <div class="service-card-text-box-footer-top">
+                                  <p class="text-size-xlarge for-service">Strategic Positioning &amp; Brand Architecture</p>
+                                  <p class="service-card-desc">We define your brand's direction, positioning, and voice—so every design and decision works together.</p>
+                                  <div class="service-card-rich w-richtext">
+                                    <ul role="list">
+                                      <li>Brand Positioning</li>
+                                      <li>Brand Voice &amp; Messaging</li>
+                                      <li>Visual Identity Direction</li>
+                                      <li>Competitive Analysis</li>
+                                      <li>Brand Guidelines</li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="service-card-text-box-body">
+                                <a href="/service/brand-strategy" class="p-button w-inline-block">
+                                  <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+                                  <div class="p-button-center-box"><div>View Details</div></div>
+                                  <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="service-card-image-box">
+                              <div class="service-card-image-box-frame">
+                                <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc068a/6994cabde1c658dc679420c9_2150979587%20(1)%201.webp" loading="lazy" alt="" class="cover-image for-service"/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Service 3: Web Design (blue) -->
+                <div class="service-list-item item-03">
+                  <div class="service-coll w-dyn-list">
+                    <div role="list" class="service-coll-list w-dyn-items">
+                      <div role="listitem" class="service-coll-item w-dyn-item">
+                        <div data-wf--service-card--variant="blue" class="service-card-content w-variant-d531d234-df51-d697-5b1a-563cd4c149c0">
+                          <div class="service-card-header">
+                            <h3 class="heading-style-h3 for-service">Web Design</h3>
+                            <div class="service-card-num-box"><div class="service-card-num">03</div></div>
+                          </div>
+                          <div class="service-card-body">
+                            <div class="service-card-text-box">
+                              <div class="service-card-text-box-footer">
+                                <div class="service-card-text-box-footer-top">
+                                  <p class="text-size-xlarge for-service">User-Centric Design &amp; Digital Storytelling</p>
+                                  <p class="service-card-desc">We design intuitive, high-impact websites—so users connect, engage, and take action effortlessly.</p>
+                                  <div class="service-card-rich w-richtext">
+                                    <ul role="list">
+                                      <li>UX Research &amp; User Flows</li>
+                                      <li>UI Design &amp; Design Systems</li>
+                                      <li>Responsive Web Design</li>
+                                      <li>Conversion-Focused Layouts</li>
+                                      <li>Prototyping &amp; Interaction Design</li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="service-card-text-box-body">
+                                <a href="/service/web-design" class="p-button w-inline-block">
+                                  <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+                                  <div class="p-button-center-box"><div>View Details</div></div>
+                                  <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="service-card-image-box">
+                              <div class="service-card-image-box-frame">
+                                <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc068a/6994cc6a1160415300648443_artistic-creation-made-from-3d-geometric-shapes%201%20(1).webp" loading="lazy" alt="" class="cover-image for-service"/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Service 4: Digital Growth (white) -->
+                <div class="service-list-item item-04">
+                  <div class="service-coll w-dyn-list">
+                    <div role="list" class="service-coll-list w-dyn-items">
+                      <div role="listitem" class="service-coll-item w-dyn-item">
+                        <div data-wf--service-card--variant="white" class="service-card-content w-variant-a02ee689-52a4-862b-ee61-4cff2e4ff6e7">
+                          <div class="service-card-header">
+                            <h3 class="heading-style-h3 for-service">Digital Growth</h3>
+                            <div class="service-card-num-box"><div class="service-card-num">04</div></div>
+                          </div>
+                          <div class="service-card-body">
+                            <div class="service-card-text-box">
+                              <div class="service-card-text-box-footer">
+                                <div class="service-card-text-box-footer-top">
+                                  <p class="text-size-xlarge for-service">Data-Driven Expansion &amp; Market Optimization</p>
+                                  <p class="service-card-desc">We drive data-led growth strategies—so your brand reaches the right audience and scales sustainably.</p>
+                                  <div class="service-card-rich w-richtext">
+                                    <ul role="list">
+                                      <li>SEO &amp; Content Optimization</li>
+                                      <li>Performance Marketing</li>
+                                      <li>Analytics &amp; Insights</li>
+                                      <li>Conversion Rate Optimization (CRO)</li>
+                                      <li>Growth Strategy &amp; Scaling</li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="service-card-text-box-body">
+                                <a href="/service/digital-growth" class="p-button w-inline-block">
+                                  <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+                                  <div class="p-button-center-box"><div>View Details</div></div>
+                                  <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="service-card-image-box">
+                              <div class="service-card-image-box-frame">
+                                <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc068a/6994ccc8f039c9f17f686a82_2150499129%201%20(1).webp" loading="lazy" alt="" class="cover-image for-service"/>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="padding-section-large">
+      <div class="container-default">
+        <div class="section-main-box">
+          <div class="padding-global-inner">
+            <div class="section-header">
+              <div class="section-header-text-box">
+                <div class="max-width-xxsmall">
+                  <div class="section-header-heading-box">
+                    <h2 class="heading-style-h1">Real stories, real <span class="heading-accent">results</span></h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-main">
+            <div class="testimonial-list">
+              <!-- Testimonial 1 -->
+              <div class="testimonial-list-item item-01">
+                <div class="testimonial-list-item-inner item-01">
+                  <div class="testimonial-card-top">
+                    <div class="testimonial-card-star-row">
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                    </div>
+                    <a href="/contact" class="testimonial-card-contact-link w-inline-block"><div>Contact Sales</div></a>
+                  </div>
+                  <div class="testimonial-card-bottom">
+                    <p class="text-size-semi-large">Canvasly brought structure and clarity to our brand. Their strategic mindset and refined design approach helped us communicate more clearly and connect better with our audience.</p>
+                    <div class="testimonial-card-author-box">
+                      <div class="testimonial-card-author-image-box">
+                        <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/6922d75ee39b1fb737dc06dd_66f18e9dfa76e6809f98fd58_9834%20(1)_11zon.webp" alt="Emily Foster" class="cover-image"/>
+                      </div>
+                      <div class="testimonial-card-author-info-box">
+                        <div class="testimonial-card-author-name"><div>Emily Foster</div></div>
+                        <div class="testimonial-card-author-position"><div>Sarter Founder</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Testimonial 2 -->
+              <div class="testimonial-list-item item-02">
+                <div class="testimonial-list-item-inner item-02">
+                  <div class="testimonial-card-top">
+                    <div class="testimonial-card-star-row">
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7053aca55ad7f80747e4_Star%2014.svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7053aca55ad7f80747e4_Star%2014.svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7053aca55ad7f80747e4_Star%2014.svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7053aca55ad7f80747e4_Star%2014.svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7053aca55ad7f80747e4_Star%2014.svg" alt="star" class="testimonial-card-star"/>
+                    </div>
+                    <a href="/contact" class="testimonial-card-contact-link w-inline-block"><div>Contact Sales</div></a>
+                  </div>
+                  <div class="testimonial-card-bottom">
+                    <p class="text-size-semi-large text-color-inherit">Professional, thoughtful, and deeply strategic in their approach. We highly value their clarity, discipline, and creative intelligence.</p>
+                    <div class="testimonial-card-author-box">
+                      <div class="testimonial-card-author-image-box">
+                        <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/6922d75ee39b1fb737dc0be7_person.webp" alt="Alex Jonas" class="cover-image"/>
+                      </div>
+                      <div class="testimonial-card-author-info-box">
+                        <div class="testimonial-card-author-name"><div>Alex Jonas</div></div>
+                        <div class="testimonial-card-author-position"><div>Zirel Founder</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Testimonial 3 -->
+              <div class="testimonial-list-item item-03">
+                <div class="testimonial-list-item-inner item-03">
+                  <div class="testimonial-card-top">
+                    <div class="testimonial-card-star-row">
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                    </div>
+                    <a href="/contact" class="testimonial-card-contact-link w-inline-block"><div>Contact Sales</div></a>
+                  </div>
+                  <div class="testimonial-card-bottom">
+                    <p class="text-size-semi-large">Canvasly has an exceptional eye for detail and a deep understanding of user experience. Their strategic approach helped us improve both engagement and conversion.</p>
+                    <div class="testimonial-card-author-box">
+                      <div class="testimonial-card-author-image-box">
+                        <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/6922d75ee39b1fb737dc0c1e_person.webp" alt="Alisia Fox" class="cover-image"/>
+                      </div>
+                      <div class="testimonial-card-author-info-box">
+                        <div class="testimonial-card-author-name"><div>Alisia Fox</div></div>
+                        <div class="testimonial-card-author-position"><div>PulseZ Co-Founder</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Testimonial 4 -->
+              <div class="testimonial-list-item item-04">
+                <div class="testimonial-list-item-inner item-04">
+                  <div class="testimonial-card-top">
+                    <div class="testimonial-card-star-row">
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7053aca55ad7f80747e4_Star%2014.svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7053aca55ad7f80747e4_Star%2014.svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7053aca55ad7f80747e4_Star%2014.svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7053aca55ad7f80747e4_Star%2014.svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a7053aca55ad7f80747e4_Star%2014.svg" alt="star" class="testimonial-card-star"/>
+                    </div>
+                    <a href="/contact" class="testimonial-card-contact-link w-inline-block"><div>Contact Sales</div></a>
+                  </div>
+                  <div class="testimonial-card-bottom">
+                    <p class="text-size-semi-large text-color-inherit">From the very first conversation, Canvasly felt more like a partner than an agency. They took the time to understand our challenges and translated complex ideas into a clean, intuitive digital experience.</p>
+                    <div class="testimonial-card-author-box">
+                      <div class="testimonial-card-author-image-box">
+                        <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/6922d75ee39b1fb737dc0bfe_person.webp" alt="John Doe" class="cover-image"/>
+                      </div>
+                      <div class="testimonial-card-author-info-box">
+                        <div class="testimonial-card-author-name"><div>John Doe</div></div>
+                        <div class="testimonial-card-author-position"><div>Marilax Founder</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Testimonial 5 -->
+              <div class="testimonial-list-item item-05">
+                <div class="testimonial-list-item-inner item-05">
+                  <div class="testimonial-card-top">
+                    <div class="testimonial-card-star-row">
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                      <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697a704fa9b6624844612926_Star%2014%20(1).svg" alt="star" class="testimonial-card-star"/>
+                    </div>
+                    <a href="/contact" class="testimonial-card-contact-link w-inline-block"><div>Contact Sales</div></a>
+                  </div>
+                  <div class="testimonial-card-bottom">
+                    <p class="text-size-semi-large">Working with Canvasly completely changed the way we see our brand. They didn't just design visuals — they helped us understand our identity, our audience, and our direction.</p>
+                    <div class="testimonial-card-author-box">
+                      <div class="testimonial-card-author-image-box">
+                        <img loading="lazy" src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/6922d75ee39b1fb737dc0c09_person.webp" alt="Luna Fox" class="cover-image"/>
+                      </div>
+                      <div class="testimonial-card-author-info-box">
+                        <div class="testimonial-card-author-name"><div>Luna Fox</div></div>
+                        <div class="testimonial-card-author-position"><div>Artivo Founder</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- end main-wrapper -->
+
+<!-- ================================================================
+     FOOTER — CTA + Smiley + Social + Copyright
+     ================================================================ -->
+<footer class="footer">
+  <div class="lights-wrapper">
+    <div class="footer-nav">
+      <div class="footer-socials-row">
+        <a href="https://instagram.com" class="footer-social-link w-inline-block"><div class="footer-social-platform">IG</div></a>
+        <a href="https://twitter.com" class="footer-social-link w-variant-c8e8809b-58b2-fcdd-0dc8-16bfc6b4ac7a w-inline-block"><div class="footer-social-platform">TW</div></a>
+        <a href="https://behance.net" class="footer-social-link w-variant-22470536-3e67-d961-43e4-9d08d7676e64 w-inline-block"><div class="footer-social-platform">BE</div></a>
+      </div>
+      <div class="footer-last-line">
+        <div class="footer-link-row">
+          <a href="#" class="nav-link w-inline-block"><div class="nav-link-text">Licensing</div><div class="nav-link-line"></div></a>
+          <a href="#" class="nav-link w-inline-block"><div class="nav-link-text">Style Guide</div><div class="nav-link-line"></div></a>
+          <a href="#" class="nav-link w-inline-block"><div class="nav-link-text">Change log</div><div class="nav-link-line"></div></a>
+        </div>
+        <div class="footer-signature-text">&copy; 2025 Canvasly. Powered by Webflow.</div>
+      </div>
+    </div>
+    <div class="lights-masking">
+      <div class="lights-content">
+        <div class="lights-text-box">
+          <h2 class="lights-title">Create a brand that knows where it's going.</h2>
+          <a href="/contact" class="p-button w-variant-f81fabde-eb08-b10c-bc3c-a35edc28f3b2 w-inline-block">
+            <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg w-variant-f81fabde-eb08-b10c-bc3c-a35edc28f3b2 is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+            <div class="p-button-center-box w-variant-f81fabde-eb08-b10c-bc3c-a35edc28f3b2"><div>Let's Talk</div></div>
+            <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg w-variant-f81fabde-eb08-b10c-bc3c-a35edc28f3b2 is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="lights-masking is-secondary">
+      <div class="lights-content">
+        <div class="lights-text-box">
+          <h2 class="lights-title is-secondary">Create a brand that knows where it's going.</h2>
+          <a href="/contact" class="p-button w-variant-f81fabde-eb08-b10c-bc3c-a35edc28f3b2 w-inline-block">
+            <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg w-variant-f81fabde-eb08-b10c-bc3c-a35edc28f3b2 is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+            <div class="p-button-center-box w-variant-f81fabde-eb08-b10c-bc3c-a35edc28f3b2"><div>Let's Talk</div></div>
+            <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg w-variant-f81fabde-eb08-b10c-bc3c-a35edc28f3b2 is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
+          </a>
+        </div>
+      </div>
+      <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/6992c2686dce40d74869f84a_freepik_photo_a_yellow_smiley_face_button_rests_on_a_torn_92159.webp" loading="lazy" alt="Smiley face" class="lights-image"/>
+    </div>
+    <div class="lights-cursor-wrapper">
+      <div class="lights-cursor">
+        <div class="lights-cursror-inner"></div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</div><!-- end page-wrapper -->
+
+<!-- Vendor Scripts -->
+<script src="https://cdn.prod.website-files.com/gsap/3.14.2/gsap.min.js"></script>
+<script src="https://cdn.prod.website-files.com/gsap/3.14.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.prod.website-files.com/gsap/3.14.2/SplitText.min.js"></script>
+<script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js"></script>
+
+<!-- Main Script -->
+<script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

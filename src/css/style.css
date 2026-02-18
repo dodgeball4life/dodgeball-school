@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Canvasly Clone — Overrides & IX2 Replacement Styles
+   Canvasly's Webflow CSS handles layout + most hover transitions.
+   This file adds: Lenis, menu toggle, and IX2-dependent interactions
+   that don't work without the Webflow runtime.
+   ========================================================================== */
+
+/* Lenis smooth scroll */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+/* ==========================================================================
+   POINTER-EVENTS — .header is pointer-events:none in Webflow CSS.
+   Re-enable for interactive children that IX2 would normally handle.
+   ========================================================================== */
+.menu-button {
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   MENU OVERLAY — toggle via JS class
+   Webflow CSS sets .menu { height: 0; overflow: hidden; }
+   IX2 would animate height. We toggle height + opacity via class.
+   ========================================================================== */
+.menu {
+  transition: opacity 0.4s ease, height 0s;
+}
+.menu.is-open {
+  height: 100% !important;
+  opacity: 1 !important;
+}
+.menu-button .button-text.close { display: none; }
+.menu-button.is-open .button-text.open { display: none; }
+.menu-button.is-open .button-text.close { display: block; }
+
+/* Menu link hover — italic + color shift */
+.menu-link .menu-link-text {
+  transition: color 0.3s cubic-bezier(.165,.84,.44,1), font-style 0s;
+}
+.menu-link:hover .menu-link-text {
+  font-style: italic;
+  color: var(--_theme---button--menu-text-hover, #6c7b61);
+}
+.menu-link:hover .menu-link-num {
+  color: var(--_theme---button--menu-text-hover, #6c7b61);
+}
+
+/* ==========================================================================
+   CTA CIRCLE — spinning + hover arrow swap
+   ========================================================================== */
+.header-cta-circle-image {
+  animation: spin 12s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Arrow swap on hover */
+.header-cta-circle-arrow-box.second {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.3s cubic-bezier(.165,.84,.44,1), transform 0.3s cubic-bezier(.165,.84,.44,1);
+}
+.header-cta-circle:hover .header-cta-circle-arrow-box.second {
+  opacity: 1;
+  transform: translateY(0);
+}
+.header-cta-circle-arrow-box.first {
+  transition: opacity 0.3s cubic-bezier(.165,.84,.44,1), transform 0.3s cubic-bezier(.165,.84,.44,1);
+}
+.header-cta-circle:hover .header-cta-circle-arrow-box.first {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+/* ==========================================================================
+   SIDEBAR NAV — Text label reveal on hover (IX2 replacement)
+   ========================================================================== */
+.header-nav-text-box {
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(.165,.84,.44,1);
+  pointer-events: none;
+}
+.header-nav-link:hover .header-nav-text-box {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   P-BUTTON — Arrow hover animation
+   ========================================================================== */
+.p-button-arrow-box.is-right {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.4s cubic-bezier(.165,.84,.44,1), transform 0.4s cubic-bezier(.165,.84,.44,1);
+}
+.p-button:hover .p-button-arrow-box.is-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+.p-button-arrow-box.is-left {
+  transition: opacity 0.4s cubic-bezier(.165,.84,.44,1), transform 0.4s cubic-bezier(.165,.84,.44,1);
+}
+.p-button:hover .p-button-arrow-box.is-left {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+/* ==========================================================================
+   WORK CARDS — Image zoom + overlay on hover
+   ========================================================================== */
+.work-card .cover-image {
+  transition: transform 0.6s cubic-bezier(.165,.84,.44,1);
+}
+.work-card:hover .cover-image {
+  transform: scale(1.05);
+}
+.work-card .image-layer {
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(.165,.84,.44,1);
+}
+.work-card:hover .image-layer {
+  opacity: 1;
+}
+.work-card .work-card-text-frame {
+  transition: transform 0.4s cubic-bezier(.165,.84,.44,1);
+  transform: translateY(8px);
+}
+.work-card:hover .work-card-text-frame {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   HEADER — Scroll hide/show
+   ========================================================================== */
+.header-content {
+  transition: transform 0.5s cubic-bezier(.165,.84,.44,1);
+}
+
+/* ==========================================================================
+   CIRCLE CAROUSEL — rotation container
+   ========================================================================== */
+.circle-wrapper {
+  transition: transform 0.1s linear;
+}
+
+/* ==========================================================================
+   ABOUT BIG TEXT — Fading chars initial state
+   ========================================================================== */
+[gsap="fading-chars"] {
+  visibility: hidden;
+}
+[gsap="fading-chars"].is-revealed {
+  visibility: visible;
+}
+
+/* ==========================================================================
+   VISIBILITY FIXES — Elements that IX2 would normally show
+   ========================================================================== */
+.home-hero-card-item { opacity: 1; }
+.circle-image-wrapper { opacity: 1; }
+.work-cta-heading-loader { transform: scale(1); }
+
+/* ==========================================================================
+   SERVICE CARDS — Hover image frame tilt
+   ========================================================================== */
+.service-card-image-box-frame {
+  transition: transform 0.5s cubic-bezier(.165,.84,.44,1);
+}
+.service-card-content:hover .service-card-image-box-frame {
+  transform: rotate(0deg);
+}
+
+/* ==========================================================================
+   FOOTER — Dark theme override
+   On the original, Webflow IX2 transitions page-wrapper bg/color when
+   the footer scrolls into view. We replicate with a local override.
+   ========================================================================== */
+.footer {
+  background-color: #1a1c18;
+  color: #f2f0e9;
+}
+.footer .footer-social-link {
+  background-color: rgba(242, 240, 233, 0.12);
+  color: #f2f0e9;
+}
+.footer .footer-social-link:hover {
+  color: #d4ff00;
+}
+.footer .nav-link-text {
+  color: #f2f0e9;
+}
+.footer .nav-link:hover .nav-link-text {
+  color: #d4ff00;
+}
+.footer .footer-signature-text {
+  color: rgba(242, 240, 233, 0.5);
+}
+.footer .p-button {
+  color: #f2f0e9;
+}
