@@ -219,12 +219,17 @@ html.lenis, html.lenis body { height: auto; }
    FOOTER — Flashlight / torch cursor effect
    Webflow CSS hides these with display:none — IX2 would show them.
    We override to enable the radial-gradient mask flashlight.
+   Secondary masking + cursor start invisible; JS fades them in on mousemove.
    ========================================================================== */
 .lights-masking.is-secondary {
   display: flex !important;
+  opacity: 0;
 }
 .lights-cursor-wrapper {
   display: flex !important;
+}
+.lights-cursor {
+  opacity: 0;
 }
 
 /* ==========================================================================
@@ -235,6 +240,9 @@ html.lenis, html.lenis body { height: auto; }
    ========================================================================== */
 .footer {
   background-color: transparent;
+}
+.lights-title {
+  color: #f2f0e9;
 }
 .footer .footer-social-link {
   background-color: rgba(242, 240, 233, 0.12);

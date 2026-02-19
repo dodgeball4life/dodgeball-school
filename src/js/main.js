@@ -487,6 +487,22 @@ import '../css/style.css';
   var lightsCursor = document.querySelector('.lights-cursor');
 
   if (lightsWrapper && lightsMaskSecondary) {
+    var footerCursorActive = false;
+
+    lightsWrapper.addEventListener('mouseenter', function () {
+      if (!footerCursorActive) {
+        footerCursorActive = true;
+        gsap.to(lightsMaskSecondary, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+        if (lightsCursor) gsap.to(lightsCursor, { opacity: 0.66, duration: 0.4, ease: 'power2.out' });
+      }
+    });
+
+    lightsWrapper.addEventListener('mouseleave', function () {
+      footerCursorActive = false;
+      gsap.to(lightsMaskSecondary, { opacity: 0, duration: 0.4, ease: 'power2.out' });
+      if (lightsCursor) gsap.to(lightsCursor, { opacity: 0, duration: 0.4, ease: 'power2.out' });
+    });
+
     lightsWrapper.addEventListener('mousemove', function (e) {
       var rect = lightsWrapper.getBoundingClientRect();
       var x = ((e.clientX - rect.left) / rect.width) * 100;
