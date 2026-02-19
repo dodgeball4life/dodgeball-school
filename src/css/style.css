@@ -161,42 +161,327 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
-   MOBILE CAROUSELS — Services + Testimonials (< 768px)
-   On mobile, both sections become horizontal swipeable carousels
-   instead of sticky-stacking / fanned desktop layouts.
+   MOBILE / TABLET (≤ 1199px) — Global normalization
+
+   Webflow's body font-size = calc(clamp(768px, 100vw, 1920px) / 90)
+   → ~8.5px at 768px, ~13px at 1199px. ALL Webflow values use ems relative
+   to this tiny base, producing inconsistent sizes across sections.
+
+   This block normalizes ALL sections with consistent clamp() values so
+   hero, about, services, testimonials, and footer look coherent together.
+   The mobile (≤767px) and tablet (768-1199px) blocks below override these
+   with section-specific tweaks where needed.
+
+   Desktop layout starts at 1200px+ (Lenis, sticky cards, fanned
+   testimonials). This covers ALL iPads including Pro 12.9" portrait.
+   ========================================================================== */
+@media screen and (max-width: 1199px) {
+
+  /* --- Full-screen sections --- */
+  .section {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .section > * { flex-grow: 0; flex-shrink: 0; }
+  /* footer: base styles now handle min-height + flex centering */
+
+  /* --- Consistent spacing --- */
+  .padding-section-large {
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+  .padding-global-inner {
+    padding-left: clamp(1rem, 3vw, 1.5rem);
+    padding-right: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  /* --- Typography: headings --- */
+  /* Primary headings — .heading-style-h1 (about detail, testimonials) */
+  .heading-style-h1 {
+    font-size: clamp(2rem, 5.5vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  /* Hero heading — bigger, more impact */
+  .heading-style-h1.hero {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+    line-height: 1.05;
+  }
+  /* Section header h2 (services title, other h2s) */
+  .section.for-service .section-header {
+    text-align: center;
+  }
+  .section.for-service .section-header .max-width-small {
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .section-header-heading-box h2 {
+    font-size: clamp(2rem, 5.5vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+  /* About big text — should feel impactful, not body-text sized */
+  .text-fill-animation-text {
+    font-size: clamp(2.5rem, 7vw, 3.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+
+  /* --- Typography: body text --- */
+  .text-size-large {
+    font-size: clamp(0.9375rem, 2.2vw, 1.125rem);
+    line-height: 1.5;
+  }
+  .text-size-semi-large {
+    font-size: clamp(0.9375rem, 2.2vw, 1.125rem);
+    line-height: 1.5;
+  }
+
+  /* --- Services overflow: rotated cards need visible overflow --- */
+  .section.for-service { overflow: visible !important; }
+
+  /* --- About images: Webflow sets min-height:31em (~264px at tablet body
+       font). Remove to prevent excessive stretching on small viewports --- */
+  .about-image-box {
+    min-height: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE (≤ 767px) — Services + Testimonials horizontal carousels
+
+   Webflow CSS at 767px sets:
+   - .service-list-item: height: calc(100vh - 4em), position: sticky,
+     padding-top: 10em (vertical stacking cards)
+   - .service-coll/.service-coll-list/.service-coll-item: height: 100%
+   - .service-card-content: height: 100%
+   - .service-card-body: flex: 1, flex-flow: column-reverse
+   - .service-card-text-box: flex: 1
+   - .service-card-header: flex-flow: column-reverse
+
+   We override ALL of these to create a horizontal carousel with
+   content-sized cards.
    ========================================================================== */
 @media screen and (max-width: 767px) {
-  /* --- Services carousel --- */
+
+  /* --- SERVICES: horizontal carousel --- */
+
+  /* Normalize Webflow's em-based sizing (body is ~8.5px on mobile) */
+  .section.for-service { font-size: 1rem; }
+
+  /* Section spacing */
+  .section.for-service .padding-global-inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .section.for-service .padding-section-large {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .section.for-service .section-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .section.for-service .section-header-heading-box h2 {
+    font-size: 2.5rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  /* Container resets */
+  .service-main,
+  .section-main-box.is-service,
+  .section-main-box.is-service-main {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Horizontal scroll container */
   .service-list {
+    display: flex !important;
     flex-direction: row !important;
+    flex-wrap: nowrap !important;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    gap: 16px;
-    padding-bottom: 8px;
-    scrollbar-width: none;       /* Firefox */
+    gap: 0.75rem;
+    padding: 1rem;
+    scrollbar-width: none;
   }
   .service-list::-webkit-scrollbar { display: none; }
+
+  /* Card item — Webflow sets height: calc(100vh-4em), position: sticky,
+     padding-top: 10em. Reset ALL of these. */
   .service-list-item {
-    position: relative !important;   /* kill sticky */
-    flex-shrink: 0;
-    width: 85vw;
-    scroll-snap-align: start;
-  }
-  .service-card-content {
-    overflow: hidden;                /* clip image during any transform */
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    position: relative !important;
+    top: auto !important;
+    flex-shrink: 0 !important;
+    width: 82vw;
+    scroll-snap-align: center;
   }
 
-  /* --- Testimonials carousel --- */
+  /* Height chain: Webflow sets height:100% on all these wrappers.
+     Reset to content-sized. */
+  .service-coll,
+  .service-coll-list,
+  .service-coll-item {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Card content — Webflow: height:100%, gap:3em. */
+  .service-card-content {
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 0 !important;
+    padding: 2.5rem 1.75rem !important;
+    border-radius: 1.25rem !important;
+    overflow: hidden !important;
+    position: relative !important;
+    box-shadow: none !important;
+  }
+
+  /* Playful tilt on alternating cards */
+  .service-list-item:nth-child(odd) .service-card-content {
+    transform: rotate(-1.5deg);
+  }
+  .service-list-item:nth-child(even) .service-card-content {
+    transform: rotate(1deg);
+  }
+
+  /* Body — Webflow 767px: flex:1, flex-flow:column-reverse.
+     Reset to natural column order, no stretch. */
+  .service-card-body {
+    height: auto !important;
+    min-height: 0 !important;
+    flex: none !important;
+    flex-flow: column !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  /* Hide image on mobile */
+  .service-card-image-box { display: none !important; }
+
+  /* Header */
+  .service-card-header {
+    flex-flow: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin-bottom: 1.25rem !important;
+  }
+  .heading-style-h3.for-service {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+  /* Number as big decorative watermark in top-right corner */
+  .service-card-num-box {
+    position: absolute !important;
+    top: 0.75rem !important;
+    right: 1.25rem !important;
+  }
+  .service-card-num {
+    font-size: 5rem !important;
+    opacity: 0.08;
+    font-weight: 900;
+    line-height: 1 !important;
+    letter-spacing: -0.04em;
+  }
+
+  /* Text box — Webflow: flex:1, gap:4em. Reset. */
+  .service-card-text-box {
+    flex: none !important;
+    gap: 1.25rem !important;
+  }
+
+  /* Text footer + footer-top */
+  .service-card-text-box-footer {
+    gap: 1rem !important;
+  }
+  .service-card-text-box-footer-top {
+    gap: 1rem !important;
+    font-size: inherit !important;
+  }
+
+  /* Tagline */
+  .text-size-xlarge.for-service {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* Description */
+  .service-card-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    opacity: 0.65;
+  }
+
+  /* Bullet list */
+  .service-card-rich {
+    display: block !important;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    opacity: 0.55;
+    margin-top: 0.5rem;
+  }
+  .service-card-rich ul {
+    padding-left: 1.25rem;
+    list-style-type: disc;
+  }
+
+  /* Button — hide on mobile */
+  .service-card-text-box-body {
+    display: none !important;
+  }
+
+  /* --- TESTIMONIALS: swipeable carousel --- */
+  /* Webflow 767px already sets .testimonial-main overflow:auto.
+     We add scroll-snap and override item widths/rotations. */
   .testimonial-main {
     scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
+  .testimonial-main::-webkit-scrollbar { display: none; }
+
   .testimonial-list {
-    gap: 16px;
+    gap: 0.75rem !important;
+    min-width: 0 !important;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
+
   .testimonial-list-item {
-    scroll-snap-align: start;
+    width: 85vw !important;
+    min-width: 0 !important;
+    flex: none !important;
+    margin-left: 0 !important;
+    scroll-snap-align: center;
+    transform: none !important;
   }
+
+  .testimonial-list-item-inner {
+    padding: 1.5rem !important;
+    gap: 1.5rem !important;
+  }
+
+  .text-size-semi-large {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .testimonial-card-author-name { font-size: 0.875rem; }
+  .testimonial-card-author-position { font-size: 0.75rem; opacity: 0.6; }
 }
 
 /* ==========================================================================
@@ -211,23 +496,6 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
-   FOOTER — Flashlight / torch cursor effect
-   Webflow CSS hides these with display:none — IX2 would show them.
-   We override to enable the radial-gradient mask flashlight.
-   Secondary masking + cursor start invisible; JS fades them in on mousemove.
-   ========================================================================== */
-.lights-masking.is-secondary {
-  display: flex !important;
-  opacity: 0;
-}
-.lights-cursor-wrapper {
-  display: flex !important;
-}
-.lights-cursor {
-  opacity: 0;
-}
-
-/* ==========================================================================
    FOOTER — Dark theme
    JS ScrollTrigger transitions page-wrapper bg/color when footer enters
    viewport (IX2 replacement). Footer itself is transparent to inherit.
@@ -235,46 +503,567 @@ html.lenis, html.lenis body { height: auto; }
    ========================================================================== */
 .footer {
   background-color: transparent;
-}
-.lights-title {
-  color: #f2f0e9;
-}
-.footer .footer-social-link {
-  background-color: rgba(242, 240, 233, 0.12);
-  color: #f2f0e9;
-}
-.footer .footer-social-link:hover {
-  color: #d4ff00;
-}
-.footer .nav-link-text {
-  color: #f2f0e9;
-}
-.footer .nav-link:hover .nav-link-text {
-  color: #d4ff00;
-}
-.footer .footer-signature-text {
-  color: rgba(242, 240, 233, 0.5);
-}
-.footer .p-button {
-  color: #f2f0e9;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 /* ==========================================================================
-   MOBILE / TABLET — Full-screen sections
-   Each section fills at least one viewport height.
-   dvh = dynamic viewport height (adapts to Safari's collapsing address bar)
+   STEP FORM — Interactive multi-step contact form
    ========================================================================== */
-@media screen and (max-width: 991px) {
-  .section {
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+/* Contact form container */
+.footer-inner {
+  max-width: 40rem;
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Intro heading — matches site's heading-style-h1 look */
+.step-intro {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.step-intro-title {
+  font-size: clamp(2.5rem, 5.5vw, 3.5rem);
+  font-weight: 700;
+  color: #f2f0e9;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.step-intro-sub {
+  color: rgba(242, 240, 233, 0.4);
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+}
+
+/* Form wrapper */
+.step-form {
+  position: relative;
+  min-height: 16rem;
+}
+
+/* Step header: counter + progress */
+.step-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.step-counter {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(242, 240, 233, 0.35);
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.step-progress {
+  flex: 1;
+  height: 2px;
+  background: rgba(242, 240, 233, 0.08);
+  border-radius: 1px;
+  overflow: hidden;
+}
+.step-progress-bar {
+  height: 100%;
+  width: 17%;
+  background: #E63221;
+  border-radius: 1px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Individual steps */
+.step-slide {
+  display: none;
+  animation: stepIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.step-slide.is-active {
+  display: block;
+}
+
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Question heading — matches site heading style */
+.step-question {
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  color: #f2f0e9;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 2rem;
+}
+
+/* Inputs — underline style, minimal */
+.step-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(242, 240, 233, 0.15);
+  border-radius: 0;
+  padding: 1rem 0;
+  color: #f2f0e9;
+  font-size: 1.125rem;
+  font-family: inherit;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+.step-input::placeholder {
+  color: rgba(242, 240, 233, 0.25);
+}
+.step-input:focus {
+  outline: none;
+  border-color: #E63221;
+}
+
+.step-textarea {
+  min-height: 5rem;
+  resize: vertical;
+  border: 2px solid rgba(242, 240, 233, 0.15);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: rgba(242, 240, 233, 0.03);
+}
+.step-textarea:focus {
+  border-color: #E63221;
+  background: rgba(242, 240, 233, 0.05);
+}
+
+/* Two inputs side by side */
+.step-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Navigation */
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.step-back {
+  background: none;
+  border: none;
+  color: rgba(242, 240, 233, 0.45);
+  font-size: 0.9375rem;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+.step-back:hover {
+  color: #f2f0e9;
+}
+.step-back-arrow {
+  font-size: 1.125rem;
+  line-height: 1;
+}
+
+.step-next,
+.step-submit {
+  background: #E63221;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  padding: 0.875rem 2.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+.step-next:hover,
+.step-submit:hover {
+  background: #cc2a1b;
+  transform: translateY(-1px);
+}
+.step-next-arrow {
+  font-size: 1.125rem;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+.step-next:hover .step-next-arrow,
+.step-submit:hover .step-next-arrow {
+  transform: translateX(3px);
+}
+
+/* Success state */
+.step-success {
+  text-align: center;
+  animation: stepIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.step-success-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  border-radius: 50%;
+  background: #E63221;
+  color: #fff;
+  font-size: 1.75rem;
+  margin: 0 auto 1.5rem;
+}
+.step-success .step-question {
+  margin-bottom: 0.5rem;
+}
+.step-success-text {
+  color: rgba(242, 240, 233, 0.45);
+  font-size: 1.0625rem;
+}
+
+/* ==========================================================================
+   SITE FOOTER — Apple/Nike style professional footer
+   ========================================================================== */
+.site-footer {
+  background: #0a0a0a;
+  color: rgba(242, 240, 233, 0.5);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+.site-footer-inner {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 2rem;
+}
+
+/* 4-column grid */
+.sf-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2rem 3rem;
+}
+.sf-logo {
+  width: 2.5rem;
+  height: auto;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+.sf-desc {
+  color: rgba(242, 240, 233, 0.4);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  max-width: 20rem;
+}
+.sf-heading {
+  color: #f2f0e9;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1rem;
+}
+.sf-link {
+  display: block;
+  color: rgba(242, 240, 233, 0.45);
+  text-decoration: none;
+  font-size: 0.8125rem;
+  padding: 0.2rem 0;
+  transition: color 0.2s;
+}
+.sf-link:hover {
+  color: #f2f0e9;
+}
+.sf-text {
+  color: rgba(242, 240, 233, 0.4);
+  font-size: 0.8125rem;
+  padding: 0.2rem 0;
+}
+
+/* Divider */
+.sf-divider {
+  height: 1px;
+  background: rgba(242, 240, 233, 0.08);
+  margin: 2.5rem 0 1.5rem;
+}
+
+/* Bottom bar */
+.sf-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sf-copyright {
+  color: rgba(242, 240, 233, 0.3);
+  font-size: 0.75rem;
+}
+.sf-legal {
+  display: flex;
+  gap: 1.5rem;
+}
+.sf-legal-link {
+  color: rgba(242, 240, 233, 0.3);
+  font-size: 0.75rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.sf-legal-link:hover {
+  color: rgba(242, 240, 233, 0.6);
+}
+
+/* ==========================================================================
+   TABLET (768–1199px) — Services + Testimonials carousels with wider cards
+   Same Webflow overrides as mobile but with wider card widths.
+   Covers iPad Mini (768), iPad Air (820), iPad Pro 11" (834),
+   iPad Pro 12.9" portrait (1024), and landscape tablets up to 1199px.
+   ========================================================================== */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+
+  /* --- SERVICES: horizontal carousel (tablet) --- */
+
+  /* Normalize em-based sizing */
+  .section.for-service { font-size: 1rem; }
+
+  /* Section spacing */
+  .section.for-service .padding-global-inner {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
-  .footer {
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .section.for-service .padding-section-large {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .section.for-service .section-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .section.for-service .section-header-heading-box h2 {
+    font-size: 2.5rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  /* Container resets */
+  .service-main,
+  .section-main-box.is-service,
+  .section-main-box.is-service-main {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Horizontal scroll container */
+  .service-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    scrollbar-width: none;
+  }
+  .service-list::-webkit-scrollbar { display: none; }
+
+  /* Card item — reset Webflow height/sticky/padding */
+  .service-list-item {
+    height: auto !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    position: relative !important;
+    top: auto !important;
+    flex-shrink: 0 !important;
+    width: 65vw;
+    scroll-snap-align: center;
+  }
+
+  /* Height chain resets */
+  .service-coll, .service-coll-list, .service-coll-item {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Card content */
+  .service-card-content {
+    height: auto !important;
+    min-height: 0 !important;
+    gap: 0 !important;
+    padding: 2.5rem 2rem !important;
+    border-radius: 1.25rem !important;
+    overflow: hidden !important;
+    position: relative !important;
+    box-shadow: none !important;
+  }
+
+  /* Playful tilt on alternating cards */
+  .service-list-item:nth-child(odd) .service-card-content {
+    transform: rotate(-1.5deg);
+  }
+  .service-list-item:nth-child(even) .service-card-content {
+    transform: rotate(1deg);
+  }
+
+  /* Body — reset Webflow's flex:1 + column-reverse */
+  .service-card-body {
+    height: auto !important;
+    min-height: 0 !important;
+    flex: none !important;
+    flex-flow: column !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  /* Hide image on tablet */
+  .service-card-image-box { display: none !important; }
+
+  /* Header */
+  .service-card-header {
+    flex-flow: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin-bottom: 1.25rem !important;
+  }
+  .heading-style-h3.for-service {
+    font-size: 1.625rem;
+    font-weight: 700;
+    line-height: 1.15;
+  }
+
+  /* Number as decorative watermark */
+  .service-card-num-box {
+    position: absolute !important;
+    top: 0.75rem !important;
+    right: 1.25rem !important;
+  }
+  .service-card-num {
+    font-size: 5rem !important;
+    opacity: 0.08;
+    font-weight: 900;
+    line-height: 1 !important;
+    letter-spacing: -0.04em;
+  }
+
+  /* Text box */
+  .service-card-text-box {
+    flex: none !important;
+    gap: 1.25rem !important;
+  }
+
+  /* Text footer + footer-top */
+  .service-card-text-box-footer { gap: 1rem !important; }
+  .service-card-text-box-footer-top { gap: 1rem !important; font-size: inherit !important; }
+
+  /* Tagline */
+  .text-size-xlarge.for-service {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* Description */
+  .service-card-desc {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    opacity: 0.65;
+  }
+
+  /* Bullet list */
+  .service-card-rich {
+    font-size: 0.875rem;
+    line-height: 1.7;
+    opacity: 0.55;
+    margin-top: 0.5rem;
+  }
+  .service-card-rich ul {
+    padding-left: 1.25rem;
+    list-style-type: disc;
+  }
+
+  /* Button — hide on tablet */
+  .service-card-text-box-body { display: none !important; }
+
+  /* --- TESTIMONIALS: swipeable carousel (tablet) --- */
+  /* Webflow only sets overflow:auto on ≤767px — force it for tablet too */
+  .testimonial-main {
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .testimonial-main::-webkit-scrollbar { display: none; }
+
+  .testimonial-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 1rem;
+    min-width: 0 !important;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .testimonial-list-item {
+    flex: none !important;
+    flex-shrink: 0 !important;
+    width: 55vw;
+    min-width: 0 !important;
+    margin-left: 0 !important;
+    scroll-snap-align: center;
+    transform: none !important;
+  }
+
+  .testimonial-list-item-inner {
+    padding: 1.75rem !important;
+    gap: 1.5rem !important;
+  }
+
+  .text-size-semi-large {
+    font-size: 1.0625rem;
+    line-height: 1.5;
+  }
+
+  .testimonial-card-author-name { font-size: 0.9375rem; }
+  .testimonial-card-author-position { font-size: 0.8125rem; opacity: 0.6; }
+}
+
+/* ==========================================================================
+   STEP FORM — Responsive
+   ========================================================================== */
+@media screen and (max-width: 767px) {
+  .footer-inner {
+    padding: 0 1.25rem 1.25rem;
+    max-width: 100%;
+  }
+  .step-intro { margin-bottom: 2rem; }
+  .step-intro-sub { font-size: 0.875rem; }
+  .step-header { margin-bottom: 1.75rem; }
+  .step-question { margin-bottom: 1.5rem; }
+  .step-row { grid-template-columns: 1fr; gap: 0; }
+  .step-form { min-height: 12rem; }
+  .step-nav { margin-top: 2rem; }
+  .step-next, .step-submit { padding: 0.75rem 1.75rem; font-size: 0.9375rem; }
+  /* Site footer mobile */
+  .sf-grid { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
+  .sf-brand { grid-column: 1 / -1; }
+  .sf-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+  .sf-legal { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .footer-inner {
+    padding: 0 2rem 2rem;
+    max-width: 100%;
   }
 }
+

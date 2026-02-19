@@ -11,7 +11,7 @@ import '../css/style.css';
   // ==========================================================================
   // LENIS SMOOTH SCROLL
   // ==========================================================================
-  var isDesktop = window.matchMedia('(min-width: 992px)').matches;
+  var isDesktop = window.matchMedia('(min-width: 1200px)').matches;
   var lenis = null;
 
   if (isDesktop) {
@@ -109,9 +109,9 @@ import '../css/style.css';
   // ==========================================================================
   var heroCards = document.querySelectorAll('.home-hero-card-item');
   var heroRestRotations = [-9, 6.5, -5.5, 5, -4.5];
-  var isDesktop = window.matchMedia('(min-width: 768px)').matches;
+  var isTabletUp = window.matchMedia('(min-width: 768px)').matches;
 
-  if (isDesktop && heroCards.length === 5) {
+  if (isTabletUp && heroCards.length === 5) {
     // Set initial hidden state
     gsap.set(heroCards, { y: 120, opacity: 0, scale: 0.85, rotation: 0 });
 
@@ -140,7 +140,7 @@ import '../css/style.css';
   // HERO — Card hover spread (IX2 a-449 through a-454)
   // Desktop only — no hover spread on touch devices.
   // ==========================================================================
-  if (isDesktop && heroCards.length === 5) {
+  if (isTabletUp && heroCards.length === 5) {
     var heroHoverSpreads = [
       [0, 66, 33, 22, 16.5],
       [-66, 0, 66, 33, 22],
@@ -219,7 +219,7 @@ import '../css/style.css';
       var textElements = fadingCharsBlock.querySelectorAll('.text-fill-animation-text');
       var allChars = [];
       textElements.forEach(function (el) {
-        var split = new SplitText(el, { type: 'chars' });
+        var split = new SplitText(el, { type: 'words,chars' });
         allChars = allChars.concat(split.chars);
       });
 
@@ -479,82 +479,95 @@ import '../css/style.css';
   }
 
   // ==========================================================================
-  // FOOTER CTA — Text + button entrance
+  // FOOTER — Multi-step contact form
   // ==========================================================================
-  gsap.from('.lights-masking:not(.is-secondary) .lights-title', {
-    y: 60, opacity: 0, filter: 'blur(4px)',
-    duration: 1.2, ease: 'power3.out',
-    scrollTrigger: { trigger: '.lights-masking', start: 'top 80%', once: true }
-  });
+  var stepForm = document.getElementById('contactForm');
+  if (stepForm) {
+    var slides = stepForm.querySelectorAll('.step-slide');
+    var progressBar = stepForm.querySelector('.step-progress-bar');
+    var backBtn = document.getElementById('stepBack');
+    var nextBtn = document.getElementById('stepNext');
+    var submitBtn = document.getElementById('stepSubmit');
+    var successEl = document.getElementById('stepSuccess');
+    var counterEl = document.getElementById('stepCounter');
+    var headerEl = stepForm.querySelector('.step-header');
+    var currentStep = 1;
+    var totalSteps = slides.length;
 
-  gsap.from('.lights-masking:not(.is-secondary) .p-button', {
-    y: 30, opacity: 0,
-    duration: 0.8, ease: 'power3.out',
-    scrollTrigger: { trigger: '.lights-masking', start: 'top 75%', once: true }
-  });
-
-  // ==========================================================================
-  // FOOTER — Torch/flashlight cursor effect
-  // ==========================================================================
-  var lightsWrapper = document.querySelector('.lights-wrapper');
-  var lightsMaskSecondary = document.querySelector('.lights-masking.is-secondary');
-  var lightsCursor = document.querySelector('.lights-cursor');
-
-  if (lightsWrapper && lightsMaskSecondary) {
-    var footerCursorActive = false;
-
-    function activateFlashlight() {
-      if (!footerCursorActive) {
-        footerCursorActive = true;
-        gsap.to(lightsMaskSecondary, { opacity: 1, duration: 0.4, ease: 'power2.out' });
-        if (lightsCursor) gsap.to(lightsCursor, { opacity: 0.66, duration: 0.4, ease: 'power2.out' });
+    function goToStep(n) {
+      currentStep = n;
+      slides.forEach(function (s) { s.classList.remove('is-active'); });
+      var target = stepForm.querySelector('[data-step="' + n + '"]');
+      if (target) {
+        target.classList.add('is-active');
+        var firstInput = target.querySelector('.step-input');
+        if (firstInput) setTimeout(function () { firstInput.focus(); }, 100);
+      }
+      progressBar.style.width = Math.round((n / totalSteps) * 100) + '%';
+      counterEl.textContent = String(n).padStart(2, '0') + ' / ' + String(totalSteps).padStart(2, '0');
+      backBtn.style.visibility = n === 1 ? 'hidden' : 'visible';
+      if (n === totalSteps) {
+        nextBtn.style.display = 'none';
+        submitBtn.style.display = '';
+      } else {
+        nextBtn.style.display = '';
+        submitBtn.style.display = 'none';
       }
     }
 
-    function deactivateFlashlight() {
-      footerCursorActive = false;
-      gsap.to(lightsMaskSecondary, { opacity: 0, duration: 0.4, ease: 'power2.out' });
-      if (lightsCursor) gsap.to(lightsCursor, { opacity: 0, duration: 0.4, ease: 'power2.out' });
-    }
-
-    function updateFlashlight(clientX, clientY) {
-      var rect = lightsWrapper.getBoundingClientRect();
-      var x = ((clientX - rect.left) / rect.width) * 100;
-      var y = ((clientY - rect.top) / rect.height) * 100;
-
-      lightsMaskSecondary.style.setProperty('--layout--footer-cursor-x', x + '%');
-      lightsMaskSecondary.style.setProperty('--layout--footer-cursor-y', y + '%');
-
-      if (lightsCursor) {
-        var px = clientX - rect.left;
-        var py = clientY - rect.top;
-        gsap.to(lightsCursor, {
-          x: px - rect.width / 2,
-          y: py - rect.height / 2,
-          duration: 0.3,
-          ease: 'power2.out'
-        });
-      }
-    }
-
-    // Mouse events (desktop)
-    lightsWrapper.addEventListener('mouseenter', activateFlashlight);
-    lightsWrapper.addEventListener('mouseleave', deactivateFlashlight);
-    lightsWrapper.addEventListener('mousemove', function (e) {
-      updateFlashlight(e.clientX, e.clientY);
+    nextBtn.addEventListener('click', function () {
+      var active = stepForm.querySelector('.step-slide.is-active');
+      var required = active.querySelectorAll('[required]');
+      var valid = true;
+      required.forEach(function (inp) { if (!inp.value.trim()) { valid = false; inp.focus(); } });
+      if (valid && currentStep < totalSteps) goToStep(currentStep + 1);
     });
 
-    // Touch events (mobile/tablet)
-    lightsWrapper.addEventListener('touchstart', function (e) {
-      activateFlashlight();
-      var touch = e.touches[0];
-      updateFlashlight(touch.clientX, touch.clientY);
-    }, { passive: true });
-    lightsWrapper.addEventListener('touchmove', function (e) {
-      var touch = e.touches[0];
-      updateFlashlight(touch.clientX, touch.clientY);
-    }, { passive: true });
-    lightsWrapper.addEventListener('touchend', deactivateFlashlight);
+    backBtn.addEventListener('click', function () {
+      if (currentStep > 1) goToStep(currentStep - 1);
+    });
+
+    stepForm.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+        e.preventDefault();
+        if (currentStep < totalSteps) nextBtn.click();
+        else submitBtn.click();
+      }
+    });
+
+    stepForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      slides.forEach(function (s) { s.classList.remove('is-active'); });
+      stepForm.querySelector('.step-nav').style.display = 'none';
+      if (headerEl) headerEl.style.display = 'none';
+      var introEl = document.querySelector('.step-intro');
+      if (introEl) introEl.style.display = 'none';
+      successEl.style.display = '';
+      progressBar.style.width = '100%';
+    });
+
+    gsap.from('.step-intro', {
+      y: 40, opacity: 0,
+      duration: 1, ease: 'power3.out',
+      scrollTrigger: { trigger: '.footer-inner', start: 'top 80%', once: true }
+    });
+    gsap.from('.step-form', {
+      y: 50, opacity: 0,
+      duration: 1, ease: 'power3.out', delay: 0.15,
+      scrollTrigger: { trigger: '.footer-inner', start: 'top 80%', once: true }
+    });
+
+    // Hide CTA circle when in footer contact section
+    var ctaCircle = document.querySelector('.header-cta-circle');
+    if (ctaCircle) {
+      ScrollTrigger.create({
+        trigger: '.footer',
+        start: 'top 80%',
+        end: 'bottom top',
+        onEnter: function () { gsap.to(ctaCircle, { opacity: 0, scale: 0.8, duration: 0.3, pointerEvents: 'none' }); },
+        onLeaveBack: function () { gsap.to(ctaCircle, { opacity: 1, scale: 1, duration: 0.3, pointerEvents: 'auto' }); }
+      });
+    }
   }
 
   // ==========================================================================

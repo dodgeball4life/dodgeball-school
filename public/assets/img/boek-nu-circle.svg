@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <path id="circlePath" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/>
+  </defs>
+  <text font-family="Outfit, sans-serif" font-size="18" font-weight="500" fill="#1a1c18" letter-spacing="8">
+    <textPath href="#circlePath" startOffset="0%">BOEK NU &#x2022; BOEK NU &#x2022; BOEK NU &#x2022; BOEK NU &#x2022;</textPath>
+  </text>
+</svg>
