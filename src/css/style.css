@@ -236,13 +236,14 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
-   SERVICE CARDS — Hover image frame tilt
+   SERVICE CARDS — Remove image frame rotation (Webflow sets rotate(3deg)
+   which causes clipping inside the card's overflow:hidden containers)
    ========================================================================== */
 .service-card-image-box-frame {
-  transition: transform 0.5s cubic-bezier(.165,.84,.44,1);
+  transform: none !important;
 }
 .service-card-content:hover .service-card-image-box-frame {
-  transform: rotate(0deg);
+  transform: none !important;
 }
 
 /* ==========================================================================

@@ -367,7 +367,7 @@ import '../css/style.css';
               clearStyles();
             } else {
               el.style.transformOrigin = 'center top';
-              el.style.transform = 'scale(' + (1 - 0.05 * p) + ') rotate(' + (-2 * p) + 'deg)';
+              el.style.transform = 'scale(' + (1 - 0.05 * p) + ')';
               el.style.filter = 'blur(' + (3 * p) + 'px)';
             }
           },
@@ -435,7 +435,7 @@ import '../css/style.css';
           testimonialItems.forEach(function (item, i) {
             gsap.to(item, {
               xPercent: 0, scale: 1,
-              rotation: testimonialRotations[i],
+              rotation: testimonialRestRotations[i],
               duration: 0.5, ease: 'power2.out',
               overwrite: 'auto'
             });
