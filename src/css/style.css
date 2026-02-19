@@ -177,6 +177,19 @@ html.lenis, html.lenis body { height: auto; }
    ========================================================================== */
 @media screen and (max-width: 1199px) {
 
+  /* --- Menu overlay: Webflow uses em-based font that doesn't scale down --- */
+  .menu-link-text {
+    font-size: clamp(2rem, 6vw, 3.5rem) !important;
+    line-height: 1.2;
+  }
+  .menu-link-num {
+    font-size: clamp(0.75rem, 1.5vw, 1rem) !important;
+  }
+  .menu-content {
+    padding: 5rem 1.5rem 2rem !important;
+    gap: 0.5rem !important;
+  }
+
   /* --- Full-screen sections --- */
   .section {
     min-height: 100dvh;
@@ -185,7 +198,6 @@ html.lenis, html.lenis body { height: auto; }
     justify-content: center;
   }
   .section > * { flex-grow: 0; flex-shrink: 0; }
-  /* footer: base styles now handle min-height + flex centering */
 
   /* --- Consistent spacing --- */
   .padding-section-large {
@@ -242,8 +254,9 @@ html.lenis, html.lenis body { height: auto; }
     line-height: 1.5;
   }
 
-  /* --- Services overflow: rotated cards need visible overflow --- */
+  /* --- Overflow: rotated/scrolling cards need visible overflow --- */
   .section.for-service { overflow: visible !important; }
+  #ervaringen { font-size: 1rem; }
 
   /* --- About images: Webflow sets min-height:31em (~264px at tablet body
        font). Remove to prevent excessive stretching on small viewports --- */
@@ -448,7 +461,12 @@ html.lenis, html.lenis body { height: auto; }
   /* --- TESTIMONIALS: swipeable carousel --- */
   /* Webflow 767px already sets .testimonial-main overflow:auto.
      We add scroll-snap and override item widths/rotations. */
+  #ervaringen { overflow: visible; }
+  #ervaringen .container-default,
+  #ervaringen .section-main-box { overflow: visible; }
+
   .testimonial-main {
+    overflow-y: visible !important;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
@@ -473,6 +491,8 @@ html.lenis, html.lenis body { height: auto; }
   .testimonial-list-item-inner {
     padding: 1.5rem !important;
     gap: 1.5rem !important;
+    height: 100%;
+    box-sizing: border-box;
   }
 
   .text-size-semi-large {
@@ -522,6 +542,8 @@ html.lenis, html.lenis body { height: auto; }
   margin: auto;
   padding: 2rem;
   box-sizing: border-box;
+  position: relative;
+  z-index: 2;
 }
 
 /* Intro heading — matches site's heading-style-h1 look */
@@ -829,6 +851,14 @@ html.lenis, html.lenis body { height: auto; }
    ========================================================================== */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
 
+  /* Content-heavy sections: let content dictate height, don't force 100dvh */
+  .section.for-service,
+  #ervaringen,
+  #over-ons-detail {
+    min-height: auto;
+    justify-content: flex-start;
+  }
+
   /* --- SERVICES: horizontal carousel (tablet) --- */
 
   /* Normalize em-based sizing */
@@ -883,7 +913,7 @@ html.lenis, html.lenis body { height: auto; }
     position: relative !important;
     top: auto !important;
     flex-shrink: 0 !important;
-    width: 65vw;
+    width: clamp(18rem, 55vw, 28rem);
     scroll-snap-align: center;
   }
 
@@ -994,12 +1024,26 @@ html.lenis, html.lenis body { height: auto; }
   .service-card-text-box-body { display: none !important; }
 
   /* --- TESTIMONIALS: swipeable carousel (tablet) --- */
-  /* Webflow only sets overflow:auto on ≤767px — force it for tablet too */
+  /* Normalize em-based sizing (same as services) */
+  #ervaringen { overflow: visible; font-size: 1rem; }
+  #ervaringen .container-default,
+  #ervaringen .section-main-box { overflow: visible; }
+  #ervaringen .padding-global-inner {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  #ervaringen .padding-section-large {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
   .testimonial-main {
     overflow-x: auto !important;
+    overflow-y: visible !important;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    padding: 1rem 0 !important;
   }
   .testimonial-main::-webkit-scrollbar { display: none; }
 
@@ -1007,16 +1051,15 @@ html.lenis, html.lenis body { height: auto; }
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: nowrap !important;
-    gap: 1rem;
+    gap: 1.25rem;
     min-width: 0 !important;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 0 1.5rem;
   }
 
   .testimonial-list-item {
     flex: none !important;
     flex-shrink: 0 !important;
-    width: 55vw;
+    width: clamp(20rem, 42vw, 26rem);
     min-width: 0 !important;
     margin-left: 0 !important;
     scroll-snap-align: center;
@@ -1026,6 +1069,9 @@ html.lenis, html.lenis body { height: auto; }
   .testimonial-list-item-inner {
     padding: 1.75rem !important;
     gap: 1.5rem !important;
+    height: auto !important;
+    min-height: 0 !important;
+    box-sizing: border-box;
   }
 
   .text-size-semi-large {
@@ -1065,5 +1111,9 @@ html.lenis, html.lenis body { height: auto; }
     padding: 0 2rem 2rem;
     max-width: 100%;
   }
+  /* Site footer tablet */
+  .sf-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1.5rem 2rem; }
+  .sf-bottom { flex-wrap: wrap; }
+  .sf-legal { gap: 1rem; }
 }
 

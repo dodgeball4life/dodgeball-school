@@ -88,6 +88,32 @@ import '../css/style.css';
     });
   });
 
+  // All anchor links: close menu if open, then smooth scroll
+  document.querySelectorAll('.menu-link[href^="#"], .header-nav-link[href^="#"], .header-cta-circle[href^="#"], .sf-link[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      var target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+
+      function doScroll() {
+        if (lenis) {
+          lenis.start();
+          lenis.scrollTo(target, { duration: 1.2 });
+        } else {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+
+      if (menuOpen) {
+        closeMenu();
+        // Wait for close animation to finish, then scroll
+        setTimeout(doScroll, 500);
+      } else {
+        doScroll();
+      }
+    });
+  });
+
   // ==========================================================================
   // HERO — Title + subtitle entrance
   // ==========================================================================
@@ -557,15 +583,25 @@ import '../css/style.css';
       scrollTrigger: { trigger: '.footer-inner', start: 'top 80%', once: true }
     });
 
-    // Hide CTA circle when in footer contact section
+    // Hide CTA circle + sidebar when in footer contact section
     var ctaCircle = document.querySelector('.header-cta-circle');
+    var sidebarNav = document.querySelector('.nav-content-wrapper');
+    var sidebarLogo = document.querySelector('.nav-company-box');
     if (ctaCircle) {
       ScrollTrigger.create({
         trigger: '.footer',
         start: 'top 80%',
         end: 'bottom top',
-        onEnter: function () { gsap.to(ctaCircle, { opacity: 0, scale: 0.8, duration: 0.3, pointerEvents: 'none' }); },
-        onLeaveBack: function () { gsap.to(ctaCircle, { opacity: 1, scale: 1, duration: 0.3, pointerEvents: 'auto' }); }
+        onEnter: function () {
+          gsap.to(ctaCircle, { opacity: 0, scale: 0.8, duration: 0.3, pointerEvents: 'none' });
+          if (sidebarNav) gsap.to(sidebarNav, { opacity: 0, x: -20, duration: 0.3, pointerEvents: 'none' });
+          if (sidebarLogo) gsap.to(sidebarLogo, { opacity: 0, x: -20, duration: 0.3, pointerEvents: 'none' });
+        },
+        onLeaveBack: function () {
+          gsap.to(ctaCircle, { opacity: 1, scale: 1, duration: 0.3, pointerEvents: 'auto' });
+          if (sidebarNav) gsap.to(sidebarNav, { opacity: 1, x: 0, duration: 0.3, pointerEvents: 'auto' });
+          if (sidebarLogo) gsap.to(sidebarLogo, { opacity: 1, x: 0, duration: 0.3, pointerEvents: 'auto' });
+        }
       });
     }
   }
