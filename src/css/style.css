@@ -192,7 +192,48 @@ html.lenis, html.lenis body { height: auto; }
   .nav-company-box { display: none !important; }
 }
 .about-image-item-box.item-01 { display: block !important; }
-.service-card-rich { display: block !important; }
+@media screen and (min-width: 768px) {
+  .service-card-rich { display: block !important; }
+}
+
+/* ==========================================================================
+   MOBILE CAROUSELS — Services + Testimonials (< 768px)
+   On mobile, both sections become horizontal swipeable carousels
+   instead of sticky-stacking / fanned desktop layouts.
+   ========================================================================== */
+@media screen and (max-width: 767px) {
+  /* --- Services carousel --- */
+  .service-list {
+    flex-direction: row !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding-bottom: 8px;
+    scrollbar-width: none;       /* Firefox */
+  }
+  .service-list::-webkit-scrollbar { display: none; }
+  .service-list-item {
+    position: relative !important;   /* kill sticky */
+    flex-shrink: 0;
+    width: 85vw;
+    scroll-snap-align: start;
+  }
+  .service-card-content {
+    overflow: hidden;                /* clip image during any transform */
+  }
+
+  /* --- Testimonials carousel --- */
+  .testimonial-main {
+    scroll-snap-type: x mandatory;
+  }
+  .testimonial-list {
+    gap: 16px;
+  }
+  .testimonial-list-item {
+    scroll-snap-align: start;
+  }
+}
 
 /* ==========================================================================
    SERVICE CARDS — Hover image frame tilt

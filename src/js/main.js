@@ -335,18 +335,46 @@ import '../css/style.css';
   }
 
   // ==========================================================================
-  // SERVICES — Scroll-linked entrance with rotation (IX2 a-475)
-  // Each service card has its own scroll trigger with rotation entrance.
-  // Section heading handled by generic skew reveal above.
+  // SERVICES — Desktop: stacking cards with scale + rotate + blur (IX2 a-475)
+  // Mobile: horizontal carousel (CSS handles layout, no stacking needed)
   // ==========================================================================
-  document.querySelectorAll('.service-list-item').forEach(function (item, i) {
+  var serviceItems = gsap.utils.toArray('.service-list-item');
+  serviceItems.forEach(function (item, i) {
+    // Entrance animation (both desktop and mobile)
     gsap.from(item, {
-      y: 60, opacity: 0,
-      rotation: 3 * (i % 2 === 0 ? 1 : -1),
+      y: isDesktop ? 60 : 30, opacity: 0,
+      rotation: isDesktop ? 3 * (i % 2 === 0 ? 1 : -1) : 0,
       scale: 0.96,
       duration: 1, ease: 'power3.out',
       scrollTrigger: { trigger: item, start: 'top 85%', once: true }
     });
+
+    // Scroll-linked exit: desktop only (mobile uses horizontal carousel)
+    if (isDesktop && i < serviceItems.length - 1) {
+      (function (el) {
+        function clearStyles() {
+          el.style.transform = '';
+          el.style.transformOrigin = '';
+          el.style.filter = '';
+        }
+        ScrollTrigger.create({
+          trigger: el,
+          start: 'top top',
+          end: function () { return '+=' + Math.round(el.offsetHeight * 1.5); },
+          onUpdate: function (self) {
+            var p = self.progress;
+            if (p <= 0) {
+              clearStyles();
+            } else {
+              el.style.transformOrigin = 'center top';
+              el.style.transform = 'scale(' + (1 - 0.05 * p) + ') rotate(' + (-2 * p) + 'deg)';
+              el.style.filter = 'blur(' + (3 * p) + 'px)';
+            }
+          },
+          onLeaveBack: clearStyles
+        });
+      })(item);
+    }
   });
 
   // ==========================================================================
@@ -355,22 +383,30 @@ import '../css/style.css';
   // ==========================================================================
   var testimonialItems = document.querySelectorAll('.testimonial-list-item');
   var testimonialRestRotations = [-9, -4.5, 5, -5.5, 6.5];
-  var testimonialMobileRotations = [-5, -3, 3, -3, 3];
   var testimonialList = document.querySelector('.testimonial-list');
-  var testimonialRotations = isDesktop ? testimonialRestRotations : testimonialMobileRotations;
 
   if (testimonialItems.length === 5) {
-    // Set initial hidden state with rotation:0, animate to resting rotations
-    gsap.set(testimonialItems, { y: 40, opacity: 0, rotation: 0 });
-    gsap.to(testimonialItems, {
-      y: 0, opacity: 1,
-      rotation: function (i) { return testimonialRotations[i]; },
-      stagger: 0.1,
-      duration: 0.8, ease: 'power3.out',
-      scrollTrigger: { trigger: '.testimonial-list', start: 'top 85%', once: true }
-    });
+    if (isDesktop) {
+      // Desktop: fanned layout with resting rotations
+      gsap.set(testimonialItems, { y: 40, opacity: 0, rotation: 0 });
+      gsap.to(testimonialItems, {
+        y: 0, opacity: 1,
+        rotation: function (i) { return testimonialRestRotations[i]; },
+        stagger: 0.1,
+        duration: 0.8, ease: 'power3.out',
+        scrollTrigger: { trigger: '.testimonial-list', start: 'top 85%', once: true }
+      });
+    } else {
+      // Mobile: clean horizontal carousel, no rotations
+      gsap.set(testimonialItems, { rotation: 0, x: 0, xPercent: 0 });
+      gsap.from(testimonialItems, {
+        y: 20, opacity: 0, stagger: 0.08,
+        duration: 0.6, ease: 'power3.out',
+        scrollTrigger: { trigger: '.testimonial-list', start: 'top 85%', once: true }
+      });
+    }
 
-    // Hover spread — desktop only (no hover on touch devices)
+    // Hover spread — desktop only
     if (isDesktop) {
       var testimonialHoverSpreads = [
         [0, 66, 33, 22, 16.5],
