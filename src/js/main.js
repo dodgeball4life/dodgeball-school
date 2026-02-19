@@ -25,8 +25,6 @@ import '../css/style.css';
   gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
   gsap.ticker.lagSmoothing(0);
 
-  // Header stays fixed/visible — original Canvasly has no scroll hide/show
-
   // ==========================================================================
   // MENU TOGGLE — Smooth GSAP height animation
   // ==========================================================================
@@ -467,13 +465,13 @@ import '../css/style.css';
   // ==========================================================================
   // FOOTER CTA — Text + button entrance
   // ==========================================================================
-  gsap.from('.lights-title', {
+  gsap.from('.lights-masking:not(.is-secondary) .lights-title', {
     y: 60, opacity: 0, filter: 'blur(4px)',
     duration: 1.2, ease: 'power3.out',
     scrollTrigger: { trigger: '.lights-masking', start: 'top 80%', once: true }
   });
 
-  gsap.from('.lights-text-box .p-button', {
+  gsap.from('.lights-masking:not(.is-secondary) .p-button', {
     y: 30, opacity: 0,
     duration: 0.8, ease: 'power3.out',
     scrollTrigger: { trigger: '.lights-masking', start: 'top 75%', once: true }
