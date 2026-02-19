@@ -11,18 +11,23 @@ import '../css/style.css';
   // ==========================================================================
   // LENIS SMOOTH SCROLL
   // ==========================================================================
-  var lenis = new Lenis({
-    duration: 1.2,
-    easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-    smoothWheel: true
-  });
+  var isDesktop = window.matchMedia('(min-width: 992px)').matches;
+  var lenis = null;
+
+  if (isDesktop) {
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
+      smoothWheel: true
+    });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+  }
 
   gsap.registerPlugin(ScrollTrigger);
   if (typeof Draggable !== 'undefined') gsap.registerPlugin(Draggable);
   if (typeof InertiaPlugin !== 'undefined') gsap.registerPlugin(InertiaPlugin);
   if (typeof SplitText !== 'undefined') gsap.registerPlugin(SplitText);
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
   gsap.ticker.lagSmoothing(0);
 
   // ==========================================================================
@@ -36,7 +41,7 @@ import '../css/style.css';
   function openMenu() {
     menuOpen = true;
     menuButton.classList.add('is-open');
-    lenis.stop();
+    if (lenis) lenis.stop();
     gsap.set(menuOverlay, { height: '100%', opacity: 1, pointerEvents: 'auto' });
     gsap.fromTo(menuLinks,
       { y: 60, opacity: 0 },
@@ -52,7 +57,7 @@ import '../css/style.css';
         menuButton.classList.remove('is-open');
         gsap.set(menuLinks, { clearProps: 'all' });
         menuOpen = false;
-        lenis.start();
+        if (lenis) lenis.start();
       }
     });
   }
@@ -274,65 +279,6 @@ import '../css/style.css';
     });
   });
 
-  // ==========================================================================
-  // FEATURED WORK — Card stagger entrance
-  // ==========================================================================
-  gsap.from('.work-list-item', {
-    y: 50, opacity: 0, stagger: 0.15,
-    duration: 0.9, ease: 'power3.out',
-    scrollTrigger: { trigger: '.work-list-wrapper', start: 'top 82%', once: true }
-  });
-
-  // ==========================================================================
-  // CIRCLE CAROUSEL — Scroll-linked rotation + Draggable
-  // ==========================================================================
-  var circleWrapper = document.querySelector('.circle-wrapper');
-  if (circleWrapper) {
-    gsap.from('.circle-item', {
-      scale: 0.8, opacity: 0, stagger: 0.05,
-      duration: 0.6, ease: 'power3.out',
-      scrollTrigger: { trigger: circleWrapper, start: 'top 85%', once: true }
-    });
-
-    // Scroll-linked rotation
-    gsap.to(circleWrapper, {
-      rotation: 120,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.work-cta-main-box',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1
-      }
-    });
-
-    // Draggable rotation with inertia + drag cursor (IX2 a-443/444)
-    var circleCardWrapper = document.querySelector('.circle-card-wrapper');
-    if (typeof Draggable !== 'undefined') {
-      Draggable.create(circleWrapper, {
-        type: 'rotation',
-        inertia: true,
-        cursor: 'grab',
-        activeCursor: 'grabbing',
-        onDragStart: function () {
-          if (circleCardWrapper) circleCardWrapper.classList.add('is-dragging');
-        },
-        onDragEnd: function () {
-          if (circleCardWrapper) circleCardWrapper.classList.remove('is-dragging');
-        }
-      });
-    }
-  }
-
-  // "Explore our thinking" — scale entrance
-  var ctaLoader = document.querySelector('.work-cta-heading-loader');
-  if (ctaLoader) {
-    gsap.from(ctaLoader, {
-      scale: 0, opacity: 0,
-      duration: 1.2, ease: 'power3.out',
-      scrollTrigger: { trigger: ctaLoader, start: 'top 85%', once: true }
-    });
-  }
 
   // ==========================================================================
   // SERVICES — Desktop: stacking cards with scale + rotate + blur (IX2 a-475)
@@ -634,26 +580,6 @@ import '../css/style.css';
     });
   });
 
-  // ==========================================================================
-  // WORK CARDS — Hover image zoom + overlay (GSAP for smoothness)
-  // ==========================================================================
-  document.querySelectorAll('.work-card').forEach(function (card) {
-    var img = card.querySelector('.cover-image');
-    var layer = card.querySelector('.image-layer');
-    var textFrame = card.querySelector('.work-card-text-frame');
-
-    card.addEventListener('mouseenter', function () {
-      if (img) gsap.to(img, { scale: 1.05, duration: 0.6, ease: 'power2.out' });
-      if (layer) gsap.to(layer, { opacity: 0.6, duration: 0.4, ease: 'power2.out' });
-      if (textFrame) gsap.to(textFrame, { y: 0, duration: 0.4, ease: 'power2.out' });
-    });
-
-    card.addEventListener('mouseleave', function () {
-      if (img) gsap.to(img, { scale: 1, duration: 0.5, ease: 'power2.out' });
-      if (layer) gsap.to(layer, { opacity: 0, duration: 0.3, ease: 'power2.out' });
-      if (textFrame) gsap.to(textFrame, { y: 8, duration: 0.3, ease: 'power2.out' });
-    });
-  });
 
   // ==========================================================================
   // HERO — Parallax on scroll
