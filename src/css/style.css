@@ -181,10 +181,19 @@ html.lenis, html.lenis body { height: auto; }
    Webflow CSS hides these with display:none or opacity:0.
    IX2 animates them in; without IX2 we override to show them.
    ========================================================================== */
-.home-hero-card-item { display: flex !important; opacity: 1; }
-.home-hero-card-item.item-01,
-.home-hero-card-item.item-04,
-.home-hero-card-item.item-05 { display: flex !important; }
+/* Hero cards: force visible on desktop (IX2 would show them).
+   On mobile/tablet, let Webflow responsive CSS hide specific cards. */
+@media screen and (min-width: 768px) {
+  .home-hero-card-item { display: flex !important; opacity: 1; }
+  .home-hero-card-item.item-01,
+  .home-hero-card-item.item-04,
+  .home-hero-card-item.item-05 { display: flex !important; }
+}
+@media screen and (max-width: 767px) {
+  .home-hero-card-item { opacity: 1; }
+  .home-hero-card-item.item-02 { display: flex !important; }
+  .home-hero-card-item.item-03 { display: flex !important; }
+}
 .circle-image-wrapper { opacity: 1; }
 .work-cta-heading-loader { transform: scale(1); }
 .nav-content-wrapper { display: flex !important; pointer-events: auto; }

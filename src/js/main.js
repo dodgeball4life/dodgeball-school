@@ -102,11 +102,13 @@ import '../css/style.css';
 
   // ==========================================================================
   // HERO — Card fan entrance with resting rotations (IX2 a-457 rest state)
+  // Desktop only — on mobile, Webflow CSS hides cards and stacks remaining.
   // ==========================================================================
   var heroCards = document.querySelectorAll('.home-hero-card-item');
   var heroRestRotations = [-9, 6.5, -5.5, 5, -4.5];
+  var isDesktop = window.matchMedia('(min-width: 768px)').matches;
 
-  if (heroCards.length === 5) {
+  if (isDesktop && heroCards.length === 5) {
     // Set initial hidden state
     gsap.set(heroCards, { y: 120, opacity: 0, scale: 0.85, rotation: 0 });
 
@@ -118,19 +120,24 @@ import '../css/style.css';
       duration: 1.2, ease: 'power3.out'
     }, 0.5);
   } else if (heroCards.length > 0) {
-    heroTl.from(heroCards, {
-      y: 120, opacity: 0, scale: 0.85,
-      stagger: { each: 0.1, from: 'center' },
-      duration: 1.2, ease: 'power3.out'
-    }, 0.5);
+    // Mobile/tablet: simple fade-in, no fan rotation
+    var visibleCards = Array.from(heroCards).filter(function (c) {
+      return getComputedStyle(c).display !== 'none';
+    });
+    if (visibleCards.length > 0) {
+      heroTl.from(visibleCards, {
+        y: 60, opacity: 0,
+        stagger: { each: 0.1, from: 'center' },
+        duration: 1, ease: 'power3.out'
+      }, 0.5);
+    }
   }
 
   // ==========================================================================
   // HERO — Card hover spread (IX2 a-449 through a-454)
-  // When one card is hovered, all cards spread apart. Nearest neighbor
-  // is pushed furthest (66%), decreasing with distance.
+  // Desktop only — no hover spread on touch devices.
   // ==========================================================================
-  if (heroCards.length === 5) {
+  if (isDesktop && heroCards.length === 5) {
     var heroHoverSpreads = [
       [0, 66, 33, 22, 16.5],
       [-66, 0, 66, 33, 22],
@@ -350,53 +357,57 @@ import '../css/style.css';
   // ==========================================================================
   var testimonialItems = document.querySelectorAll('.testimonial-list-item');
   var testimonialRestRotations = [-9, -4.5, 5, -5.5, 6.5];
+  var testimonialMobileRotations = [-5, -3, 3, -3, 3];
   var testimonialList = document.querySelector('.testimonial-list');
+  var testimonialRotations = isDesktop ? testimonialRestRotations : testimonialMobileRotations;
 
   if (testimonialItems.length === 5) {
     // Set initial hidden state with rotation:0, animate to resting rotations
     gsap.set(testimonialItems, { y: 40, opacity: 0, rotation: 0 });
     gsap.to(testimonialItems, {
       y: 0, opacity: 1,
-      rotation: function (i) { return testimonialRestRotations[i]; },
+      rotation: function (i) { return testimonialRotations[i]; },
       stagger: 0.1,
       duration: 0.8, ease: 'power3.out',
       scrollTrigger: { trigger: '.testimonial-list', start: 'top 85%', once: true }
     });
 
-    // Hover spread — same pattern as hero cards
-    var testimonialHoverSpreads = [
-      [0, 66, 33, 22, 16.5],
-      [-66, 0, 66, 33, 22],
-      [-33, -66, 0, 66, 33],
-      [-22, -33, -66, 0, 66],
-      [-16.5, -22, -33, -66, 0]
-    ];
+    // Hover spread — desktop only (no hover on touch devices)
+    if (isDesktop) {
+      var testimonialHoverSpreads = [
+        [0, 66, 33, 22, 16.5],
+        [-66, 0, 66, 33, 22],
+        [-33, -66, 0, 66, 33],
+        [-22, -33, -66, 0, 66],
+        [-16.5, -22, -33, -66, 0]
+      ];
 
-    testimonialItems.forEach(function (item, hoveredIdx) {
-      item.addEventListener('mouseenter', function () {
-        testimonialItems.forEach(function (otherItem, j) {
-          gsap.to(otherItem, {
-            xPercent: testimonialHoverSpreads[hoveredIdx][j],
-            rotation: 0,
-            scale: (j === hoveredIdx) ? 1.05 : 1,
-            duration: 0.5, ease: 'power2.out',
-            overwrite: 'auto'
+      testimonialItems.forEach(function (item, hoveredIdx) {
+        item.addEventListener('mouseenter', function () {
+          testimonialItems.forEach(function (otherItem, j) {
+            gsap.to(otherItem, {
+              xPercent: testimonialHoverSpreads[hoveredIdx][j],
+              rotation: 0,
+              scale: (j === hoveredIdx) ? 1.05 : 1,
+              duration: 0.5, ease: 'power2.out',
+              overwrite: 'auto'
+            });
           });
         });
       });
-    });
 
-    if (testimonialList) {
-      testimonialList.addEventListener('mouseleave', function () {
-        testimonialItems.forEach(function (item, i) {
-          gsap.to(item, {
-            xPercent: 0, scale: 1,
-            rotation: testimonialRestRotations[i],
-            duration: 0.5, ease: 'power2.out',
-            overwrite: 'auto'
+      if (testimonialList) {
+        testimonialList.addEventListener('mouseleave', function () {
+          testimonialItems.forEach(function (item, i) {
+            gsap.to(item, {
+              xPercent: 0, scale: 1,
+              rotation: testimonialRotations[i],
+              duration: 0.5, ease: 'power2.out',
+              overwrite: 'auto'
+            });
           });
         });
-      });
+      }
     }
   } else if (testimonialItems.length > 0) {
     gsap.from(testimonialItems, {
@@ -406,8 +417,9 @@ import '../css/style.css';
     });
   }
 
-  // Make testimonial list draggable horizontally
-  if (testimonialList && typeof Draggable !== 'undefined') {
+  // Make testimonial list draggable — desktop only.
+  // On mobile, native overflow:auto scroll handles horizontal swiping.
+  if (isDesktop && testimonialList && typeof Draggable !== 'undefined') {
     Draggable.create(testimonialList, {
       type: 'x',
       inertia: true,
