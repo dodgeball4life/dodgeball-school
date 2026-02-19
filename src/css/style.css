@@ -1117,3 +1117,209 @@ html.lenis, html.lenis body { height: auto; }
   .sf-legal { gap: 1rem; }
 }
 
+/* ==========================================================================
+   AANBOD DETAIL PAGES
+   ========================================================================== */
+.aanbod-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 5rem;
+  background: #f2f0e9;
+}
+
+/* Intro */
+.aanbod-intro {
+  padding: 1rem 2rem 0;
+  flex-shrink: 0;
+}
+.aanbod-intro-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.aanbod-back {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgba(26, 28, 24, 0.45);
+  text-decoration: none;
+  padding: 0.4em 1em;
+  border: 1px solid rgba(26, 28, 24, 0.12);
+  border-radius: 100px;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.aanbod-back:hover {
+  color: #E63221;
+  border-color: rgba(230, 50, 33, 0.3);
+}
+.aanbod-intro-title {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #1a1c18;
+}
+.aanbod-intro-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: rgba(26, 28, 24, 0.5);
+  width: 100%;
+  max-width: 36rem;
+}
+.aanbod-section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 2.5rem;
+  color: #1a1c18;
+}
+.aanbod-cta {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: #E63221;
+  color: #fff;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.aanbod-cta:hover { background: #cc2a1b; }
+
+/* FAQ — Canvasly card-style accordion */
+.aanbod-faq {
+  padding: 0 2rem 2rem;
+  max-height: 70vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+}
+.aanbod-faq-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.aanbod-faq .aanbod-section-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  flex-shrink: 0;
+}
+.aanbod-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-y: auto;
+  flex: 1;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.aanbod-faq-list::-webkit-scrollbar {
+  display: none;
+}
+.ds-faq {
+  background: #fff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+.ds-faq-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75em;
+  height: 5.5em;
+  padding: 0 2em;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.ds-faq-question {
+  font-size: 1.5em;
+  font-weight: 600;
+  line-height: 1;
+  color: #1a1c18;
+  white-space: pre-wrap;
+  width: 85%;
+  max-width: 85%;
+}
+.ds-faq-icon {
+  position: relative;
+  width: 1.4em;
+  height: 1.4em;
+  flex-shrink: 0;
+}
+.ds-faq-icon span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: #1a1c18;
+  border-radius: 1px;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+}
+.ds-faq-icon span:last-child {
+  transform: translateY(-50%) rotate(90deg);
+}
+.ds-faq.is-open .ds-faq-icon span:last-child {
+  transform: translateY(-50%) rotate(0deg);
+}
+.ds-faq-body {
+  height: 0;
+  overflow: hidden;
+}
+.ds-faq-answer {
+  padding: 0.5em 2em 2em;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: rgba(26, 28, 24, 0.55);
+}
+
+/* CTA banner */
+.aanbod-cta-section {
+  padding: 5rem 2rem;
+  text-align: center;
+  background: #1a1c18;
+  color: #f2f0e9;
+}
+.aanbod-cta-inner {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+.aanbod-cta-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+  color: #f2f0e9;
+}
+.aanbod-cta-text {
+  color: rgba(242, 240, 233, 0.6);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+.aanbod-cta-section .aanbod-cta {
+  background: #E63221;
+  color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .aanbod-page { padding-top: 4rem; }
+  .aanbod-intro { padding: 0.75rem 1.25rem 0; }
+  .aanbod-intro-inner { flex-direction: column; gap: 0.75rem; }
+  .aanbod-intro-text { font-size: 0.875rem; }
+  .aanbod-faq { padding: 1rem 1.25rem 1rem; }
+}
+
