@@ -25,28 +25,7 @@ import '../css/style.css';
   gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
   gsap.ticker.lagSmoothing(0);
 
-  // ==========================================================================
-  // HEADER — Hide on scroll down, show on scroll up
-  // ==========================================================================
-  var header = document.querySelector('.header');
-  var headerContent = header ? header.querySelector('.header-content') : null;
-  var lastScrollY = 0;
-  var scrollThreshold = 200;
-
-  lenis.on('scroll', function (data) {
-    if (!headerContent) return;
-    var currentY = data.scroll;
-    if (currentY > scrollThreshold) {
-      if (currentY > lastScrollY) {
-        headerContent.style.transform = 'translateY(-100%)';
-      } else {
-        headerContent.style.transform = 'translateY(0)';
-      }
-    } else {
-      headerContent.style.transform = '';
-    }
-    lastScrollY = currentY;
-  });
+  // Header stays fixed/visible — original Canvasly has no scroll hide/show
 
   // ==========================================================================
   // MENU TOGGLE — Smooth GSAP height animation
