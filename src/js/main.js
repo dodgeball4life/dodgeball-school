@@ -476,6 +476,13 @@ import '../css/style.css';
   // ==========================================================================
   var pageWrapper = document.querySelector('.page-wrapper');
   var footer = document.querySelector('.footer');
+  var headerEl = document.querySelector('.header');
+  var menuBtn = document.querySelector('.menu-button');
+  var navLogo = document.querySelector('.nav-brand-logo');
+  var navCompany = document.querySelector('.nav-company-box');
+  var navLinks = document.querySelectorAll('.header-nav-link');
+  var navIconBoxes = document.querySelectorAll('.header-nav-icon-box');
+  var navTextBoxes = document.querySelectorAll('.header-nav-text-box');
   if (pageWrapper && footer) {
     ScrollTrigger.create({
       trigger: footer,
@@ -488,12 +495,39 @@ import '../css/style.css';
         var r = Math.round(242 - p * (242 - 26));
         var g = Math.round(240 - p * (240 - 28));
         var b = Math.round(233 - p * (233 - 24));
-        pageWrapper.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        var bgColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        pageWrapper.style.backgroundColor = bgColor;
         // Interpolate text color: coco's-black (#1a1c18) → cotton-field (#f2f0e9)
         var tr = Math.round(26 + p * (242 - 26));
         var tg = Math.round(28 + p * (240 - 28));
         var tb = Math.round(24 + p * (233 - 24));
-        pageWrapper.style.color = 'rgb(' + tr + ',' + tg + ',' + tb + ')';
+        var textColor = 'rgb(' + tr + ',' + tg + ',' + tb + ')';
+        pageWrapper.style.color = textColor;
+        // Header color (inherited by some children)
+        if (headerEl) {
+          headerEl.style.color = textColor;
+        }
+        // Menu button: invert bg/text
+        if (menuBtn) {
+          menuBtn.style.backgroundColor = textColor;
+          menuBtn.style.color = bgColor;
+        }
+        // Logo: img tag → brighten on dark bg
+        if (navLogo) {
+          navLogo.style.filter = 'brightness(' + (1 + p * 9) + ')';
+        }
+        // "Canvasly creative" company text
+        if (navCompany) {
+          navCompany.style.color = textColor;
+        }
+        // Sidebar nav: links have own color via CSS var, override directly
+        navLinks.forEach(function (link) {
+          link.style.color = textColor;
+        });
+        // Sidebar nav icon + text boxes: bg → subtle light on dark
+        var boxBg = 'rgba(' + tr + ',' + tg + ',' + tb + ',' + (0.08 + p * 0.04) + ')';
+        navIconBoxes.forEach(function (box) { box.style.backgroundColor = boxBg; });
+        navTextBoxes.forEach(function (box) { box.style.backgroundColor = boxBg; });
       }
     });
   }
