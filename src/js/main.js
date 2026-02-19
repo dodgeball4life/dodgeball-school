@@ -445,8 +445,8 @@ import '../css/style.css';
   if (pageWrapper && footer) {
     ScrollTrigger.create({
       trigger: footer,
-      start: 'top 80%',
-      end: 'top 20%',
+      start: 'top 95%',
+      end: 'top 60%',
       scrub: true,
       onUpdate: function (self) {
         var p = self.progress;
@@ -489,32 +489,31 @@ import '../css/style.css';
   if (lightsWrapper && lightsMaskSecondary) {
     var footerCursorActive = false;
 
-    lightsWrapper.addEventListener('mouseenter', function () {
+    function activateFlashlight() {
       if (!footerCursorActive) {
         footerCursorActive = true;
         gsap.to(lightsMaskSecondary, { opacity: 1, duration: 0.4, ease: 'power2.out' });
         if (lightsCursor) gsap.to(lightsCursor, { opacity: 0.66, duration: 0.4, ease: 'power2.out' });
       }
-    });
+    }
 
-    lightsWrapper.addEventListener('mouseleave', function () {
+    function deactivateFlashlight() {
       footerCursorActive = false;
       gsap.to(lightsMaskSecondary, { opacity: 0, duration: 0.4, ease: 'power2.out' });
       if (lightsCursor) gsap.to(lightsCursor, { opacity: 0, duration: 0.4, ease: 'power2.out' });
-    });
+    }
 
-    lightsWrapper.addEventListener('mousemove', function (e) {
+    function updateFlashlight(clientX, clientY) {
       var rect = lightsWrapper.getBoundingClientRect();
-      var x = ((e.clientX - rect.left) / rect.width) * 100;
-      var y = ((e.clientY - rect.top) / rect.height) * 100;
+      var x = ((clientX - rect.left) / rect.width) * 100;
+      var y = ((clientY - rect.top) / rect.height) * 100;
 
       lightsMaskSecondary.style.setProperty('--layout--footer-cursor-x', x + '%');
       lightsMaskSecondary.style.setProperty('--layout--footer-cursor-y', y + '%');
 
-      // Move the golden glow cursor to follow mouse
       if (lightsCursor) {
-        var px = e.clientX - rect.left;
-        var py = e.clientY - rect.top;
+        var px = clientX - rect.left;
+        var py = clientY - rect.top;
         gsap.to(lightsCursor, {
           x: px - rect.width / 2,
           y: py - rect.height / 2,
@@ -522,7 +521,26 @@ import '../css/style.css';
           ease: 'power2.out'
         });
       }
+    }
+
+    // Mouse events (desktop)
+    lightsWrapper.addEventListener('mouseenter', activateFlashlight);
+    lightsWrapper.addEventListener('mouseleave', deactivateFlashlight);
+    lightsWrapper.addEventListener('mousemove', function (e) {
+      updateFlashlight(e.clientX, e.clientY);
     });
+
+    // Touch events (mobile/tablet)
+    lightsWrapper.addEventListener('touchstart', function (e) {
+      activateFlashlight();
+      var touch = e.touches[0];
+      updateFlashlight(touch.clientX, touch.clientY);
+    }, { passive: true });
+    lightsWrapper.addEventListener('touchmove', function (e) {
+      var touch = e.touches[0];
+      updateFlashlight(touch.clientX, touch.clientY);
+    }, { passive: true });
+    lightsWrapper.addEventListener('touchend', deactivateFlashlight);
   }
 
   // ==========================================================================
