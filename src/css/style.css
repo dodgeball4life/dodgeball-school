@@ -72,16 +72,25 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
-   SIDEBAR NAV — Text label reveal on hover (IX2 replacement)
+   SIDEBAR NAV — Text label reveal + icon tilt on hover (IX2 replacement)
    ========================================================================== */
+.header-nav-icon-box {
+  transition: transform 0.4s cubic-bezier(.5,1.5,.5,1);
+}
+.header-nav-link:hover .header-nav-icon-box {
+  transform: translate(-1em, -0.325em) rotate(-8deg);
+}
 .header-nav-text-box {
   display: flex !important;
   opacity: 0;
-  transition: opacity 0.3s cubic-bezier(.165,.84,.44,1);
+  transform: translateX(-0.5em);
+  transition: opacity 0.3s cubic-bezier(.165,.84,.44,1),
+              transform 0.3s cubic-bezier(.5,1.5,.5,1);
   pointer-events: none;
 }
 .header-nav-link:hover .header-nav-text-box {
   opacity: 1;
+  transform: translateX(0);
   pointer-events: auto;
 }
 
