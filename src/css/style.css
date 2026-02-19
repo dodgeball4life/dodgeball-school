@@ -18,17 +18,9 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
-   MENU OVERLAY — toggle via JS class
+   MENU OVERLAY — GSAP animates height/opacity directly via gsap.set()
    Webflow CSS sets .menu { height: 0; overflow: hidden; }
-   IX2 would animate height. We toggle height + opacity via class.
    ========================================================================== */
-.menu {
-  transition: opacity 0.4s ease, height 0s;
-}
-.menu.is-open {
-  height: 100% !important;
-  opacity: 1 !important;
-}
 .menu-button .button-text.close { display: none; }
 .menu-button.is-open .button-text.open { display: none; }
 .menu-button.is-open .button-text.close { display: block; }
@@ -46,8 +38,14 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
-   CTA CIRCLE — spinning + hover arrow swap
+   CTA CIRCLE — Fix dimensions + spinning + hover arrow swap
+   Webflow CSS sets width:6.5em + aspect-ratio:1, but in the flex column
+   container the height collapses. Force explicit height + prevent shrink.
    ========================================================================== */
+.header-cta-circle {
+  height: 6.5em;
+  flex-shrink: 0;
+}
 .header-cta-circle-image {
   animation: spin 12s linear infinite;
 }
@@ -77,6 +75,7 @@ html.lenis, html.lenis body { height: auto; }
    SIDEBAR NAV — Text label reveal on hover (IX2 replacement)
    ========================================================================== */
 .header-nav-text-box {
+  display: flex !important;
   opacity: 0;
   transition: opacity 0.3s cubic-bezier(.165,.84,.44,1);
   pointer-events: none;
@@ -138,11 +137,8 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
-   CIRCLE CAROUSEL — rotation container
+   CIRCLE CAROUSEL — GSAP + Draggable handle rotation directly
    ========================================================================== */
-.circle-wrapper {
-  transition: transform 0.1s linear;
-}
 
 /* ==========================================================================
    ABOUT BIG TEXT — Fading chars initial state
@@ -155,11 +151,41 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
-   VISIBILITY FIXES — Elements that IX2 would normally show
+   SECTION HEADINGS — Overflow clip for skew reveal animation
    ========================================================================== */
-.home-hero-card-item { opacity: 1; }
+.section-header-heading-box {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   CIRCLE CAROUSEL — Grab cursor
+   ========================================================================== */
+.circle-card-wrapper {
+  cursor: grab;
+}
+.circle-card-wrapper.is-dragging {
+  cursor: grabbing;
+}
+
+/* ==========================================================================
+   VISIBILITY FIXES — Elements that IX2 would normally show
+   Webflow CSS hides these with display:none or opacity:0.
+   IX2 animates them in; without IX2 we override to show them.
+   ========================================================================== */
+.home-hero-card-item { display: flex !important; opacity: 1; }
+.home-hero-card-item.item-01,
+.home-hero-card-item.item-04,
+.home-hero-card-item.item-05 { display: flex !important; }
 .circle-image-wrapper { opacity: 1; }
 .work-cta-heading-loader { transform: scale(1); }
+.nav-content-wrapper { display: flex !important; pointer-events: auto; }
+.nav-company-box { display: flex !important; pointer-events: auto; }
+@media screen and (max-width: 767px) {
+  .nav-content-wrapper { display: none !important; }
+  .nav-company-box { display: none !important; }
+}
+.about-image-item-box.item-01 { display: block !important; }
+.service-card-rich { display: block !important; }
 
 /* ==========================================================================
    SERVICE CARDS — Hover image frame tilt
@@ -172,13 +198,25 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
-   FOOTER — Dark theme override
-   On the original, Webflow IX2 transitions page-wrapper bg/color when
-   the footer scrolls into view. We replicate with a local override.
+   FOOTER — Flashlight / torch cursor effect
+   Webflow CSS hides these with display:none — IX2 would show them.
+   We override to enable the radial-gradient mask flashlight.
+   ========================================================================== */
+.lights-masking.is-secondary {
+  display: flex !important;
+}
+.lights-cursor-wrapper {
+  display: flex !important;
+}
+
+/* ==========================================================================
+   FOOTER — Dark theme
+   JS ScrollTrigger transitions page-wrapper bg/color when footer enters
+   viewport (IX2 replacement). Footer itself is transparent to inherit.
+   Element-specific colors below ensure visibility on the dark bg.
    ========================================================================== */
 .footer {
-  background-color: #1a1c18;
-  color: #f2f0e9;
+  background-color: transparent;
 }
 .footer .footer-social-link {
   background-color: rgba(242, 240, 233, 0.12);

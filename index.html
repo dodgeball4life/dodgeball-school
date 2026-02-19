@@ -24,8 +24,7 @@
   <!-- Favicon -->
   <link href="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697f4f1ab8af4935542103f5_Favicon.png" rel="shortcut icon" type="image/x-icon"/>
 
-  <!-- Our minimal overrides -->
-  <link rel="stylesheet" href="/src/css/style.css"/>
+  <!-- Our overrides are imported via main.js (Vite handles CSS imports) -->
 </head>
 <body>
 <div class="page-wrapper">
@@ -37,7 +36,7 @@
   <div class="header-content">
     <div class="header-content-left">
       <div class="nav-brand-box">
-        <a href="/" class="nav-brand w-inline-block">
+        <a href="/" aria-current="page" class="nav-brand w-inline-block w--current">
           <img src="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697ba563050d0ce6bd2bca61_Background.svg" loading="lazy" alt="Company Logo" class="nav-brand-logo"/>
         </a>
       </div>
@@ -85,7 +84,7 @@
           </a>
         </nav>
       </div>
-      <a href="/" class="nav-company-box w-inline-block">
+      <a href="/" aria-current="page" class="nav-company-box w-inline-block w--current">
         <div class="nav-company-name">Canvasly</div>
         <div class="nav-company-country">creative</div>
       </a>
@@ -116,39 +115,39 @@
         </div>
       </a>
     </div>
+  </div>
 
-    <!-- MENU OVERLAY -->
-    <div class="menu" id="menuOverlay">
-      <div class="menu-content">
-        <a href="/" class="menu-link w-inline-block">
-          <div class="menu-link-num-box"><div class="menu-link-num">01</div></div>
-          <div class="menu-link-text-box"><div class="menu-link-text">Home</div></div>
-        </a>
-        <a href="/about" class="menu-link w-inline-block">
-          <div class="menu-link-num-box"><div class="menu-link-num">02</div></div>
-          <div class="menu-link-text-box"><div class="menu-link-text">About</div></div>
-        </a>
-        <a href="/works" class="menu-link w-inline-block">
-          <div class="menu-link-num-box"><div class="menu-link-num">03</div></div>
-          <div class="menu-link-text-box"><div class="menu-link-text">works</div></div>
-        </a>
-        <a href="/contact" class="menu-link w-inline-block">
-          <div class="menu-link-num-box"><div class="menu-link-num">04</div></div>
-          <div class="menu-link-text-box"><div class="menu-link-text">contact</div></div>
-        </a>
-        <a href="/services" class="menu-link w-inline-block">
-          <div class="menu-link-num-box"><div class="menu-link-num">05</div></div>
-          <div class="menu-link-text-box"><div class="menu-link-text">services</div></div>
-        </a>
-        <a href="/pricing" class="menu-link w-inline-block">
-          <div class="menu-link-num-box"><div class="menu-link-num">06</div></div>
-          <div class="menu-link-text-box"><div class="menu-link-text">pricing</div></div>
-        </a>
-        <a href="/blog" class="menu-link w-inline-block">
-          <div class="menu-link-num-box"><div class="menu-link-num">07</div></div>
-          <div class="menu-link-text-box"><div class="menu-link-text">blog</div></div>
-        </a>
-      </div>
+  <!-- MENU OVERLAY -->
+  <div class="menu" id="menuOverlay">
+    <div class="menu-content">
+      <a href="/" class="menu-link w-inline-block">
+        <div class="menu-link-num-box"><div class="menu-link-num">01</div></div>
+        <div class="menu-link-text-box"><div class="menu-link-text">Home</div></div>
+      </a>
+      <a href="/about" class="menu-link w-inline-block">
+        <div class="menu-link-num-box"><div class="menu-link-num">02</div></div>
+        <div class="menu-link-text-box"><div class="menu-link-text">About</div></div>
+      </a>
+      <a href="/works" class="menu-link w-inline-block">
+        <div class="menu-link-num-box"><div class="menu-link-num">03</div></div>
+        <div class="menu-link-text-box"><div class="menu-link-text">works</div></div>
+      </a>
+      <a href="/contact" class="menu-link w-inline-block">
+        <div class="menu-link-num-box"><div class="menu-link-num">04</div></div>
+        <div class="menu-link-text-box"><div class="menu-link-text">contact</div></div>
+      </a>
+      <a href="/services" class="menu-link w-inline-block">
+        <div class="menu-link-num-box"><div class="menu-link-num">05</div></div>
+        <div class="menu-link-text-box"><div class="menu-link-text">services</div></div>
+      </a>
+      <a href="/pricing" class="menu-link w-inline-block">
+        <div class="menu-link-num-box"><div class="menu-link-num">06</div></div>
+        <div class="menu-link-text-box"><div class="menu-link-text">pricing</div></div>
+      </a>
+      <a href="/blog" class="menu-link w-inline-block">
+        <div class="menu-link-num-box"><div class="menu-link-num">07</div></div>
+        <div class="menu-link-text-box"><div class="menu-link-text">blog</div></div>
+      </a>
     </div>
   </div>
 </header>
@@ -868,7 +867,7 @@
           <a href="#" class="nav-link w-inline-block"><div class="nav-link-text">Style Guide</div><div class="nav-link-line"></div></a>
           <a href="#" class="nav-link w-inline-block"><div class="nav-link-text">Change log</div><div class="nav-link-line"></div></a>
         </div>
-        <div class="footer-signature-text">&copy; 2025 Canvasly. Powered by Webflow.</div>
+        <div class="footer-signature-text">&copy; 2025 Canvasly. Powered by <a href="https://webflow.com" class="footer-signature-link">Webflow</a>.</div>
       </div>
     </div>
     <div class="lights-masking">
@@ -909,10 +908,13 @@
 <!-- Vendor Scripts -->
 <script src="https://cdn.prod.website-files.com/gsap/3.14.2/gsap.min.js"></script>
 <script src="https://cdn.prod.website-files.com/gsap/3.14.2/ScrollTrigger.min.js"></script>
+<script src="https://cdn.prod.website-files.com/gsap/3.14.2/Draggable.min.js"></script>
+<script src="https://cdn.prod.website-files.com/gsap/3.14.2/InertiaPlugin.min.js"></script>
 <script src="https://cdn.prod.website-files.com/gsap/3.14.2/SplitText.min.js"></script>
 <script src="https://unpkg.com/lenis@1.3.15/dist/lenis.min.js"></script>
 
 <!-- Main Script -->
 <script type="module" src="/src/js/main.js"></script>
+
 </body>
 </html>
