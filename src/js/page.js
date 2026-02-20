@@ -5,6 +5,24 @@
 
 import '../css/style.css';
 
+// ==========================================================================
+// LOADER — fade out and reveal page once CSS + JS are ready
+// ==========================================================================
+(function () {
+  var loader = document.getElementById('loader');
+  if (loader) {
+    var pw = document.querySelector('.page-wrapper');
+    setTimeout(function () {
+      if (pw) pw.style.opacity = '1';
+      loader.style.opacity = '0';
+      setTimeout(function () { loader.remove(); }, 400);
+    }, 1000);
+  } else {
+    var pw = document.querySelector('.page-wrapper');
+    if (pw) pw.style.opacity = '1';
+  }
+})();
+
 (function () {
   'use strict';
 
@@ -51,8 +69,12 @@ import '../css/style.css';
   // ==========================================================================
   // MENU LINK — Skew hover
   // ==========================================================================
-  document.querySelectorAll('.menu-link').forEach(function (link) {
+  var allMenuLinks = document.querySelectorAll('.menu-link');
+  allMenuLinks.forEach(function (link) {
     link.addEventListener('mouseenter', function () {
+      allMenuLinks.forEach(function (other) {
+        if (other !== link) gsap.set(other, { skewX: 0 });
+      });
       gsap.to(link, { skewX: -18, duration: 0.4, ease: 'power2.out' });
     });
     link.addEventListener('mouseleave', function () {

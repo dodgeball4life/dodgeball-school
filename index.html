@@ -30,8 +30,20 @@
   <link href="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697f4f1ab8af4935542103f5_Favicon.png" rel="shortcut icon" type="image/x-icon"/>
 
   <!-- Our overrides are imported via main.js (Vite handles CSS imports) -->
+  <style>
+    .page-wrapper{opacity:0}
+    #loader{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#F0EEE7;transition:opacity .4s ease}
+    #loader img{width:clamp(180px,35vw,320px);margin-bottom:2.5rem}
+    #loader-track{width:clamp(100px,18vw,180px);height:2px;background:rgba(20,20,20,.1);border-radius:2px;overflow:hidden}
+    #loader-bar{width:0;height:100%;background:#141414;border-radius:2px;animation:loaderFill 1s ease-in-out forwards}
+    @keyframes loaderFill{0%{width:0}60%{width:65%}100%{width:100%}}
+  </style>
 </head>
 <body>
+<div id="loader">
+  <img src="/assets/img/dodgeballschool.svg" alt="Dodgeball School">
+  <div id="loader-track"><div id="loader-bar"></div></div>
+</div>
 <div class="page-wrapper">
 
 <!-- ================================================================
@@ -145,6 +157,10 @@
         <div class="menu-link-num-box"><div class="menu-link-num">05</div></div>
         <div class="menu-link-text-box"><div class="menu-link-text">Contact</div></div>
       </a>
+      <div class="menu-footer">
+        <a href="/voorwaarden">Voorwaarden</a>
+        <a href="/privacy">Privacy</a>
+      </div>
     </div>
   </div>
 </header>
@@ -281,25 +297,7 @@
                 </div>
               </div>
               <div class="section-header-button-box">
-                <a href="#aanbod" class="p-button w-inline-block">
-                  <div class="p-button-arrow-box is-left">
-                    <div class="p-button-arrow-box-bg is-left"></div>
-                    <div class="p-button-arrow-wrapper">
-                      <div class="p-button-arrow is-left w-embed">
-                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="p-button-center-box"><div>Bekijk ons aanbod</div></div>
-                  <div class="p-button-arrow-box is-right">
-                    <div class="p-button-arrow-box-bg is-right"></div>
-                    <div class="p-button-arrow-wrapper">
-                      <div class="p-button-arrow is-right w-embed">
-                        <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <a href="#aanbod" class="ds-btn">Bekijk ons aanbod <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
               </div>
             </div>
           </div>
@@ -352,11 +350,7 @@
                                 </div>
                               </div>
                               <div class="service-card-text-box-body">
-                                <a href="/aanbod/basisscholen/" class="p-button w-inline-block">
-                                  <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
-                                  <div class="p-button-center-box"><div>Bekijk details</div></div>
-                                  <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
-                                </a>
+                                <a href="/aanbod/basisscholen/" class="ds-btn">Bekijk details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                               </div>
                             </div>
                             <div class="service-card-image-box">
@@ -397,11 +391,7 @@
                                 </div>
                               </div>
                               <div class="service-card-text-box-body">
-                                <a href="/aanbod/middelbare-scholen/" class="p-button w-inline-block">
-                                  <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
-                                  <div class="p-button-center-box"><div>Bekijk details</div></div>
-                                  <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
-                                </a>
+                                <a href="/aanbod/middelbare-scholen/" class="ds-btn">Bekijk details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                               </div>
                             </div>
                             <div class="service-card-image-box">
@@ -442,11 +432,7 @@
                                 </div>
                               </div>
                               <div class="service-card-text-box-body">
-                                <a href="/aanbod/bso/" class="p-button w-inline-block">
-                                  <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
-                                  <div class="p-button-center-box"><div>Bekijk details</div></div>
-                                  <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
-                                </a>
+                                <a href="/aanbod/bso/" class="ds-btn">Bekijk details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                               </div>
                             </div>
                             <div class="service-card-image-box">
@@ -487,11 +473,7 @@
                                 </div>
                               </div>
                               <div class="service-card-text-box-body">
-                                <a href="/aanbod/gemeente-buurtsport/" class="p-button w-inline-block">
-                                  <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
-                                  <div class="p-button-center-box"><div>Bekijk details</div></div>
-                                  <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
-                                </a>
+                                <a href="/aanbod/gemeente-buurtsport/" class="ds-btn">Bekijk details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                               </div>
                             </div>
                             <div class="service-card-image-box">
@@ -532,11 +514,7 @@
                                 </div>
                               </div>
                               <div class="service-card-text-box-body">
-                                <a href="/aanbod/sportdagen-evenementen/" class="p-button w-inline-block">
-                                  <div class="p-button-arrow-box is-left"><div class="p-button-arrow-box-bg is-left"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-left w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
-                                  <div class="p-button-center-box"><div>Bekijk details</div></div>
-                                  <div class="p-button-arrow-box is-right"><div class="p-button-arrow-box-bg is-right"></div><div class="p-button-arrow-wrapper"><div class="p-button-arrow is-right w-embed"><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g transform="translate(-364,-6399)" fill="currentColor"><path d="M375.128,6399.293 C374.737,6398.902 374.105,6398.902 373.715,6399.293 C373.324,6399.683 373.324,6400.315 373.715,6400.704 L380.149,6407.142 C380.464,6407.457 380.241,6408.002 379.797,6408.002 L365.016,6408.002 C364.465,6408.002 364,6408.441 364,6408.992 L364,6408.996 C364,6409.547 364.465,6409.998 365.016,6409.998 L379.797,6409.998 C380.241,6409.998 380.464,6410.528 380.149,6410.843 L373.684,6417.3 C373.293,6417.689 373.293,6418.319 373.684,6418.709 C374.074,6419.097 374.706,6419.097 375.097,6418.707 L383.415,6410.397 C384.195,6409.617 384.195,6408.352 383.415,6407.572 C383.234,6407.393 374.947,6399.112 375.128,6399.293"/></g></g></svg></div></div></div>
-                                </a>
+                                <a href="/aanbod/sportdagen-evenementen/" class="ds-btn">Bekijk details <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
                               </div>
                             </div>
                             <div class="service-card-image-box">

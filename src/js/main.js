@@ -5,6 +5,25 @@
 
 import '../css/style.css';
 
+// ==========================================================================
+// LOADER — fade out and reveal page once CSS + JS are ready
+// ==========================================================================
+(function () {
+  var loader = document.getElementById('loader');
+  if (loader) {
+    var pw = document.querySelector('.page-wrapper');
+    // Ensure loader bar animation finishes (1s) before fading out
+    setTimeout(function () {
+      if (pw) pw.style.opacity = '1';
+      loader.style.opacity = '0';
+      setTimeout(function () { loader.remove(); }, 400);
+    }, 1000);
+  } else {
+    var pw = document.querySelector('.page-wrapper');
+    if (pw) pw.style.opacity = '1';
+  }
+})();
+
 (function () {
   'use strict';
 
@@ -87,8 +106,13 @@ import '../css/style.css';
   // ==========================================================================
   // MENU LINK — Skew hover (IX2 a-288)
   // ==========================================================================
-  document.querySelectorAll('.menu-link').forEach(function (link) {
+  var allMenuLinks = document.querySelectorAll('.menu-link');
+  allMenuLinks.forEach(function (link) {
     link.addEventListener('mouseenter', function () {
+      // Reset all other links immediately so only hovered one is skewed
+      allMenuLinks.forEach(function (other) {
+        if (other !== link) gsap.set(other, { skewX: 0 });
+      });
       gsap.to(link, { skewX: -18, duration: 0.4, ease: 'power2.out' });
     });
     link.addEventListener('mouseleave', function () {
@@ -358,6 +382,19 @@ import '../css/style.css';
   });
 
   // ==========================================================================
+  // SERVICES — Make entire card clickable (link to aanbod page)
+  // ==========================================================================
+  document.querySelectorAll('.service-card-content').forEach(function (card) {
+    var link = card.querySelector('.ds-btn');
+    if (!link) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('a')) return;
+      window.location.href = link.href;
+    });
+  });
+
+  // ==========================================================================
   // TESTIMONIALS — Cards with resting rotations + hover spread (IX2 a-423-428)
   // Section heading handled by generic skew reveal above.
   // ==========================================================================
@@ -471,16 +508,16 @@ import '../css/style.css';
       scrub: true,
       onUpdate: function (self) {
         var p = self.progress;
-        // Interpolate background: cotton-field (#f2f0e9) → coco's-black (#1a1c18)
-        var r = Math.round(242 - p * (242 - 26));
-        var g = Math.round(240 - p * (240 - 28));
-        var b = Math.round(233 - p * (233 - 24));
+        // Interpolate background: #F0EEE7 → #141414
+        var r = Math.round(240 - p * (240 - 20));
+        var g = Math.round(238 - p * (238 - 20));
+        var b = Math.round(231 - p * (231 - 20));
         var bgColor = 'rgb(' + r + ',' + g + ',' + b + ')';
         pageWrapper.style.backgroundColor = bgColor;
-        // Interpolate text color: coco's-black (#1a1c18) → cotton-field (#f2f0e9)
-        var tr = Math.round(26 + p * (242 - 26));
-        var tg = Math.round(28 + p * (240 - 28));
-        var tb = Math.round(24 + p * (233 - 24));
+        // Interpolate text color: #141414 → #F0EEE7
+        var tr = Math.round(20 + p * (240 - 20));
+        var tg = Math.round(20 + p * (238 - 20));
+        var tb = Math.round(20 + p * (231 - 20));
         var textColor = 'rgb(' + tr + ',' + tg + ',' + tb + ')';
         pageWrapper.style.color = textColor;
         // Header color (inherited by some children)
@@ -492,9 +529,9 @@ import '../css/style.css';
           menuBtn.style.backgroundColor = textColor;
           menuBtn.style.color = bgColor;
         }
-        // Logo: img tag → brighten on dark bg
+        // Logo: img tag → invert on dark bg (brightness doesn't work on pure black)
         if (navLogo) {
-          navLogo.style.filter = 'brightness(' + (1 + p * 9) + ')';
+          navLogo.style.filter = 'invert(' + p + ')';
         }
         // "Canvasly creative" company text
         if (navCompany) {
@@ -614,28 +651,7 @@ import '../css/style.css';
     }
   }
 
-  // ==========================================================================
-  // P-BUTTON — Arrow hover + center text shift (IX2 a-455/456)
-  // ==========================================================================
-  document.querySelectorAll('.p-button').forEach(function (btn) {
-    var leftArrow = btn.querySelector('.p-button-arrow-box.is-left');
-    var rightArrow = btn.querySelector('.p-button-arrow-box.is-right');
-    var centerBox = btn.querySelector('.p-button-center-box');
-
-    if (!leftArrow || !rightArrow) return;
-
-    btn.addEventListener('mouseenter', function () {
-      gsap.to(rightArrow, { opacity: 1, x: 0, duration: 0.35, ease: 'power2.out' });
-      gsap.to(leftArrow, { opacity: 0, x: '-100%', duration: 0.35, ease: 'power2.out' });
-      if (centerBox) gsap.to(centerBox, { x: 4, duration: 0.35, ease: 'power2.out' });
-    });
-
-    btn.addEventListener('mouseleave', function () {
-      gsap.to(rightArrow, { opacity: 0, x: '-100%', duration: 0.3, ease: 'power2.in' });
-      gsap.to(leftArrow, { opacity: 1, x: 0, duration: 0.3, ease: 'power2.in' });
-      if (centerBox) gsap.to(centerBox, { x: 0, duration: 0.3, ease: 'power2.in' });
-    });
-  });
+  // (p-button arrow animation removed — replaced by .ds-btn)
 
 
   // ==========================================================================
