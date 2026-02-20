@@ -344,6 +344,9 @@ import '../css/style.css';
   // ==========================================================================
   var serviceItems = gsap.utils.toArray('.service-list-item');
   serviceItems.forEach(function (item, i) {
+    // Ascending z-index so later cards stack on top of earlier ones
+    if (isDesktop) item.style.zIndex = i + 1;
+
     // Entrance animation (both desktop and mobile)
     gsap.from(item, {
       y: isDesktop ? 60 : 30, opacity: 0,

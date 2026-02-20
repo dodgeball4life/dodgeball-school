@@ -748,8 +748,17 @@ html.lenis, html.lenis body { height: auto; }
 .service-card-content[data-wf--service-card--variant="pink"] .heading-style-h3,
 .service-card-content[data-wf--service-card--variant="pink"] .service-card-num,
 .service-card-content[data-wf--service-card--variant="pink"] .service-card-desc,
-.service-card-content[data-wf--service-card--variant="pink"] .text-size-xlarge {
+.service-card-content[data-wf--service-card--variant="pink"] .text-size-xlarge,
+.service-card-content[data-wf--service-card--variant="pink"] .service-card-rich,
+.service-card-content[data-wf--service-card--variant="pink"] .service-card-rich li {
   color: #F0EEE7 !important;
+}
+.service-card-content[data-wf--service-card--variant="pink"] .ds-btn {
+  background: #F0EEE7;
+  color: #141414;
+}
+.service-card-content[data-wf--service-card--variant="pink"] .ds-btn:hover {
+  background: #D5DF26;
 }
 .service-card-content[data-wf--service-card--variant="blue"] {
   background-color: #E2E8CC !important;
