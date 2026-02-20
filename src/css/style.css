@@ -125,10 +125,66 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
-   SECTION HEADINGS — Overflow clip for skew reveal animation
+   SECTION HEADINGS — No overflow:hidden needed. Animation uses opacity +
+   translateY instead to avoid clipping descenders (g, j, y).
    ========================================================================== */
-.section-header-heading-box {
-  overflow: hidden;
+
+/* Service section — Webflow sets overflow-x:clip on .section which clips
+   rotated/tilted cards. Override globally. Also reduce spacing for smaller NL heading. */
+.section.for-service {
+  overflow: visible !important;
+}
+.section.for-service .padding-section-large {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+.section.for-service .section-main-box {
+  gap: 2.5rem !important;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY — Override Webflow CDN's em-based heading sizes
+   Webflow uses font-size: var(--heading-style-h1) = 5.6em (~80px+) which
+   is designed for short English text. Dutch text is longer, so we reduce
+   sizes globally. !important needed to beat Webflow's var() declarations.
+   ========================================================================== */
+.heading-style-h1 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+}
+.heading-style-h1.hero {
+  font-size: clamp(2.5rem, 5vw, 3.75rem) !important;
+  line-height: 1.1 !important;
+}
+/* Narrow the hero heading container so longer Dutch text wraps to ~3 lines */
+.section-header-text-box.for-hero .max-width-xsmall {
+  max-width: 36rem;
+}
+/* Hero layout — Webflow has padding-top:14em + gap:10em designed for ~80px heading.
+   Reduce spacing and center content for smaller NL heading. */
+.section-main-box.home-hero-main {
+  padding-top: 6rem !important;
+  gap: 3rem !important;
+  justify-content: center !important;
+}
+.section-header-heading-box h2 {
+  font-size: clamp(2rem, 5vw, 3.25rem) !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.03em !important;
+}
+.text-fill-animation-text {
+  font-size: clamp(2rem, 5vw, 2.75rem) !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.03em !important;
+}
+.text-size-large {
+  font-size: clamp(0.9375rem, 2.2vw, 1.125rem) !important;
+  line-height: 1.5 !important;
+}
+.text-size-semi-large {
+  font-size: clamp(0.9375rem, 2.2vw, 1.125rem) !important;
+  line-height: 1.5 !important;
 }
 
 /* ==========================================================================
@@ -210,16 +266,18 @@ html.lenis, html.lenis body { height: auto; }
   }
 
   /* --- Typography: headings --- */
+  /* !important needed to override Webflow CDN's var()-based sizing */
+
   /* Primary headings — .heading-style-h1 (about detail, testimonials) */
   .heading-style-h1 {
-    font-size: clamp(2rem, 5.5vw, 3rem);
-    line-height: 1;
-    letter-spacing: -0.03em;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.03em !important;
   }
   /* Hero heading — bigger, more impact */
   .heading-style-h1.hero {
-    font-size: clamp(2.5rem, 7vw, 4rem);
-    line-height: 1.05;
+    font-size: clamp(2rem, 4.5vw, 3rem) !important;
+    line-height: 1.1 !important;
   }
   /* Section header h2 (services title, other h2s) */
   .section.for-service .section-header {
@@ -231,27 +289,27 @@ html.lenis, html.lenis body { height: auto; }
     margin-right: auto;
   }
   .section-header-heading-box h2 {
-    font-size: clamp(2rem, 5.5vw, 3rem);
-    line-height: 1.1;
-    letter-spacing: -0.03em;
+    font-size: clamp(1.75rem, 4vw, 2.75rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.03em !important;
   }
   /* About big text — should feel impactful, not body-text sized */
   .text-fill-animation-text {
-    font-size: clamp(2.5rem, 7vw, 3.5rem);
-    line-height: 1.15;
-    letter-spacing: -0.03em;
+    font-size: clamp(2rem, 5vw, 2.75rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.03em !important;
     word-break: keep-all;
     overflow-wrap: normal;
   }
 
   /* --- Typography: body text --- */
   .text-size-large {
-    font-size: clamp(0.9375rem, 2.2vw, 1.125rem);
-    line-height: 1.5;
+    font-size: clamp(0.9375rem, 2.2vw, 1.125rem) !important;
+    line-height: 1.5 !important;
   }
   .text-size-semi-large {
-    font-size: clamp(0.9375rem, 2.2vw, 1.125rem);
-    line-height: 1.5;
+    font-size: clamp(0.9375rem, 2.2vw, 1.125rem) !important;
+    line-height: 1.5 !important;
   }
 
   /* --- Overflow: rotated/scrolling cards need visible overflow --- */
@@ -556,7 +614,7 @@ html.lenis, html.lenis body { height: auto; }
   font-weight: 700;
   color: #f2f0e9;
   letter-spacing: -0.03em;
-  line-height: 1;
+  line-height: 1.15;
   margin-bottom: 0.75rem;
 }
 .step-intro-sub {
@@ -1162,7 +1220,7 @@ html.lenis, html.lenis body { height: auto; }
 .aanbod-intro-title {
   font-size: clamp(2rem, 5vw, 2.75rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.2;
   letter-spacing: -0.03em;
   color: #1a1c18;
 }
@@ -1176,6 +1234,7 @@ html.lenis, html.lenis body { height: auto; }
 .aanbod-section-title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
+  line-height: 1.2;
   letter-spacing: -0.03em;
   margin-bottom: 2.5rem;
   color: #1a1c18;
@@ -1246,7 +1305,7 @@ html.lenis, html.lenis body { height: auto; }
 .ds-faq-question {
   font-size: 1.5em;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.2;
   color: #1a1c18;
   white-space: pre-wrap;
   width: 85%;
@@ -1300,6 +1359,7 @@ html.lenis, html.lenis body { height: auto; }
 .aanbod-cta-title {
   font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 700;
+  line-height: 1.2;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
   color: #f2f0e9;

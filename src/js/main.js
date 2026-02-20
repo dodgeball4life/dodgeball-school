@@ -9,6 +9,14 @@ import '../css/style.css';
   'use strict';
 
   // ==========================================================================
+  // SCROLL TO TOP ON LOAD — prevent browser restoring #hash position
+  // ==========================================================================
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname);
+  }
+  window.scrollTo(0, 0);
+
+  // ==========================================================================
   // LENIS SMOOTH SCROLL
   // ==========================================================================
   var isDesktop = window.matchMedia('(min-width: 1200px)').matches;
@@ -216,9 +224,9 @@ import '../css/style.css';
   }, 0.65);
 
   // ==========================================================================
-  // SECTION HEADINGS — Skew reveal on scroll (IX2 a-401/402/412/413/477/478)
-  // Heading text slides up from below with slight skewY.
-  // Container overflow:hidden clips the reveal.
+  // SECTION HEADINGS — Fade-slide reveal on scroll (IX2 a-401/402/412/413/477/478)
+  // Uses opacity + translateY instead of overflow:hidden to avoid clipping
+  // descenders (g, j, y) on Dutch text.
   // ==========================================================================
   gsap.utils.toArray('.section-header-heading-box').forEach(function (box) {
     var heading = box.querySelector('h2, h1');
@@ -226,9 +234,9 @@ import '../css/style.css';
     if (box.closest('.section-header-text-box.for-hero')) return;
     if (box.classList.contains('for-about')) return;
 
-    gsap.set(heading, { yPercent: 100, skewY: 3 });
+    gsap.set(heading, { opacity: 0, yPercent: 40, skewY: 2 });
     gsap.to(heading, {
-      yPercent: 0, skewY: 0,
+      opacity: 1, yPercent: 0, skewY: 0,
       duration: 1, ease: 'power3.out',
       scrollTrigger: { trigger: box, start: 'top 85%', once: true }
     });
