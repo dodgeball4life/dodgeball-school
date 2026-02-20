@@ -47,15 +47,18 @@ html.lenis, html.lenis body { height: auto; }
   pointer-events: auto;
 }
 
-/* Remove Webflow's circular border around the logo and scale to match menu button */
+/* Remove Webflow's circular border around the logo and align with menu button */
 .nav-brand {
   border: none !important;
   border-radius: 0 !important;
   aspect-ratio: auto !important;
   padding: 0 !important;
+  height: 2.5em;
+  display: flex !important;
+  align-items: center;
 }
 .nav-brand-logo {
-  height: 2.2em !important;
+  height: 100% !important;
 }
 
 /* ==========================================================================
@@ -71,10 +74,10 @@ html.lenis, html.lenis body { height: auto; }
   transition: color 0.3s cubic-bezier(.165,.84,.44,1);
 }
 .menu-link:hover .menu-link-text {
-  color: var(--_theme---button--menu-text-hover, #D5DF26);
+  color: #D5DF26 !important;
 }
 .menu-link:hover .menu-link-num {
-  color: var(--_theme---button--menu-text-hover, #D5DF26);
+  color: #D5DF26 !important;
 }
 
 /* Menu footer — small legal links */
@@ -685,8 +688,18 @@ html.lenis, html.lenis body { height: auto; }
   .testimonial-list {
     gap: 0.75rem !important;
     min-width: 0 !important;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* Stars — prevent overflow on small screens */
+  .testimonial-card-star {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .testimonial-card-star-row {
+    flex-wrap: wrap;
+    gap: 2px;
   }
 
   .testimonial-list-item {
@@ -981,6 +994,73 @@ html.lenis, html.lenis body { height: auto; }
 .step-next:hover .step-next-arrow,
 .step-submit:hover .step-next-arrow {
   transform: translateX(3px);
+}
+
+/* Error + disabled states */
+.step-input.is-error {
+  border-color: #E63221;
+}
+.step-input.is-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Custom +/- stepper for "aantal" */
+.step-stepper {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid rgba(240, 238, 231, 0.15);
+}
+.step-stepper-btn {
+  background: none;
+  border: none;
+  color: rgba(240, 238, 231, 0.5);
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-family: inherit;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-stepper-btn:hover {
+  color: #D5DF26;
+}
+.step-stepper-input {
+  border: none !important;
+  text-align: center;
+  width: 3rem;
+  -moz-appearance: textfield;
+  padding: 0.5rem 0;
+}
+.step-stepper-input::-webkit-outer-spin-button,
+.step-stepper-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Checkbox for "Nog niet bekend" */
+.step-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  color: rgba(240, 238, 231, 0.45);
+  font-size: 0.9375rem;
+  transition: color 0.2s;
+}
+.step-checkbox-label:hover {
+  color: rgba(240, 238, 231, 0.7);
+}
+.step-checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: #D5DF26;
+  cursor: pointer;
 }
 
 /* Success state */
@@ -1371,6 +1451,38 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ==========================================================================
+   SWIPE HINT — Subtle indicator below mobile/tablet carousels
+   ========================================================================== */
+.swipe-hint {
+  text-align: center;
+  padding: 0.75rem 0 0;
+  transition: opacity 0.5s;
+}
+.swipe-hint.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.swipe-hint-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.6875rem;
+  color: rgba(20, 20, 20, 0.3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  animation: swipeHintPulse 2s ease-in-out infinite;
+}
+.swipe-hint-chevron {
+  font-size: 0.875rem;
+  line-height: 1;
+}
+@keyframes swipeHintPulse {
+  0%, 100% { opacity: 0.4; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(3px); }
+}
+
+/* ==========================================================================
    AANBOD DETAIL PAGES
    ========================================================================== */
 .aanbod-page {
@@ -1572,8 +1684,67 @@ html.lenis, html.lenis body { height: auto; }
   color: #141414;
 }
 
+/* ==========================================================================
+   LEGAL PAGES — Voorwaarden & Privacy
+   ========================================================================== */
+.legal-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+  background: #F0EEE7;
+}
+.legal-content {
+  flex: 1;
+  padding: 0 2rem 3rem;
+  overflow-y: auto;
+}
+.legal-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  width: 100%;
+}
+.legal-inner h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #141414;
+  margin: 2rem 0 0.75rem;
+  letter-spacing: -0.02em;
+}
+.legal-inner h2:first-child {
+  margin-top: 0;
+}
+.legal-inner p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(20, 20, 20, 0.6);
+  margin-bottom: 0.75rem;
+}
+.legal-inner ul {
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.legal-inner li {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(20, 20, 20, 0.6);
+  margin-bottom: 0.25rem;
+}
+.legal-inner a {
+  color: #141414;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+.legal-inner a:hover {
+  color: #D5DF26;
+}
+
 /* Mobile */
 @media (max-width: 767px) {
+  .legal-page { padding-top: 4rem; }
+  .legal-content { padding: 0 1.25rem 2rem; }
   .aanbod-page { padding-top: 4rem; }
   .aanbod-intro { padding: 0.75rem 1.25rem 0; margin-bottom: 1.5rem; }
   .aanbod-intro-inner { gap: 0.75rem; }

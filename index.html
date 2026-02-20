@@ -6,6 +6,21 @@
   <meta content="Dodgeball School verzorgt professionele dodgeball clinics voor basisscholen, middelbare scholen, BSO, gemeenten en evenementen door heel Nederland." name="description"/>
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Dodgeball School — De leukste dodgeball clinics voor scholen"/>
+  <meta property="og:description" content="Dodgeball School verzorgt professionele dodgeball clinics voor basisscholen, middelbare scholen, BSO, gemeenten en evenementen door heel Nederland."/>
+  <meta property="og:url" content="https://dodgeballschool.nl/"/>
+  <meta property="og:image" content="https://dodgeballschool.nl/assets/img/og-image.png"/>
+  <meta property="og:locale" content="nl_NL"/>
+  <meta property="og:site_name" content="Dodgeball School"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Dodgeball School — De leukste dodgeball clinics voor scholen"/>
+  <meta name="twitter:description" content="Professionele dodgeball clinics voor scholen, BSO en gemeenten door heel Nederland."/>
+  <meta name="twitter:image" content="https://dodgeballschool.nl/assets/img/og-image.png"/>
+
   <!-- DNS prefetch for external domains -->
   <link rel="dns-prefetch" href="https://cdn.prod.website-files.com"/>
   <link rel="dns-prefetch" href="https://unpkg.com"/>
@@ -27,7 +42,36 @@
   <script>!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
 
   <!-- Favicon -->
-  <link href="https://cdn.prod.website-files.com/6922d75ee39b1fb737dc0680/697f4f1ab8af4935542103f5_Favicon.png" rel="shortcut icon" type="image/x-icon"/>
+  <link rel="icon" type="image/svg+xml" href="/assets/img/dodgeballschool-icon.svg"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon-180.png"/>
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Dodgeball School",
+    "description": "Professionele dodgeball clinics voor basisscholen, middelbare scholen, BSO, gemeenten en evenementen door heel Nederland.",
+    "url": "https://dodgeballschool.nl",
+    "logo": "https://dodgeballschool.nl/assets/img/dodgeballschool-icon.svg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Groningen",
+      "addressCountry": "NL"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Nederland"
+    },
+    "priceRange": "$$",
+    "serviceType": ["Dodgeball clinic", "Sportclinic", "Bewegingsonderwijs", "Sportdag"],
+    "audience": {
+      "@type": "Audience",
+      "audienceType": "Scholen, BSO, Gemeenten"
+    }
+  }
+  </script>
 
   <!-- Our overrides are imported via main.js (Vite handles CSS imports) -->
   <style>
@@ -114,7 +158,7 @@
         </button>
       </div>
       <a href="#contact" class="header-cta-circle w-inline-block">
-        <img src="/assets/img/boek-nu-circle.svg" loading="lazy" alt="Boek Nu" class="header-cta-circle-image"/>
+        <img src="/assets/img/boek-nu-circle.svg" loading="lazy" alt="Meer Informatie" class="header-cta-circle-image"/>
         <div class="header-cta-circle-arrow-box first">
           <div class="header-cta-circle-arrow-wrapper">
             <div class="header-cta-circle-arrow first w-embed">
@@ -737,7 +781,11 @@
       <div class="step-slide" data-step="4">
         <div class="step-question">Hoeveel deelnemers en welke leeftijd?</div>
         <div class="step-row">
-          <input type="number" name="aantal" class="step-input" placeholder="Aantal" min="1" />
+          <div class="step-stepper">
+            <button type="button" class="step-stepper-btn" data-action="decrement">&minus;</button>
+            <input type="number" name="aantal" class="step-input step-stepper-input" value="1" min="1" />
+            <button type="button" class="step-stepper-btn" data-action="increment">+</button>
+          </div>
           <input type="text" name="leeftijd" class="step-input" placeholder="Bijv. 8–12 jaar" />
         </div>
       </div>
@@ -745,7 +793,11 @@
       <!-- Step 5 -->
       <div class="step-slide" data-step="5">
         <div class="step-question">Hebben jullie een voorkeursdatum?</div>
-        <input type="date" name="datum" class="step-input" />
+        <input type="date" name="datum" class="step-input" id="datumInput" />
+        <label class="step-checkbox-label">
+          <input type="checkbox" class="step-checkbox" id="datumNtb" />
+          <span>Nog niet bekend</span>
+        </label>
       </div>
 
       <!-- Step 6 -->
@@ -814,8 +866,8 @@
     <div class="sf-bottom">
       <div class="sf-copyright">&copy; 2025 Dodgeball School. Alle rechten voorbehouden.</div>
       <div class="sf-legal">
-        <a href="#" class="sf-legal-link">Algemene Voorwaarden</a>
-        <a href="#" class="sf-legal-link">Privacybeleid</a>
+        <a href="/voorwaarden/" class="sf-legal-link">Algemene Voorwaarden</a>
+        <a href="/privacy/" class="sf-legal-link">Privacybeleid</a>
       </div>
     </div>
   </div>

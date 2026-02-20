@@ -57,6 +57,21 @@ import '../css/style.css';
   if (typeof SplitText !== 'undefined') gsap.registerPlugin(SplitText);
   gsap.ticker.lagSmoothing(0);
 
+  // Handle URL hash on page load (e.g. from subpage menu links like /#ervaringen)
+  if (window.location.hash) {
+    var hashTarget = document.querySelector(window.location.hash);
+    if (hashTarget) {
+      // Delay to let page render + Lenis initialise
+      setTimeout(function () {
+        if (lenis) {
+          lenis.scrollTo(hashTarget, { duration: 1.2, offset: 0 });
+        } else {
+          hashTarget.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 1200);
+    }
+  }
+
   // ==========================================================================
   // MENU TOGGLE — Smooth GSAP height animation
   // ==========================================================================
@@ -213,7 +228,7 @@ import '../css/style.css';
         heroCards.forEach(function (otherCard, j) {
           gsap.to(otherCard, {
             xPercent: heroHoverSpreads[hoveredIdx][j],
-            rotation: 0,
+            rotation: (j === hoveredIdx) ? 0 : heroRestRotations[j],
             scale: (j === hoveredIdx) ? 1.1 : 1,
             duration: 0.5, ease: 'power2.out',
             overwrite: 'auto'
@@ -320,11 +335,18 @@ import '../css/style.css';
     });
   }
 
-  gsap.from('.about-text-box', {
-    y: 40, opacity: 0,
-    duration: 0.9, ease: 'power3.out',
-    scrollTrigger: { trigger: '.about-text-box', start: 'top 85%', once: true }
-  });
+  var aboutTextBox = document.querySelector('.about-text-box');
+  if (aboutTextBox) {
+    var aboutTextParts = aboutTextBox.querySelectorAll('.section-header-heading-box, .section-header-desc-box, .section-header-button-box');
+    if (aboutTextParts.length) {
+      gsap.from(aboutTextParts, {
+        y: 40, opacity: 0,
+        stagger: 0.2,
+        duration: 0.9, ease: 'power3.out',
+        scrollTrigger: { trigger: aboutTextBox, start: 'top 85%', once: true }
+      });
+    }
+  }
 
   // ==========================================================================
   // HORIZONTAL LINE — Grow on scroll (IX2 a-380)
@@ -441,7 +463,7 @@ import '../css/style.css';
           testimonialItems.forEach(function (otherItem, j) {
             gsap.to(otherItem, {
               xPercent: testimonialHoverSpreads[hoveredIdx][j],
-              rotation: 0,
+              rotation: (j === hoveredIdx) ? 0 : testimonialRestRotations[j],
               scale: (j === hoveredIdx) ? 1.05 : 1,
               duration: 0.5, ease: 'power2.out',
               overwrite: 'auto'
@@ -487,6 +509,26 @@ import '../css/style.css';
       cursor: 'grab',
       activeCursor: 'grabbing'
     });
+  }
+
+  // ==========================================================================
+  // SWIPE HINTS — Show "Swipe ›" below carousels on mobile/tablet
+  // ==========================================================================
+  if (!isDesktop) {
+    function createSwipeHint(scrollContainer) {
+      if (!scrollContainer) return;
+      var hint = document.createElement('div');
+      hint.className = 'swipe-hint';
+      hint.innerHTML = '<div class="swipe-hint-inner">Swipe <span class="swipe-hint-chevron">\u203A</span></div>';
+      scrollContainer.parentElement.insertBefore(hint, scrollContainer.nextSibling);
+
+      function hideHint() { hint.classList.add('is-hidden'); }
+      scrollContainer.addEventListener('scroll', hideHint, { once: true });
+      scrollContainer.addEventListener('touchstart', hideHint, { once: true });
+    }
+
+    createSwipeHint(document.querySelector('.service-list'));
+    createSwipeHint(document.querySelector('.testimonial-main'));
   }
 
   // ==========================================================================
@@ -593,8 +635,32 @@ import '../css/style.css';
       var active = stepForm.querySelector('.step-slide.is-active');
       var required = active.querySelectorAll('[required]');
       var valid = true;
-      required.forEach(function (inp) { if (!inp.value.trim()) { valid = false; inp.focus(); } });
+      required.forEach(function (inp) {
+        if (!inp.value.trim()) {
+          valid = false;
+          inp.classList.add('is-error');
+          inp.focus();
+        } else {
+          inp.classList.remove('is-error');
+        }
+      });
+      // Email format validation on step 3
+      if (currentStep === 3) {
+        var emailInput = active.querySelector('[name="email"]');
+        if (emailInput && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+          valid = false;
+          emailInput.classList.add('is-error');
+          emailInput.focus();
+        }
+      }
       if (valid && currentStep < totalSteps) goToStep(currentStep + 1);
+    });
+
+    // Clear error state on input
+    stepForm.addEventListener('input', function (e) {
+      if (e.target.classList.contains('is-error')) {
+        e.target.classList.remove('is-error');
+      }
     });
 
     backBtn.addEventListener('click', function () {
@@ -609,8 +675,58 @@ import '../css/style.css';
       }
     });
 
+    // +/- stepper buttons
+    var stepperBtns = stepForm.querySelectorAll('.step-stepper-btn');
+    stepperBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var input = btn.parentElement.querySelector('.step-stepper-input');
+        var val = parseInt(input.value) || 1;
+        if (btn.dataset.action === 'increment') {
+          input.value = val + 1;
+        } else if (btn.dataset.action === 'decrement' && val > 1) {
+          input.value = val - 1;
+        }
+      });
+    });
+
+    // Datum "Nog niet bekend" checkbox
+    var datumNtb = document.getElementById('datumNtb');
+    var datumInput = document.getElementById('datumInput');
+    if (datumNtb && datumInput) {
+      datumNtb.addEventListener('change', function () {
+        if (datumNtb.checked) {
+          datumInput.disabled = true;
+          datumInput.value = '';
+          datumInput.classList.add('is-disabled');
+        } else {
+          datumInput.disabled = false;
+          datumInput.classList.remove('is-disabled');
+        }
+      });
+    }
+
     stepForm.addEventListener('submit', function (e) {
       e.preventDefault();
+
+      // Collect form data
+      var formData = new FormData(stepForm);
+      var data = {};
+      formData.forEach(function (value, key) { data[key] = value; });
+      if (datumNtb && datumNtb.checked) {
+        data.datum = 'Nog niet bekend';
+      }
+
+      // Send to backend (placeholder — replace with actual endpoint)
+      var endpoint = '/api/contact';
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).catch(function () {
+        // Silently handle — backend not configured yet
+      });
+
+      // Show success state
       slides.forEach(function (s) { s.classList.remove('is-active'); });
       stepForm.querySelector('.step-nav').style.display = 'none';
       if (headerEl) headerEl.style.display = 'none';
@@ -656,6 +772,38 @@ import '../css/style.css';
 
   // (p-button arrow animation removed — replaced by .ds-btn)
 
+
+  // ==========================================================================
+  // SITE FOOTER — Staggered entrance for columns, divider, bottom bar
+  // ==========================================================================
+  var siteFooter = document.querySelector('.site-footer');
+  if (siteFooter) {
+    var sfCols = siteFooter.querySelectorAll('.sf-col');
+    gsap.from(sfCols, {
+      y: 30, opacity: 0,
+      stagger: 0.1,
+      duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: siteFooter, start: 'top 90%', once: true }
+    });
+
+    var sfDivider = siteFooter.querySelector('.sf-divider');
+    if (sfDivider) {
+      gsap.from(sfDivider, {
+        scaleX: 0,
+        duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: sfDivider, start: 'top 95%', once: true }
+      });
+    }
+
+    var sfBottom = siteFooter.querySelector('.sf-bottom');
+    if (sfBottom) {
+      gsap.from(sfBottom, {
+        y: 20, opacity: 0,
+        duration: 0.6, ease: 'power3.out',
+        scrollTrigger: { trigger: sfBottom, start: 'top 95%', once: true }
+      });
+    }
+  }
 
   // ==========================================================================
   // HERO — Parallax on scroll

@@ -126,4 +126,12 @@ import '../css/style.css';
     y: 20, opacity: 0, duration: 0.6, ease: 'power3.out', stagger: 0.08, delay: 0.5
   });
 
+  // Legal pages — stagger headings and paragraphs
+  var legalInner = document.querySelector('.legal-inner');
+  if (legalInner) {
+    gsap.from(legalInner.children, {
+      y: 20, opacity: 0, duration: 0.6, ease: 'power3.out', stagger: 0.04, delay: 0.4
+    });
+  }
+
 })();
