@@ -24,10 +24,37 @@
   color: #F0EEE7 !important;
 }
 
-/* Testimonial cards — dark variants update */
+/* Testimonial cards — hide "Neem contact op" links */
+.testimonial-card-contact-link { display: none !important; }
+
+/* Testimonial cards — light variants */
+.testimonial-list-item-inner.item-01,
+.testimonial-list-item-inner.item-03,
+.testimonial-list-item-inner.item-05 {
+  background-color: #ffffff !important;
+  color: #141414 !important;
+}
+.testimonial-list-item-inner.item-01 .testimonial-card-contact-link,
+.testimonial-list-item-inner.item-03 .testimonial-card-contact-link,
+.testimonial-list-item-inner.item-05 .testimonial-card-contact-link {
+  color: #141414 !important;
+  opacity: 0.5;
+}
+
+/* Testimonial cards — dark variants */
 .testimonial-list-item-inner.item-02,
 .testimonial-list-item-inner.item-04 {
   background-color: #141414 !important;
+  color: #F0EEE7 !important;
+}
+.testimonial-list-item-inner.item-02 .testimonial-card-contact-link,
+.testimonial-list-item-inner.item-04 .testimonial-card-contact-link {
+  color: #F0EEE7 !important;
+  opacity: 0.5;
+}
+.testimonial-list-item-inner.item-02 .testimonial-card-author-position,
+.testimonial-list-item-inner.item-04 .testimonial-card-author-position {
+  opacity: 0.45;
 }
 
 /* P-button (CTA links) — override Webflow's #1a1c18 */
@@ -43,8 +70,26 @@ html.lenis, html.lenis body { height: auto; }
    POINTER-EVENTS — .header is pointer-events:none in Webflow CSS.
    Re-enable for interactive children that IX2 would normally handle.
    ========================================================================== */
+
+/* Shared height for D-icon and menu pill so they always match */
+.header { --nav-el-h: 2.5rem; }
+@media screen and (max-width: 767px)  { .header { --nav-el-h: 2.75rem; } }
+@media screen and (max-width: 479px)  { .header { --nav-el-h: 2.5rem; } }
+
+/* Reset Webflow's tablet margin-top so the pill stays level with the D icon */
+.menu-cta-button-box {
+  margin-top: 0 !important;
+}
+
 .menu-button {
   pointer-events: auto;
+  height: var(--nav-el-h) !important;
+}
+
+/* Hide side nav on subpages — it overlaps content and is homepage-only */
+.page-wrapper:has(.aanbod-page) .nav-content-wrapper,
+.page-wrapper:has(.legal-page) .nav-content-wrapper {
+  display: none !important;
 }
 
 /* Remove Webflow's circular border around the logo and align with menu button */
@@ -53,7 +98,7 @@ html.lenis, html.lenis body { height: auto; }
   border-radius: 0 !important;
   aspect-ratio: auto !important;
   padding: 0 !important;
-  height: 2.5em;
+  height: var(--nav-el-h);
   display: flex !important;
   align-items: center;
 }
@@ -703,28 +748,36 @@ html.lenis, html.lenis body { height: auto; }
   }
 
   .testimonial-list-item {
-    width: 85vw !important;
+    width: 80vw !important;
     min-width: 0 !important;
     flex: none !important;
     margin-left: 0 !important;
     scroll-snap-align: center;
-    transform: none !important;
+    transform: rotate(var(--_card-rot, 0deg)) !important;
+    transition: transform 0.4s cubic-bezier(.25,.8,.25,1);
   }
+  .testimonial-list-item.item-01 { --_card-rot: -1.5deg; }
+  .testimonial-list-item.item-02 { --_card-rot:  2deg; }
+  .testimonial-list-item.item-03 { --_card-rot: -1deg; }
+  .testimonial-list-item.item-04 { --_card-rot:  1.5deg; }
+  .testimonial-list-item.item-05 { --_card-rot: -2deg; }
 
   .testimonial-list-item-inner {
     padding: 1.5rem !important;
-    gap: 1.5rem !important;
+    gap: 1.25rem !important;
     height: 100%;
     box-sizing: border-box;
+    border-radius: 1.25rem !important;
+    box-shadow: 0 4px 24px rgba(20, 20, 20, 0.08);
   }
 
   .text-size-semi-large {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.9375rem;
+    line-height: 1.55;
   }
 
   .testimonial-card-author-name { font-size: 0.875rem; }
-  .testimonial-card-author-position { font-size: 0.75rem; opacity: 0.6; }
+  .testimonial-card-author-position { font-size: 0.75rem; opacity: 0.5; }
 }
 
 /* ==========================================================================
@@ -1166,6 +1219,15 @@ html.lenis, html.lenis body { height: auto; }
   gap: 1.5rem;
 }
 .sf-legal-link {
+  color: rgba(240, 238, 231, 0.35);
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: color 0.2s;
+}
+.sf-legal-link:hover {
+  color: #F0EEE7;
+}
+.sf-legal-link {
   color: rgba(240, 238, 231, 0.3);
   font-size: 0.75rem;
   text-decoration: none;
@@ -1513,18 +1575,14 @@ html.lenis, html.lenis body { height: auto; }
 .aanbod-back {
   font-size: 0.8125rem;
   font-weight: 500;
-  color: rgba(20, 20, 20, 0.45);
+  color: rgba(20, 20, 20, 0.35);
   text-decoration: none;
-  padding: 0.4em 1em;
-  border: 1px solid rgba(20, 20, 20, 0.12);
-  border-radius: 100px;
-  transition: all 0.2s;
+  transition: color 0.2s;
   white-space: nowrap;
-  flex-shrink: 0;
+  letter-spacing: 0.02em;
 }
 .aanbod-back:hover {
-  color: #D5DF26;
-  border-color: rgba(213, 223, 38, 0.3);
+  color: #141414;
 }
 .aanbod-intro-title {
   font-size: clamp(2rem, 5vw, 2.75rem);
@@ -1741,11 +1799,20 @@ html.lenis, html.lenis body { height: auto; }
   color: #D5DF26;
 }
 
+/* Back link at bottom of aanbod detail pages */
+.aanbod-footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding: 1.25rem 2rem 1.5rem;
+}
+
 /* Mobile */
 @media (max-width: 767px) {
   .legal-page { padding-top: 4rem; }
   .legal-content { padding: 0 1.25rem 2rem; }
   .aanbod-page { padding-top: 4rem; }
+  .aanbod-footer { padding: 1rem 1.25rem 1.25rem; }
   .aanbod-intro { padding: 0.75rem 1.25rem 0; margin-bottom: 1.5rem; }
   .aanbod-intro-inner { gap: 0.75rem; }
   .aanbod-intro-text { font-size: 0.875rem; }

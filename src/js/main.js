@@ -28,9 +28,10 @@ import '../css/style.css';
   'use strict';
 
   // ==========================================================================
-  // SCROLL TO TOP ON LOAD — prevent browser restoring #hash position
+  // SCROLL TO TOP ON LOAD — save hash before stripping so we can scroll to it
   // ==========================================================================
-  if (window.location.hash) {
+  var initialHash = window.location.hash;
+  if (initialHash) {
     history.replaceState(null, '', window.location.pathname);
   }
   window.scrollTo(0, 0);
@@ -58,8 +59,8 @@ import '../css/style.css';
   gsap.ticker.lagSmoothing(0);
 
   // Handle URL hash on page load (e.g. from subpage menu links like /#ervaringen)
-  if (window.location.hash) {
-    var hashTarget = document.querySelector(window.location.hash);
+  if (initialHash) {
+    var hashTarget = document.querySelector(initialHash);
     if (hashTarget) {
       // Delay to let page render + Lenis initialise
       setTimeout(function () {
@@ -439,11 +440,11 @@ import '../css/style.css';
         scrollTrigger: { trigger: '.testimonial-list', start: 'top 85%', once: true }
       });
     } else {
-      // Mobile: clean horizontal carousel, no rotations
-      gsap.set(testimonialItems, { rotation: 0, x: 0, xPercent: 0 });
+      // Mobile: carousel with subtle CSS rotations, no GSAP rotation override
+      gsap.set(testimonialItems, { x: 0, xPercent: 0, clearProps: 'rotation' });
       gsap.from(testimonialItems, {
-        y: 20, opacity: 0, stagger: 0.08,
-        duration: 0.6, ease: 'power3.out',
+        y: 30, opacity: 0, scale: 0.95, stagger: 0.1,
+        duration: 0.7, ease: 'power3.out',
         scrollTrigger: { trigger: '.testimonial-list', start: 'top 85%', once: true }
       });
     }
@@ -791,7 +792,7 @@ import '../css/style.css';
       gsap.from(sfDivider, {
         scaleX: 0,
         duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: sfDivider, start: 'top 95%', once: true }
+        scrollTrigger: { trigger: siteFooter, start: 'top 90%', once: true }
       });
     }
 
@@ -799,8 +800,8 @@ import '../css/style.css';
     if (sfBottom) {
       gsap.from(sfBottom, {
         y: 20, opacity: 0,
-        duration: 0.6, ease: 'power3.out',
-        scrollTrigger: { trigger: sfBottom, start: 'top 95%', once: true }
+        duration: 0.6, ease: 'power3.out', delay: 0.3,
+        scrollTrigger: { trigger: siteFooter, start: 'top 90%', once: true }
       });
     }
   }
