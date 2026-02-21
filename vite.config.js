@@ -15,6 +15,8 @@ export default defineConfig({
         bso: resolve(__dirname, 'aanbod/bso/index.html'),
         gemeenteBuurtsport: resolve(__dirname, 'aanbod/gemeente-buurtsport/index.html'),
         sportdagenEvenementen: resolve(__dirname, 'aanbod/sportdagen-evenementen/index.html'),
+        voorwaarden: resolve(__dirname, 'voorwaarden/index.html'),
+        privacy: resolve(__dirname, 'privacy/index.html'),
       }
     }
   }
