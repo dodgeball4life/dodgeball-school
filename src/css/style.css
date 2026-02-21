@@ -791,6 +791,11 @@ html.lenis, html.lenis body { height: auto; }
   transform: none !important;
 }
 
+/* Webflow only defines z-index for items 01–04; add item-05 so it stacks on top */
+.service-list-item.item-05 {
+  z-index: 5;
+}
+
 /* ==========================================================================
    HEADING ACCENT — Override Webflow's emerald-city (#6c7b61) to match palette
    ========================================================================== */

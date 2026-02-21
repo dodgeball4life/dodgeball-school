@@ -2,7 +2,7 @@
   <defs>
     <path id="circlePath" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0"/>
   </defs>
-  <text font-family="Outfit, sans-serif" font-size="18" font-weight="500" fill="#141414" letter-spacing="8">
-    <textPath href="#circlePath" startOffset="0%">MEER INFO &#x2022; MEER INFO &#x2022; MEER INFO &#x2022;</textPath>
+  <text font-family="Outfit, sans-serif" font-size="15" font-weight="500" fill="#141414" letter-spacing="5">
+    <textPath href="#circlePath" startOffset="0%">MEER INFORMATIE &#x2022; MEER INFORMATIE &#x2022;</textPath>
   </text>
 </svg>
