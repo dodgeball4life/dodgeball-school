@@ -39,7 +39,7 @@ import '../css/style.css';
   // ==========================================================================
   // LENIS SMOOTH SCROLL
   // ==========================================================================
-  var isDesktop = window.matchMedia('(min-width: 1200px)').matches;
+  var isDesktop = window.matchMedia('(min-width: 1024px)').matches;
   var lenis = null;
 
   if (isDesktop) {

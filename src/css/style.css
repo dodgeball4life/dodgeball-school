@@ -784,6 +784,20 @@ html.lenis, html.lenis body { height: auto; }
   .testimonial-card-author-position { font-size: 0.75rem; opacity: 0.5; }
 }
 
+/* Reset testimonial carousel for 1024px–1199px (treated as desktop) */
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+  .testimonial-main {
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
+  .testimonial-list-item {
+    width: auto !important;
+    flex: unset !important;
+    scroll-snap-align: unset;
+  }
+  .swipe-hint { display: none !important; }
+}
+
 /* ==========================================================================
    SERVICE CARDS — Remove image frame rotation (Webflow sets rotate(3deg)
    which causes clipping inside the card's overflow:hidden containers)
