@@ -24,7 +24,7 @@
   color: #F0EEE7 !important;
 }
 
-/* Testimonial cards — hide "Neem contact op" links */
+/* Testimonial/Waarom cards — hide contact links */
 .testimonial-card-contact-link { display: none !important; }
 
 /* Testimonial cards — light variants */
@@ -55,6 +55,13 @@
 .testimonial-list-item-inner.item-02 .testimonial-card-author-position,
 .testimonial-list-item-inner.item-04 .testimonial-card-author-position {
   opacity: 0.45;
+}
+
+/* Waarom card titles — bold + lime accent on dark cards */
+.testimonial-card-author-name { font-weight: 700; font-size: 1.1rem; }
+.testimonial-list-item-inner.item-02 .testimonial-card-author-name,
+.testimonial-list-item-inner.item-04 .testimonial-card-author-name {
+  color: #D5DF26;
 }
 
 /* P-button (CTA links) — override Webflow's #1a1c18 */

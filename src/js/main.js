@@ -430,7 +430,6 @@ import '../css/style.css';
 
   if (testimonialItems.length === 5) {
     if (isDesktop) {
-      // Desktop: fanned layout with resting rotations
       gsap.set(testimonialItems, { y: 40, opacity: 0, rotation: 0 });
       gsap.to(testimonialItems, {
         y: 0, opacity: 1,
@@ -440,7 +439,6 @@ import '../css/style.css';
         scrollTrigger: { trigger: '.testimonial-list', start: 'top 85%', once: true }
       });
     } else {
-      // Mobile: carousel with subtle CSS rotations, no GSAP rotation override
       gsap.set(testimonialItems, { x: 0, xPercent: 0, clearProps: 'rotation' });
       gsap.from(testimonialItems, {
         y: 30, opacity: 0, scale: 0.95, stagger: 0.1,
@@ -449,7 +447,6 @@ import '../css/style.css';
       });
     }
 
-    // Hover spread — desktop only
     if (isDesktop) {
       var testimonialHoverSpreads = [
         [0, 66, 33, 22, 16.5],
@@ -458,7 +455,6 @@ import '../css/style.css';
         [-22, -33, -66, 0, 66],
         [-16.5, -22, -33, -66, 0]
       ];
-
       testimonialItems.forEach(function (item, hoveredIdx) {
         item.addEventListener('mouseenter', function () {
           testimonialItems.forEach(function (otherItem, j) {
@@ -472,7 +468,6 @@ import '../css/style.css';
           });
         });
       });
-
       if (testimonialList) {
         testimonialList.addEventListener('mouseleave', function () {
           testimonialItems.forEach(function (item, i) {
@@ -494,21 +489,16 @@ import '../css/style.css';
     });
   }
 
-  // Make testimonial list draggable — desktop only.
-  // On mobile, native overflow:auto scroll handles horizontal swiping.
   if (isDesktop && testimonialList && typeof Draggable !== 'undefined') {
     Draggable.create(testimonialList, {
-      type: 'x',
-      inertia: true,
+      type: 'x', inertia: true,
       bounds: function () {
         var parent = testimonialList.parentElement;
         var parentWidth = parent.offsetWidth;
         var listWidth = testimonialList.scrollWidth;
         return { minX: -(listWidth - parentWidth), maxX: 0 };
       },
-      edgeResistance: 0.65,
-      cursor: 'grab',
-      activeCursor: 'grabbing'
+      edgeResistance: 0.65, cursor: 'grab', activeCursor: 'grabbing'
     });
   }
 
