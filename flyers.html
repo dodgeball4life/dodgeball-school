@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8"/>
+  <title>Dodgeball School — Flyers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+    /*
+      DESIGN RATIONALE (media psychology + print UX):
+
+      1. AIDA flow: Attention (photo) → Interest (title) → Desire (benefits+price) → Action (CTA)
+      2. Cognitive load: max 3 stat blocks, max 6 benefit items. Brain processes groups of 3-4.
+      3. Picture superiority: full-width photo = 6x better recall than text alone.
+      4. Processing fluency: big type, high contrast, generous white space = feels trustworthy.
+      5. Von Restorff isolation: the lime CTA is the ONLY lime element → it pops.
+      6. Anchoring: benefits shown BEFORE price → perceived value is higher.
+      7. Serial position: first thing (photo) and last thing (CTA) are best remembered.
+      8. Z-pattern reading: logo top-left, badge top-right, CTA bottom = natural eye flow.
+    */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: #555;
+      color: #141414;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── A4 page ── */
+    .flyer {
+      width: 210mm;
+      height: 297mm;
+      margin: 20px auto;
+      background: #F0EEE7;
+      padding: 12mm 14mm 10mm;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      page-break-after: always;
+    }
+
+    .fc { flex: 1; display: flex; flex-direction: column; }
+
+    /* ── Header: logo + category ── */
+    .fh {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6mm;
+    }
+    .fh img { height: 10mm; }
+    .fh-right {
+      display: flex;
+      align-items: center;
+      gap: 3mm;
+    }
+    .fh-geo {
+      font-size: 7pt;
+      font-weight: 500;
+      color: #141414;
+      opacity: 0.35;
+      letter-spacing: 0.05em;
+    }
+    .fh-badge {
+      background: #141414;
+      color: #F0EEE7;
+      padding: 1.5mm 4mm 2mm;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 8pt;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Full-width hero photo ── */
+    .photo {
+      width: 100%;
+      height: 78mm;
+      border-radius: 6mm;
+      overflow: hidden;
+      margin-bottom: 7mm;
+      position: relative;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    /* subtle dark vignette bottom for depth */
+    .photo::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(20,20,20,0.25), transparent);
+      border-radius: 0 0 6mm 6mm;
+      pointer-events: none;
+    }
+
+    /* ── Title block ── */
+    .title-block { margin-bottom: 6mm; }
+    .title-block h1 {
+      font-size: 38pt;
+      font-weight: 900;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin-bottom: 3mm;
+    }
+    .title-block h1 em {
+      font-style: normal;
+      color: #8B8F13;
+    }
+    .title-block p {
+      font-size: 10.5pt;
+      line-height: 1.5;
+      color: #141414;
+      opacity: 0.45;
+      font-weight: 400;
+      max-width: 145mm;
+    }
+
+    /* ── 3 stat blocks ── */
+    .stats {
+      display: flex;
+      gap: 3mm;
+      margin-bottom: 6mm;
+    }
+    .stat {
+      flex: 1;
+      background: #fff;
+      border-radius: 4mm;
+      padding: 4.5mm 4mm;
+      text-align: center;
+    }
+    .stat-val {
+      font-size: 22pt;
+      font-weight: 800;
+      color: #141414;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .stat-label {
+      font-size: 7pt;
+      font-weight: 500;
+      color: #141414;
+      opacity: 0.4;
+      margin-top: 1mm;
+      line-height: 1.3;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Dark benefit card ── */
+    .benefits {
+      background: #141414;
+      color: #F0EEE7;
+      border-radius: 6mm;
+      padding: 6mm 7mm;
+      margin-bottom: 6mm;
+      display: flex;
+      gap: 5mm;
+    }
+    .benefits-list {
+      flex: 1;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2mm;
+    }
+    .benefits-list li {
+      font-size: 10pt;
+      font-weight: 400;
+      line-height: 1.4;
+      padding-left: 5.5mm;
+      position: relative;
+    }
+    .benefits-list li::before {
+      content: '\2713';
+      position: absolute;
+      left: 0;
+      color: #D5DF26;
+      font-weight: 800;
+      font-size: 10pt;
+    }
+    .benefits-price {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-left: 5mm;
+      border-left: 1px solid rgba(240,238,231,0.1);
+      min-width: 38mm;
+    }
+    .benefits-price-label {
+      font-size: 6.5pt;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+      margin-bottom: 1.5mm;
+    }
+    .benefits-price-val {
+      font-size: 28pt;
+      font-weight: 900;
+      color: #D5DF26;
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .benefits-price-sub {
+      font-size: 7.5pt;
+      font-weight: 400;
+      opacity: 0.4;
+      margin-top: 1mm;
+      line-height: 1.3;
+    }
+
+    /* ── CTA bar ── */
+    .cta {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #D5DF26;
+      border-radius: 5mm;
+      padding: 5.5mm 7mm;
+    }
+    .cta h3 {
+      font-size: 16pt;
+      font-weight: 800;
+      color: #141414;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .cta-sub {
+      font-size: 8pt;
+      color: #141414;
+      opacity: 0.5;
+      margin-top: 0.5mm;
+      font-weight: 400;
+    }
+    .cta-right { text-align: right; }
+    .cta-site {
+      font-size: 13pt;
+      font-weight: 800;
+      color: #141414;
+      letter-spacing: -0.02em;
+    }
+    .cta-mail {
+      font-size: 7.5pt;
+      color: #141414;
+      opacity: 0.4;
+      font-weight: 400;
+    }
+
+    @media print {
+      body { background: none; }
+      .flyer { margin: 0; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     1 · BASISSCHOLEN
+     ═══════════════════════════════════════════════ -->
+<div class="flyer">
+  <div class="fc">
+    <div class="fh">
+      <img src="public/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
+      <div class="fh-right">
+        <span class="fh-geo">Heel Nederland</span>
+        <div class="fh-badge">Primair Onderwijs</div>
+      </div>
+    </div>
+
+    <div class="photo">
+      <img src="public/assets/img/photos/service-4.webp" alt="Kinderen rennen enthousiast op het sportveld"/>
+    </div>
+
+    <div class="title-block">
+      <h1>Dodgeball in<br/>de <em>gymles</em></h1>
+      <p>Professionele dodgeball-clinics voor het bewegingsonderwijs. Actief, veilig en voor elk kind toegankelijk.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">60 min</div><div class="stat-label">Per les</div></div>
+      <div class="stat"><div class="stat-val">24</div><div class="stat-label">Max. kinderen</div></div>
+      <div class="stat"><div class="stat-val">Groep 3-8</div><div class="stat-label">Vanaf 6 jaar</div></div>
+    </div>
+
+    <div class="benefits">
+      <ul class="benefits-list">
+        <li>Professionele, ervaren trainer</li>
+        <li>Alle materialen inbegrepen</li>
+        <li>Veilig met zachte schuimballen</li>
+        <li>Warming-up, uitleg &amp; cooling-down</li>
+        <li>Clinic, lessenreeks of sportdag</li>
+        <li>Jullie regelen alleen een gymzaal</li>
+      </ul>
+      <div class="benefits-price">
+        <div class="benefits-price-label">Vanaf</div>
+        <div class="benefits-price-val">&euro;65</div>
+        <div class="benefits-price-sub">per uur<br/>per groep</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <div>
+        <h3>Plan een clinic</h3>
+        <div class="cta-sub">Neem contact op en we denken mee</div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-site">dodgeballschool.nl</div>
+        <div class="cta-mail">hallo@dodgeballschool.nl</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     2 · MIDDELBARE SCHOLEN
+     ═══════════════════════════════════════════════ -->
+<div class="flyer">
+  <div class="fc">
+    <div class="fh">
+      <img src="public/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
+      <div class="fh-right">
+        <span class="fh-geo">Heel Nederland</span>
+        <div class="fh-badge">Voortgezet Onderwijs</div>
+      </div>
+    </div>
+
+    <div class="photo">
+      <img src="public/assets/img/photos/hero-2.webp" alt="Intensieve dodgeball actie in de sporthal"/>
+    </div>
+
+    <div class="title-block">
+      <h1>Dodgeball<br/>voor <em>tieners</em></h1>
+      <p>Energieke, competitieve spelvormen met duidelijke structuur. Perfect voor gymles, projectweek of toernooivorm.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">60 min</div><div class="stat-label">Per les</div></div>
+      <div class="stat"><div class="stat-val">24</div><div class="stat-label">Max. leerlingen</div></div>
+      <div class="stat"><div class="stat-val">vmbo-vwo</div><div class="stat-label">Alle niveaus</div></div>
+    </div>
+
+    <div class="benefits">
+      <ul class="benefits-list">
+        <li>Professionele, ervaren trainer</li>
+        <li>Alle materialen inbegrepen</li>
+        <li>Scheidsrechter &amp; scorebord</li>
+        <li>Warming-up, uitleg &amp; cooling-down</li>
+        <li>Gymles, projectweek of toernooi</li>
+        <li>Binnen of buiten mogelijk</li>
+      </ul>
+      <div class="benefits-price">
+        <div class="benefits-price-label">Vanaf</div>
+        <div class="benefits-price-val">&euro;65</div>
+        <div class="benefits-price-sub">per uur<br/>per groep</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <div>
+        <h3>Boek een sportdag</h3>
+        <div class="cta-sub">Of plan een clinic voor de gymles</div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-site">dodgeballschool.nl</div>
+        <div class="cta-mail">hallo@dodgeballschool.nl</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     3 · BSO
+     ═══════════════════════════════════════════════ -->
+<div class="flyer">
+  <div class="fc">
+    <div class="fh">
+      <img src="public/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
+      <div class="fh-right">
+        <span class="fh-geo">Heel Nederland</span>
+        <div class="fh-badge">Buitenschoolse Opvang</div>
+      </div>
+    </div>
+
+    <div class="photo">
+      <img src="public/assets/img/photos/service-5.webp" alt="Kinderen zitten in een kring met de trainer"/>
+    </div>
+
+    <div class="title-block">
+      <h1>Lekker bewegen<br/><em>na school</em></h1>
+      <p>Actieve en veilige sportactiviteit voor de BSO. Duidelijke regels, veel beweging en plezier in groepsverband.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">60 min</div><div class="stat-label">Per sessie</div></div>
+      <div class="stat"><div class="stat-val">24</div><div class="stat-label">Max. kinderen</div></div>
+      <div class="stat"><div class="stat-val">6-12 jr</div><div class="stat-label">Per leeftijd</div></div>
+    </div>
+
+    <div class="benefits">
+      <ul class="benefits-list">
+        <li>Professionele, ervaren trainer</li>
+        <li>Alle materialen inbegrepen</li>
+        <li>Veilig met zachte schuimballen</li>
+        <li>Aangepast per leeftijdsgroep</li>
+        <li>Eenmalig of wekelijkse reeks</li>
+        <li>Wij regelen alles &mdash; jullie niets</li>
+      </ul>
+      <div class="benefits-price">
+        <div class="benefits-price-label">Vanaf</div>
+        <div class="benefits-price-val">&euro;70</div>
+        <div class="benefits-price-sub">per uur<br/>per groep</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <div>
+        <h3>Plan een activiteit</h3>
+        <div class="cta-sub">Wij nemen alles mee, jullie hoeven niets te regelen</div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-site">dodgeballschool.nl</div>
+        <div class="cta-mail">hallo@dodgeballschool.nl</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     4 · GEMEENTE & BUURTSPORT
+     ═══════════════════════════════════════════════ -->
+<div class="flyer">
+  <div class="fc">
+    <div class="fh">
+      <img src="public/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
+      <div class="fh-right">
+        <span class="fh-geo">Heel Nederland</span>
+        <div class="fh-badge">Gemeenten &amp; Buurtsport</div>
+      </div>
+    </div>
+
+    <div class="photo">
+      <img src="public/assets/img/photos/hero-1.webp" alt="Kinderen spelen dodgeball op een buitenveld"/>
+    </div>
+
+    <div class="title-block">
+      <h1>Sport in<br/><em>de buurt</em></h1>
+      <p>Beweegprogramma's voor sportstimulering en sociale ontwikkeling. Geschikt voor wijkactiviteiten en gemeentelijke projecten.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">6-21 jr</div><div class="stat-label">Alle leeftijden</div></div>
+      <div class="stat"><div class="stat-val">24</div><div class="stat-label">Per groep</div></div>
+      <div class="stat"><div class="stat-val">Op maat</div><div class="stat-label">Eenmalig of reeks</div></div>
+    </div>
+
+    <div class="benefits">
+      <ul class="benefits-list">
+        <li>Professionele trainer(s)</li>
+        <li>Alle materialen inbegrepen</li>
+        <li>Programma volledig op maat</li>
+        <li>Hulp bij subsidieaanvraag</li>
+        <li>Samenwerking buurtsportcoaches</li>
+        <li>Evaluatierapport achteraf</li>
+      </ul>
+      <div class="benefits-price">
+        <div class="benefits-price-label">Vanaf</div>
+        <div class="benefits-price-val" style="font-size:22pt">&euro;85</div>
+        <div class="benefits-price-sub">per uur<br/>projectmatig</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <div>
+        <h3>Neem contact op</h3>
+        <div class="cta-sub">We denken graag mee over uw programma</div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-site">dodgeballschool.nl</div>
+        <div class="cta-mail">hallo@dodgeballschool.nl</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     5 · SPORTDAGEN & EVENEMENTEN
+     ═══════════════════════════════════════════════ -->
+<div class="flyer">
+  <div class="fc">
+    <div class="fh">
+      <img src="public/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
+      <div class="fh-right">
+        <span class="fh-geo">Heel Nederland</span>
+        <div class="fh-badge">Events &amp; Toernooien</div>
+      </div>
+    </div>
+
+    <div class="photo">
+      <img src="public/assets/img/photos/hero-3.webp" alt="Spannend dodgeball toernooi in de sporthal"/>
+    </div>
+
+    <div class="title-block">
+      <h1>Een onvergetelijk<br/><em>dodgeball event</em></h1>
+      <p>Compleet georganiseerd toernooi met meerdere teams, professionele begeleiding en alles inbegrepen.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val">120</div><div class="stat-label">Max. deelnemers</div></div>
+      <div class="stat"><div class="stat-val">3 of 6u</div><div class="stat-label">Dagdeel of dag</div></div>
+      <div class="stat"><div class="stat-val">Alles incl.</div><div class="stat-label">Materiaal &amp; crew</div></div>
+    </div>
+
+    <div class="benefits">
+      <ul class="benefits-list">
+        <li>Professionele begeleiding &amp; crew</li>
+        <li>Alle materialen inbegrepen</li>
+        <li>Toernooi-organisatie &amp; loting</li>
+        <li>Scheidsrechter &amp; scorebord</li>
+        <li>Binnen of buiten mogelijk</li>
+        <li>Optioneel: medailles &amp; certificaten</li>
+      </ul>
+      <div class="benefits-price">
+        <div class="benefits-price-label">Vanaf</div>
+        <div class="benefits-price-val" style="font-size:18pt">&euro;7,50</div>
+        <div class="benefits-price-sub">per persoon<br/>all-inclusive</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <div>
+        <h3>Vraag een offerte aan</h3>
+        <div class="cta-sub">Vertel over jullie event, wij regelen de rest</div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-site">dodgeballschool.nl</div>
+        <div class="cta-mail">hallo@dodgeballschool.nl</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
