@@ -581,6 +581,31 @@ import '../css/style.css';
         var boxBg = 'rgba(' + tr + ',' + tg + ',' + tb + ',' + (0.08 + p * 0.04) + ')';
         navIconBoxes.forEach(function (box) { box.style.backgroundColor = boxBg; });
         navTextBoxes.forEach(function (box) { box.style.backgroundColor = boxBg; });
+
+        // Dark testimonial cards: match white card style when page goes dark
+        var darkCards = document.querySelectorAll('.testimonial-list-item-inner.item-02, .testimonial-list-item-inner.item-04');
+        darkCards.forEach(function (card) {
+          // bg: #141414 → white (#fff)
+          var cr = Math.round(20 + p * (255 - 20));
+          var cg = Math.round(20 + p * (255 - 20));
+          var cb = Math.round(20 + p * (255 - 20));
+          card.style.setProperty('background-color', 'rgb(' + cr + ',' + cg + ',' + cb + ')', 'important');
+          // text: #F0EEE7 → #141414 (same as white cards)
+          var txr = Math.round(240 - p * (240 - 20));
+          var txg = Math.round(238 - p * (238 - 20));
+          var txb = Math.round(231 - p * (231 - 20));
+          var cardText = 'rgb(' + txr + ',' + txg + ',' + txb + ')';
+          card.style.setProperty('color', cardText, 'important');
+          card.querySelectorAll('.testimonial-card-contact-link').forEach(function (l) {
+            l.style.setProperty('color', cardText, 'important');
+          });
+          card.querySelectorAll('.testimonial-card-author-name').forEach(function (n) {
+            n.style.setProperty('color', p > 0.5 ? '#141414' : '#D5DF26', 'important');
+          });
+          card.querySelectorAll('.testimonial-card-author-position').forEach(function (el) {
+            el.style.setProperty('color', cardText, 'important');
+          });
+        });
       }
     });
   }

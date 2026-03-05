@@ -41,15 +41,15 @@
   opacity: 0.5;
 }
 
-/* Testimonial cards — dark variants */
+/* Testimonial cards — dark variants (no !important so JS scroll transition can override) */
 .testimonial-list-item-inner.item-02,
 .testimonial-list-item-inner.item-04 {
-  background-color: #141414 !important;
-  color: #F0EEE7 !important;
+  background-color: #141414;
+  color: #F0EEE7;
 }
 .testimonial-list-item-inner.item-02 .testimonial-card-contact-link,
 .testimonial-list-item-inner.item-04 .testimonial-card-contact-link {
-  color: #F0EEE7 !important;
+  color: #F0EEE7;
   opacity: 0.5;
 }
 .testimonial-list-item-inner.item-02 .testimonial-card-author-position,
@@ -1833,8 +1833,28 @@ html.lenis, html.lenis body { height: auto; }
 .aanbod-footer {
   flex-shrink: 0;
   display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 1rem;
   padding: 1.25rem 2rem 1.5rem;
+}
+.aanbod-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.2rem;
+  background: #D5DF26;
+  color: #141414;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.aanbod-download:hover { opacity: 0.8; }
+.aanbod-download svg { width: 16px; height: 16px; }
+@media (max-width: 767px) {
+  .aanbod-download { display: none; }
 }
 
 /* Mobile */

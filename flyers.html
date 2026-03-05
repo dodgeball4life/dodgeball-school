@@ -266,10 +266,10 @@
 <!-- ═══════════════════════════════════════════════
      1 · BASISSCHOLEN
      ═══════════════════════════════════════════════ -->
-<div class="flyer">
+<div class="flyer" id="basisscholen">
   <div class="fc">
     <div class="fh">
-      <img src="public/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
+      <img src="/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
       <div class="fh-right">
         <span class="fh-geo">Heel Nederland</span>
         <div class="fh-badge">Primair Onderwijs</div>
@@ -277,7 +277,7 @@
     </div>
 
     <div class="photo">
-      <img src="public/assets/img/photos/dodgerskidss.png" alt="Kinderen rennen naar dodgeballs op de gymvloer"/>
+      <img src="/assets/img/photos/dodgerskidss.png" alt="Kinderen rennen naar dodgeballs op de gymvloer"/>
     </div>
 
     <div class="title-block">
@@ -323,10 +323,10 @@
 <!-- ═══════════════════════════════════════════════
      2 · MIDDELBARE SCHOLEN
      ═══════════════════════════════════════════════ -->
-<div class="flyer">
+<div class="flyer" id="middelbare-scholen">
   <div class="fc">
     <div class="fh">
-      <img src="public/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
+      <img src="/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
       <div class="fh-right">
         <span class="fh-geo">Heel Nederland</span>
         <div class="fh-badge">Voortgezet Onderwijs</div>
@@ -334,7 +334,7 @@
     </div>
 
     <div class="photo">
-      <img src="public/assets/img/photos/dodgeballtieners.png" alt="Tieners spelen dodgeball in de sporthal"/>
+      <img src="/assets/img/photos/dodgeballtieners.png" alt="Tieners spelen dodgeball in de sporthal"/>
     </div>
 
     <div class="title-block">
@@ -380,10 +380,10 @@
 <!-- ═══════════════════════════════════════════════
      3 · BSO
      ═══════════════════════════════════════════════ -->
-<div class="flyer">
+<div class="flyer" id="bso">
   <div class="fc">
     <div class="fh">
-      <img src="public/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
+      <img src="/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
       <div class="fh-right">
         <span class="fh-geo">Heel Nederland</span>
         <div class="fh-badge">Buitenschoolse Opvang</div>
@@ -391,7 +391,7 @@
     </div>
 
     <div class="photo">
-      <img src="public/assets/img/photos/service-5.webp" alt="Kinderen zitten in een kring met de trainer"/>
+      <img src="/assets/img/photos/service-5.webp" alt="Kinderen zitten in een kring met de trainer"/>
     </div>
 
     <div class="title-block">
@@ -437,10 +437,10 @@
 <!-- ═══════════════════════════════════════════════
      4 · GEMEENTE & BUURTSPORT
      ═══════════════════════════════════════════════ -->
-<div class="flyer">
+<div class="flyer" id="gemeente-buurtsport">
   <div class="fc">
     <div class="fh">
-      <img src="public/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
+      <img src="/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
       <div class="fh-right">
         <span class="fh-geo">Heel Nederland</span>
         <div class="fh-badge">Gemeenten &amp; Buurtsport</div>
@@ -448,7 +448,7 @@
     </div>
 
     <div class="photo">
-      <img src="public/assets/img/photos/hero-1.webp" alt="Kinderen spelen dodgeball op een buitenveld"/>
+      <img src="/assets/img/photos/hero-1.webp" alt="Kinderen spelen dodgeball op een buitenveld"/>
     </div>
 
     <div class="title-block">
@@ -494,10 +494,10 @@
 <!-- ═══════════════════════════════════════════════
      5 · SPORTDAGEN & EVENEMENTEN
      ═══════════════════════════════════════════════ -->
-<div class="flyer">
+<div class="flyer" id="sportdagen-evenementen">
   <div class="fc">
     <div class="fh">
-      <img src="public/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
+      <img src="/assets/img/dodgeballschool.svg" alt="Dodgeball School"/>
       <div class="fh-right">
         <span class="fh-geo">Heel Nederland</span>
         <div class="fh-badge">Events &amp; Toernooien</div>
@@ -505,7 +505,7 @@
     </div>
 
     <div class="photo">
-      <img src="public/assets/img/photos/hero-3.webp" alt="Spannend dodgeball toernooi in de sporthal"/>
+      <img src="/assets/img/photos/hero-3.webp" alt="Spannend dodgeball toernooi in de sporthal"/>
     </div>
 
     <div class="title-block">
@@ -514,8 +514,8 @@
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="stat-val">120</div><div class="stat-label">Max. deelnemers</div></div>
-      <div class="stat"><div class="stat-val">3 of 6u</div><div class="stat-label">Dagdeel of dag</div></div>
+      <div class="stat"><div class="stat-val">60 / 120</div><div class="stat-label">Dagdeel / dag</div></div>
+      <div class="stat"><div class="stat-val">3 of 6u</div><div class="stat-label">Per event</div></div>
       <div class="stat"><div class="stat-val">Alles incl.</div><div class="stat-label">Materiaal &amp; crew</div></div>
     </div>
 
@@ -548,5 +548,18 @@
   </div>
 </div>
 
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var target = params.get('flyer');
+  if (target) {
+    var flyers = document.querySelectorAll('.flyer');
+    flyers.forEach(function(f) {
+      if (f.id !== target) f.style.display = 'none';
+    });
+    window.print();
+  }
+})();
+</script>
 </body>
 </html>
