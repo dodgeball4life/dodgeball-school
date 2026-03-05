@@ -707,15 +707,12 @@ import '../css/style.css';
         data.datum = 'Nog niet bekend';
       }
 
-      // Send to backend (placeholder — replace with actual endpoint)
-      var endpoint = '/api/contact';
+      var endpoint = '/api/contact.php';
       fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
-      }).catch(function () {
-        // Silently handle — backend not configured yet
-      });
+      }).catch(function () {});
 
       // Show success state
       slides.forEach(function (s) { s.classList.remove('is-active'); });
