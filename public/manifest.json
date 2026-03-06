@@ -1,11 +1,11 @@
 {
   "name": "Dodgeball School",
-  "short_name": "Dodgeball",
-  "description": "Dodgeball & trefbal voor scholen, kinderfeestjes en evenementen door heel Nederland.",
+  "short_name": "Dodgeball School",
+  "description": "Professionele dodgeball clinics voor scholen, BSO en evenementen door heel Nederland.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#15151F",
-  "theme_color": "#E63221",
+  "background_color": "#F0EEE7",
+  "theme_color": "#141414",
   "lang": "nl",
   "icons": [
     {

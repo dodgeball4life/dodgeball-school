@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Origin: https://dodgeballschool.nl');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 
@@ -15,30 +15,50 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$input = json_decode(file_get_contents('php://input'), true);
+$rawInput = file_get_contents('php://input');
+if (strlen($rawInput) > 20000) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Request too large']);
+    exit;
+}
 
-if (!$input) {
+$input = json_decode($rawInput, true);
+
+if (!$input || !is_array($input)) {
     http_response_code(400);
     echo json_encode(['error' => 'Invalid request']);
     exit;
 }
 
-$to = 'play@dodgeballschool.nl';
-$subject = 'Nieuwe aanvraag — ' . ($input['organisatie'] ?? 'Onbekend');
+// Validate required fields
+$emailRaw = trim($input['email'] ?? '');
+if (empty($input['naam']) || empty($emailRaw)) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Naam en e-mail zijn verplicht']);
+    exit;
+}
 
-$organisatie = htmlspecialchars($input['organisatie'] ?? '-');
-$type = htmlspecialchars($input['type'] ?? '-');
-$aantal = htmlspecialchars($input['aantal'] ?? '-');
-$datum = htmlspecialchars($input['datum'] ?? '-');
-$naam = htmlspecialchars($input['naam'] ?? '-');
-$email = htmlspecialchars($input['email'] ?? '-');
-$telefoon = htmlspecialchars($input['telefoon'] ?? '-');
-$opmerking = htmlspecialchars($input['opmerking'] ?? '-');
+if (!filter_var($emailRaw, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Ongeldig e-mailadres']);
+    exit;
+}
+
+$to = 'play@dodgeballschool.nl';
+$subject = 'Nieuwe aanvraag — ' . mb_substr($input['organisatie'] ?? 'Onbekend', 0, 100);
+
+$organisatie = htmlspecialchars(mb_substr($input['organisatie'] ?? '-', 0, 200));
+$leeftijd    = htmlspecialchars(mb_substr($input['leeftijd']    ?? '-', 0, 100));
+$aantal      = htmlspecialchars(mb_substr($input['aantal']      ?? '-', 0, 50));
+$datum       = htmlspecialchars(mb_substr($input['datum']       ?? '-', 0, 100));
+$naam        = htmlspecialchars(mb_substr($input['naam']        ?? '-', 0, 200));
+$email       = htmlspecialchars($emailRaw);
+$telefoon    = htmlspecialchars(mb_substr($input['telefoon']    ?? '', 0, 50));
+$bericht     = htmlspecialchars(mb_substr($input['bericht']     ?? '-', 0, 2000));
 
 $mailtoSubject = rawurlencode("Re: Aanvraag {$organisatie}");
-$mailtoBody = rawurlencode("Hoi {$naam},\n\nBedankt voor je aanvraag! \n\n");
+$mailtoBody = rawurlencode("Hoi {$naam},\n\nBedankt voor je aanvraag!\n\n");
 $replyLink = "mailto:{$email}?subject={$mailtoSubject}&body={$mailtoBody}";
-$telLink = "tel:{$telefoon}";
 
 $body = <<<HTML
 <!DOCTYPE html>
@@ -71,8 +91,8 @@ $body = <<<HTML
       <table width="100%" cellpadding="0" cellspacing="0">
         <tr>
           <td width="33%" style="padding:12px 0;border-top:1px solid #eee;">
-            <span style="color:#888;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;">Type</span>
-            <div style="font-size:15px;font-weight:600;color:#141414;margin-top:2px;">{$type}</div>
+            <span style="color:#888;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;">Leeftijd</span>
+            <div style="font-size:15px;font-weight:600;color:#141414;margin-top:2px;">{$leeftijd}</div>
           </td>
           <td width="33%" style="padding:12px 0;border-top:1px solid #eee;">
             <span style="color:#888;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;">Aantal</span>
@@ -98,36 +118,34 @@ $body = <<<HTML
             <div style="margin-top:8px;">
               <a href="mailto:{$email}" style="color:#141414;text-decoration:none;font-size:14px;">{$email}</a>
             </div>
+HTML;
+if ($telefoon !== '') {
+    $telLink = 'tel:' . preg_replace('/[^0-9+]/', '', $telefoon);
+    $body .= <<<HTML
             <div style="margin-top:4px;">
               <a href="{$telLink}" style="color:#141414;text-decoration:none;font-size:14px;">{$telefoon}</a>
             </div>
+HTML;
+}
+$body .= <<<HTML
           </td>
         </tr>
       </table>
     </td>
   </tr>
 
-  <!-- Opmerking -->
+  <!-- Bericht -->
   <tr>
     <td style="padding:12px 32px;">
-      <span style="color:#888;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;">Opmerking</span>
-      <div style="font-size:14px;color:#333;margin-top:6px;line-height:1.5;">{$opmerking}</div>
+      <span style="color:#888;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;">Bericht</span>
+      <div style="font-size:14px;color:#333;margin-top:6px;line-height:1.5;">{$bericht}</div>
     </td>
   </tr>
 
-  <!-- CTA Buttons -->
+  <!-- CTA -->
   <tr>
     <td style="padding:20px 32px 28px;">
-      <table width="100%" cellpadding="0" cellspacing="0">
-        <tr>
-          <td width="50%" style="padding-right:6px;">
-            <a href="{$replyLink}" style="display:block;background:#D5DF26;color:#141414;text-align:center;padding:14px 20px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;">Beantwoorden</a>
-          </td>
-          <td width="50%" style="padding-left:6px;">
-            <a href="{$telLink}" style="display:block;background:#141414;color:#ffffff;text-align:center;padding:14px 20px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;">Bellen</a>
-          </td>
-        </tr>
-      </table>
+      <a href="{$replyLink}" style="display:block;background:#D5DF26;color:#141414;text-align:center;padding:14px 20px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;">Beantwoorden</a>
     </td>
   </tr>
 
