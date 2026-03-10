@@ -37,6 +37,8 @@ fi
 # Build
 info "Bouwen..."
 npm run build --silent
+cp public/api/*.php dist/api/
+cp public/.htaccess dist/.htaccess
 success "Build klaar"
 
 # Upload

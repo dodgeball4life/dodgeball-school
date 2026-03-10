@@ -727,21 +727,28 @@ window.addEventListener('pageshow', function (e) {
         data.datum = 'Nog niet bekend';
       }
 
+      var submitBtn = stepForm.querySelector('.step-submit');
+      if (submitBtn) submitBtn.disabled = true;
+
       var endpoint = '/api/contact.php';
       fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
-      }).catch(function () {});
-
-      // Show success state
-      slides.forEach(function (s) { s.classList.remove('is-active'); });
-      stepForm.querySelector('.step-nav').style.display = 'none';
-      if (headerEl) headerEl.style.display = 'none';
-      var introEl = document.querySelector('.step-intro');
-      if (introEl) introEl.style.display = 'none';
-      successEl.style.display = '';
-      progressBar.style.width = '100%';
+      }).then(function (res) {
+        if (!res.ok) throw new Error('Server error');
+        // Show success state
+        slides.forEach(function (s) { s.classList.remove('is-active'); });
+        stepForm.querySelector('.step-nav').style.display = 'none';
+        if (headerEl) headerEl.style.display = 'none';
+        var introEl = document.querySelector('.step-intro');
+        if (introEl) introEl.style.display = 'none';
+        successEl.style.display = '';
+        progressBar.style.width = '100%';
+      }).catch(function () {
+        if (submitBtn) submitBtn.disabled = false;
+        alert('Er ging iets mis bij het versturen. Probeer het opnieuw of mail naar play@dodgeballschool.nl');
+      });
     });
 
     gsap.from('.step-intro', {

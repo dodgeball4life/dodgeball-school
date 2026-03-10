@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/smtp.php';
+
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: https://dodgeballschool.nl');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
@@ -155,16 +157,23 @@ $body .= <<<HTML
 </html>
 HTML;
 
-$headers = "From: noreply@dodgeballschool.nl\r\n";
-$headers .= "Reply-To: {$email}\r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+// SMTP config — loaded from outside web root
+$smtpConfig = require __DIR__ . '/../../smtp_config.php';
 
-$sent = mail($to, $subject, $body, $headers);
+// Log submission
+$logDir = __DIR__ . '/../logs';
+if (!is_dir($logDir)) {
+    mkdir($logDir, 0750, true);
+}
+$logEntry = date('Y-m-d H:i:s') . ' | ' . $naam . ' | ' . $email . ' | ' . ($input['organisatie'] ?? '-');
 
-if ($sent) {
+$result = smtp_send($smtpConfig, $to, $subject, $body, ['Reply-To' => $email]);
+
+if ($result === true) {
+    file_put_contents($logDir . '/contact.log', $logEntry . ' | OK' . PHP_EOL, FILE_APPEND | LOCK_EX);
     echo json_encode(['success' => true]);
 } else {
+    file_put_contents($logDir . '/contact.log', $logEntry . ' | FAILED: ' . $result . PHP_EOL, FILE_APPEND | LOCK_EX);
     http_response_code(500);
     echo json_encode(['error' => 'Mail kon niet worden verzonden']);
 }

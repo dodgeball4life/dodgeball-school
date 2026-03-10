@@ -19,6 +19,7 @@ Desktop.ini
 .env
 .env.local
 .env.*.local
+smtp_config.php
 
 # Node (in case of future build tools)
 node_modules/
